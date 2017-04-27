@@ -6,16 +6,33 @@
 
 #include "SolarCalc.h"
 
+#define myqDebug() qDebug() << fixed << qSetRealNumberPrecision(16)
+
 // Constructor
 SolarCalc::SolarCalc(Location &l, Elevation &e) {
     location = l;
     elevation = e;
-    
+}
+
+// Calculating function
+void SolarCalc::calculate() {
     // Set current Julian date
-    J_date = QDate::currentDate().toJulianDay();
+    qint64 J_dateTemp = QDate::currentDate().toJulianDay();
+    
+    // Set Julian time and add it to the Julian date
+    double HH, MM, SS, J_time = 0.0;
+    QTime currentTime = QTime::currentTime();
+    HH = currentTime.hour();
+    MM = currentTime.minute();
+    SS = currentTime.second();
+    J_time = HH/24 + MM/1440 + SS/86400;
+    J_date = (double)((double)J_dateTemp + J_time);
+    
+    myqDebug() << J_date;
     
     // Calculate days since 01/01/2000
     n = J_date - 2451545.0 + 0.0008;
+    myqDebug() << n;
     
     // Calculate mean solar noon:
     double l_w = location.getLon();
@@ -56,4 +73,45 @@ SolarCalc::SolarCalc(Location &l, Elevation &e) {
     // Calculate sunrise and sunset
     J_rise = J_trans - (w/360);
     J_set = J_trans + (w/360);
+    
+    // Convert and store HH:MM format
+    this->sunriseTime = convertJT(J_rise);
+    this->noonTime = convertJT(J_n);
+    this->sunsetTime = convertJT(J_set);
+}
+
+QString SolarCalc::convertJT(double &jt) {
+    double hour, minute = 0;
+    
+    // Break Julian datetime into two parts, integer (date) and decimal (time)
+    double intPart = 0;
+    double fractPart = modf(jt, &intPart);
+    
+    // floor(fractPart * 24) gives HH
+    fractPart *= 24;
+    hour = floor(fractPart);
+    
+    // Resulting decimal value * 60 gives MM
+    fractPart = modf(fractPart, &intPart);
+    fractPart *= 60;
+    minute = floor(fractPart);
+    
+    QString timeHHMM = QString::number(hour) + ":" + QString::number(minute);
+    
+    return timeHHMM;
+}
+
+// Returns sunrise time as a QString, HH:MM
+QString SolarCalc::getSunrise() {
+    return sunriseTime;
+}
+
+// Returns mean solar noon time as a QString, HH:MM
+QString SolarCalc::getMeanSolarNoon() {
+    return noonTime;
+}
+
+// Returns sunset time as a QString, HH:SS
+QString SolarCalc::getSunset() {
+    return sunsetTime;
 }

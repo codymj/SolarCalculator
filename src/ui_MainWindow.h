@@ -49,7 +49,7 @@ public:
     QHBoxLayout *horizontalLayout_3;
     QLineEdit *elevInput;
     QComboBox *elevCombo;
-    QWidget *widget;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_4;
     QHBoxLayout *horizontalLayout_5;
     QLabel *label;
@@ -63,7 +63,7 @@ public:
     QLabel *label_3;
     QSpacerItem *horizontalSpacer_5;
     QLabel *sunsetLabel;
-    QWidget *widget1;
+    QWidget *layoutWidget2;
     QHBoxLayout *horizontalLayout_8;
     QPushButton *closeButton;
     QPushButton *calcButton;
@@ -178,15 +178,15 @@ public:
 
         horizontalLayout_4->addLayout(verticalLayout_3);
 
-        widget = new QWidget(centralwidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(20, 80, 131, 78));
-        verticalLayout_4 = new QVBoxLayout(widget);
+        layoutWidget1 = new QWidget(centralwidget);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(20, 80, 131, 78));
+        verticalLayout_4 = new QVBoxLayout(layoutWidget1);
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget1);
         label->setObjectName(QStringLiteral("label"));
 
         horizontalLayout_5->addWidget(label);
@@ -195,7 +195,7 @@ public:
 
         horizontalLayout_5->addItem(horizontalSpacer_3);
 
-        sunriseLabel = new QLabel(widget);
+        sunriseLabel = new QLabel(layoutWidget1);
         sunriseLabel->setObjectName(QStringLiteral("sunriseLabel"));
 
         horizontalLayout_5->addWidget(sunriseLabel);
@@ -205,7 +205,7 @@ public:
 
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        label_2 = new QLabel(widget);
+        label_2 = new QLabel(layoutWidget1);
         label_2->setObjectName(QStringLiteral("label_2"));
 
         horizontalLayout_6->addWidget(label_2);
@@ -214,7 +214,7 @@ public:
 
         horizontalLayout_6->addItem(horizontalSpacer_4);
 
-        noonLabel = new QLabel(widget);
+        noonLabel = new QLabel(layoutWidget1);
         noonLabel->setObjectName(QStringLiteral("noonLabel"));
 
         horizontalLayout_6->addWidget(noonLabel);
@@ -224,7 +224,7 @@ public:
 
         horizontalLayout_7 = new QHBoxLayout();
         horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
-        label_3 = new QLabel(widget);
+        label_3 = new QLabel(layoutWidget1);
         label_3->setObjectName(QStringLiteral("label_3"));
 
         horizontalLayout_7->addWidget(label_3);
@@ -233,7 +233,7 @@ public:
 
         horizontalLayout_7->addItem(horizontalSpacer_5);
 
-        sunsetLabel = new QLabel(widget);
+        sunsetLabel = new QLabel(layoutWidget1);
         sunsetLabel->setObjectName(QStringLiteral("sunsetLabel"));
 
         horizontalLayout_7->addWidget(sunsetLabel);
@@ -241,18 +241,18 @@ public:
 
         verticalLayout_4->addLayout(horizontalLayout_7);
 
-        widget1 = new QWidget(centralwidget);
-        widget1->setObjectName(QStringLiteral("widget1"));
-        widget1->setGeometry(QRect(460, 140, 167, 26));
-        horizontalLayout_8 = new QHBoxLayout(widget1);
+        layoutWidget2 = new QWidget(centralwidget);
+        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(460, 140, 167, 26));
+        horizontalLayout_8 = new QHBoxLayout(layoutWidget2);
         horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
         horizontalLayout_8->setContentsMargins(0, 0, 0, 0);
-        closeButton = new QPushButton(widget1);
+        closeButton = new QPushButton(layoutWidget2);
         closeButton->setObjectName(QStringLiteral("closeButton"));
 
         horizontalLayout_8->addWidget(closeButton);
 
-        calcButton = new QPushButton(widget1);
+        calcButton = new QPushButton(layoutWidget2);
         calcButton->setObjectName(QStringLiteral("calcButton"));
 
         horizontalLayout_8->addWidget(calcButton);
@@ -269,18 +269,21 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         latLabel->setText(QApplication::translate("MainWindow", "Latitude:", Q_NULLPTR));
+        latInput->setText(QApplication::translate("MainWindow", "0.0", Q_NULLPTR));
         latCombo->clear();
         latCombo->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "N", Q_NULLPTR)
          << QApplication::translate("MainWindow", "S", Q_NULLPTR)
         );
         lonLabel->setText(QApplication::translate("MainWindow", "Longitude:", Q_NULLPTR));
+        lonInput->setText(QApplication::translate("MainWindow", "0.0", Q_NULLPTR));
         lonCombo->clear();
         lonCombo->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "E", Q_NULLPTR)
          << QApplication::translate("MainWindow", "W", Q_NULLPTR)
         );
         elevLabel->setText(QApplication::translate("MainWindow", "Elevation:", Q_NULLPTR));
+        elevInput->setText(QApplication::translate("MainWindow", "0", Q_NULLPTR));
         elevCombo->clear();
         elevCombo->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "m", Q_NULLPTR)

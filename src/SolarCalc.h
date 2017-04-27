@@ -9,6 +9,10 @@
 
 #include <cmath>
 #include <QDate>
+#include <QDateTime>
+#include <QDebug>
+#include <QString>
+#include <QTime>
 #include "Location.h"
 #include "Elevation.h"
 
@@ -19,10 +23,19 @@ public:
     // Constructor
     SolarCalc(Location &l, Elevation &e);
     
+    // Calculating functions
+    void calculate();
+    QString convertJT(double &);
+    
+    // Get'er functions
+    QString getSunrise();
+    QString getMeanSolarNoon();
+    QString getSunset();
+    
 private:
     Location location;
     Elevation elevation;
-    qint64 J_date;
+    double J_date;
     double n;
     double J_n;
     double M;
@@ -33,6 +46,9 @@ private:
     double w;
     double J_rise;
     double J_set;
+    QString sunriseTime;
+    QString noonTime;
+    QString sunsetTime;
 };
 
 #endif // _SOLARCALC_H_

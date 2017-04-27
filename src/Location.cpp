@@ -37,13 +37,3 @@ Location::Location(double &lat, int &ns, double &lon, int &ew) {
         this->lon *= -1;
     }
 }
-
-// Return latitude
-double Location::getLat() {
-    return this->lat;
-}
-
-// Return longitude
-double Location::getLon() {
-    return this->lon;
-}

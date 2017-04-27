@@ -18,8 +18,12 @@ public:
     void ftToM();
     
     // Get'er functions
-    double getMagnitude();
-    int getUnit();
+    double getMagnitude() {return this->magnitude;}
+    int getUnit() {return this->unit;}
+    
+    // Set'er functions
+    void setMagnitude(double m) {this->magnitude = m;}
+    void setUnit(int u) {this->unit = u;}
     
 private:
     double magnitude;

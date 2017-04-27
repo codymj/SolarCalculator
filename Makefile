@@ -216,7 +216,6 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/qt_config.prf \
 		/usr/lib/qt/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/qt/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		/usr/lib/qt/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/qt/mkspecs/features/toolchain.prf \
 		/usr/lib/qt/mkspecs/features/default_pre.prf \
@@ -412,7 +411,6 @@ Makefile: SolarCalculator.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/
 		/usr/lib/qt/mkspecs/features/qt_config.prf \
 		/usr/lib/qt/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/qt/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		/usr/lib/qt/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/qt/mkspecs/features/toolchain.prf \
 		/usr/lib/qt/mkspecs/features/default_pre.prf \
@@ -593,7 +591,6 @@ Makefile: SolarCalculator.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/
 /usr/lib/qt/mkspecs/features/qt_config.prf:
 /usr/lib/qt/mkspecs/linux-g++/qmake.conf:
 /usr/lib/qt/mkspecs/features/spec_post.prf:
-.qmake.stash:
 /usr/lib/qt/mkspecs/features/exclusive_builds.prf:
 /usr/lib/qt/mkspecs/features/toolchain.prf:
 /usr/lib/qt/mkspecs/features/default_pre.prf:
@@ -669,6 +666,9 @@ compiler_moc_header_make_all: moc/moc_MainWindow.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc/moc_MainWindow.cpp
 moc/moc_MainWindow.cpp: src/ui_MainWindow.h \
+		src/SolarCalc.h \
+		src/Location.h \
+		src/Elevation.h \
 		src/MainWindow.h \
 		moc/moc_predefs.h \
 		/usr/bin/moc
@@ -700,7 +700,10 @@ obj/Location.o: src/Location.cpp src/Location.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/Location.o src/Location.cpp
 
 obj/MainWindow.o: src/MainWindow.cpp src/MainWindow.h \
-		src/ui_MainWindow.h
+		src/ui_MainWindow.h \
+		src/SolarCalc.h \
+		src/Location.h \
+		src/Elevation.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/MainWindow.o src/MainWindow.cpp
 
 obj/SolarCalc.o: src/SolarCalc.cpp src/SolarCalc.h \
@@ -709,7 +712,10 @@ obj/SolarCalc.o: src/SolarCalc.cpp src/SolarCalc.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/SolarCalc.o src/SolarCalc.cpp
 
 obj/main.o: src/main.cpp src/MainWindow.h \
-		src/ui_MainWindow.h
+		src/ui_MainWindow.h \
+		src/SolarCalc.h \
+		src/Location.h \
+		src/Elevation.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/main.o src/main.cpp
 
 obj/moc_MainWindow.o: moc/moc_MainWindow.cpp 

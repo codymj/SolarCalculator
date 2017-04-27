@@ -39,13 +39,3 @@ void Elevation::ftToM() {
     this->unit = 1;
     this->magnitude /= 3.281;
 }
-
-// Returns magnitude of elevation
-double Elevation::getMagnitude() {
-    return this->magnitude;
-}
-
-// Returns unit of elevation
-int Elevation::getUnit() {
-    return this->unit;
-}
