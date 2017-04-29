@@ -4,6 +4,8 @@
  * Author:  Cody Johnson <codyj@protonmail.com>
 */
 
+#define myqDebug() qDebug() << fixed << qSetRealNumberPrecision(16)
+
 #include "MainWindow.h"
 
 // Constructor
@@ -46,14 +48,20 @@ void MainWindow::connectActions() {
 
 // Slot to run calculation when button is clicked
 void MainWindow::runCalculation() {
-    // Set data
-    elevation.setMagnitude(elevInput->text().toDouble());
-    elevation.setUnit(elevCombo->currentIndex());
-    location.setLat(latInput->text().toDouble());
-    location.setLon(lonInput->text().toDouble());
+    // Set location data
+    double lat = latInput->text().toDouble();
+    double lon = lonInput->text().toDouble();
+    int ns = latCombo->currentIndex();
+    int ew = lonCombo->currentIndex();
+    this->location = Location(lat, ns, lon, ew);
+    
+    // Set elevation data
+    double elev = elevInput->text().toDouble();
+    int elevUnit = elevCombo->currentIndex();
+    this->elevation = Elevation(elev, elevUnit);
     
     // Run calculation
-    SolarCalc sCalc(this->location, this->elevation);
+    SolarCalc sCalc(location, elevation);
     sCalc.calculate();
     
     // Set results

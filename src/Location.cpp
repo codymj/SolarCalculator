@@ -42,5 +42,4 @@ Location::Location(double &lat, int &ns, double &lon, int &ew) {
         this->lon *= -1.0;
         this->ew = 1;
     }
-    qDebug() << this->lon;
 }

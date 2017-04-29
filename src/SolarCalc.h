@@ -16,7 +16,9 @@
 #include "Location.h"
 #include "Elevation.h"
 
-#define RAD 3.14159265/180
+#define PI 3.14159265
+#define RAD PI/180.0
+#define DEG 180.0/PI
 
 class SolarCalc {
 public:
