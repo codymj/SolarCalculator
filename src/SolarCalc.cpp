@@ -57,13 +57,21 @@ void SolarCalc::calculate() {
     if (elevation.getUnit() == 0) {
         double E = elevation.getMagnitude();
         double EC = -2.076*sqrt(E)/60.0;   // Elevation correction
-        w = acos((sin((-0.83+EC)*RAD) - sin(phi*RAD)*sin(delta*RAD))/(cos(phi*RAD)*cos(delta*RAD)))*DEG;
+        w = acos(
+            (sin((-0.83 + EC)*RAD) - sin(phi*RAD)*sin(delta*RAD))
+            /
+            (cos(phi*RAD)*cos(delta*RAD))
+        )*DEG;
     }
     // For elevation in feet
     if (elevation.getUnit() == 1) {
         double E = elevation.getMagnitude();
         double EC = -1.15*sqrt(E)/60.0;   // Elevation correction
-        w = acos((sin((-0.83+EC)*RAD) - sin(phi*RAD)*sin(delta*RAD))/(cos(phi*RAD)*cos(delta*RAD)))*DEG;
+        w = acos(
+            (sin((-0.83 + EC)*RAD) - sin(phi*RAD)*sin(delta*RAD))
+            /
+            (cos(phi*RAD)*cos(delta*RAD))
+        )*DEG;
     }
     
     // Calculate sunrise and sunset
