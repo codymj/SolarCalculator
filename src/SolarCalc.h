@@ -16,9 +16,10 @@
 #include "Location.h"
 #include "Elevation.h"
 
-#define PI 3.14159265
-#define RAD PI/180.0
-#define DEG 180.0/PI
+#define PI 3.14159265   // pi constant
+#define RAD PI/180.0    // Convert degrees to radians
+#define DEG 180.0/PI    // Convert radians to degrees
+#define myqDebug() qDebug() << fixed << qSetRealNumberPrecision(8)
 
 class SolarCalc {
 public:
@@ -31,7 +32,7 @@ public:
     
     // Get'er functions
     QString getSunrise();
-    QString getMeanSolarNoon();
+    QString getHighNoon();
     QString getSunset();
     
 private:

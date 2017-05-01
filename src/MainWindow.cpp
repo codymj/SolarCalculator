@@ -4,8 +4,6 @@
  * Author:  Cody Johnson <codyj@protonmail.com>
 */
 
-#define myqDebug() qDebug() << fixed << qSetRealNumberPrecision(16)
-
 #include "MainWindow.h"
 
 // Constructor
@@ -66,7 +64,7 @@ void MainWindow::runCalculation() {
     
     // Set results
     this->sunriseLabel->setText(sCalc.getSunrise());
-    this->noonLabel->setText(sCalc.getMeanSolarNoon());
+    this->noonLabel->setText(sCalc.getHighNoon());
     this->sunsetLabel->setText(sCalc.getSunset());
 }
 

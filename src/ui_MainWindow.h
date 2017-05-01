@@ -180,7 +180,7 @@ public:
 
         layoutWidget1 = new QWidget(centralwidget);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(20, 80, 131, 78));
+        layoutWidget1->setGeometry(QRect(20, 80, 111, 78));
         verticalLayout_4 = new QVBoxLayout(layoutWidget1);
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
@@ -290,11 +290,11 @@ public:
          << QApplication::translate("MainWindow", "ft", Q_NULLPTR)
         );
         label->setText(QApplication::translate("MainWindow", "Sunrise:", Q_NULLPTR));
-        sunriseLabel->setText(QApplication::translate("MainWindow", "00:00", Q_NULLPTR));
+        sunriseLabel->setText(QApplication::translate("MainWindow", "--:--", Q_NULLPTR));
         label_2->setText(QApplication::translate("MainWindow", "Noon:", Q_NULLPTR));
-        noonLabel->setText(QApplication::translate("MainWindow", "00:00", Q_NULLPTR));
+        noonLabel->setText(QApplication::translate("MainWindow", "--:--", Q_NULLPTR));
         label_3->setText(QApplication::translate("MainWindow", "Sunset:", Q_NULLPTR));
-        sunsetLabel->setText(QApplication::translate("MainWindow", "00:00", Q_NULLPTR));
+        sunsetLabel->setText(QApplication::translate("MainWindow", "--:--", Q_NULLPTR));
         closeButton->setText(QApplication::translate("MainWindow", "Close", Q_NULLPTR));
         calcButton->setText(QApplication::translate("MainWindow", "Calculate", Q_NULLPTR));
     } // retranslateUi

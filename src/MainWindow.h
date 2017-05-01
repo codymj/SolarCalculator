@@ -16,6 +16,8 @@
 #include "Location.h"
 #include "SolarCalc.h"
 
+#define myqDebug() qDebug() << fixed << qSetRealNumberPrecision(8)
+
 class MainWindow : public QMainWindow, public Ui::MainWindow {
     Q_OBJECT
 

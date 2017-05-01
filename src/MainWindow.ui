@@ -213,7 +213,7 @@
      <rect>
       <x>20</x>
       <y>80</y>
-      <width>131</width>
+      <width>111</width>
       <height>78</height>
      </rect>
     </property>
@@ -243,7 +243,7 @@
        <item>
         <widget class="QLabel" name="sunriseLabel">
          <property name="text">
-          <string>00:00</string>
+          <string>--:--</string>
          </property>
         </widget>
        </item>
@@ -274,7 +274,7 @@
        <item>
         <widget class="QLabel" name="noonLabel">
          <property name="text">
-          <string>00:00</string>
+          <string>--:--</string>
          </property>
         </widget>
        </item>
@@ -305,7 +305,7 @@
        <item>
         <widget class="QLabel" name="sunsetLabel">
          <property name="text">
-          <string>00:00</string>
+          <string>--:--</string>
          </property>
         </widget>
        </item>
