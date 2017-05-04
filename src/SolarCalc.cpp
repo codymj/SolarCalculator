@@ -46,10 +46,24 @@ bool SolarCalc::isNumber(const double &num) {
 
 // Converts minutes of time in HH:mm format
 QString SolarCalc::convertMinsToHHmm(const double &mins) {
+    QString hourStr, minuteStr;
     int hour = floor(mins/60);
-    QString hourStr = QString::number(hour);
+    if (hour < 10) {
+        hourStr = "0";
+        hourStr.append(QString::number(hour));
+    }
+    else {
+        hourStr = QString::number(hour);
+    }
+    
     int minute = floor((mins/60 - hour)*60);
-    QString minuteStr = QString::number(minute);
+    if (minute < 10) {
+        minuteStr = "0";
+        minuteStr.append(QString::number(minute));
+    }
+    else {
+        minuteStr = QString::number(minute);
+    }
     
     return QString(hourStr + ":" + minuteStr);
 }
