@@ -50,7 +50,7 @@
          <item>
           <widget class="QLineEdit" name="latInput">
            <property name="text">
-            <string>0.0</string>
+            <string>0.000000</string>
            </property>
           </widget>
          </item>
@@ -111,7 +111,7 @@
          <item>
           <widget class="QLineEdit" name="lonInput">
            <property name="text">
-            <string>0.0</string>
+            <string>0.000000</string>
            </property>
           </widget>
          </item>
@@ -161,45 +161,19 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
-        <widget class="QLabel" name="elevLabel">
+        <widget class="QLabel" name="label_4">
          <property name="text">
-          <string>Elevation:</string>
+          <string>Current Date:</string>
          </property>
         </widget>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
-          <widget class="QLineEdit" name="elevInput">
+          <widget class="QLabel" name="dateLabel">
            <property name="text">
-            <string>0</string>
+            <string>TextLabel</string>
            </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="elevCombo">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>45</width>
-             <height>25</height>
-            </size>
-           </property>
-           <item>
-            <property name="text">
-             <string>m</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>ft</string>
-            </property>
-           </item>
           </widget>
          </item>
         </layout>
@@ -214,7 +188,7 @@
       <x>20</x>
       <y>80</y>
       <width>111</width>
-      <height>78</height>
+      <height>80</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_4">

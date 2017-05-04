@@ -7,6 +7,7 @@
 #ifndef _MAINWINDOW_H_
 #define _MAINWINDOW_H_
 
+#include <QDate>
 #include <QDebug>
 #include <QRegExp>
 #include <QRegExpValidator>
@@ -15,8 +16,6 @@
 #include "Elevation.h"
 #include "Location.h"
 #include "SolarCalc.h"
-
-#define myqDebug() qDebug() << fixed << qSetRealNumberPrecision(8)
 
 class MainWindow : public QMainWindow, public Ui::MainWindow {
     Q_OBJECT
@@ -28,14 +27,12 @@ public:
 public slots:
 
 private:
-    Elevation elevation;
     Location location;
+    QDate currentDate;
     
     void connectActions();
 
 private slots:
-    void checkElevation(QString);
-    void emitElevComboChanged(int);
     void runCalculation();
 };
 

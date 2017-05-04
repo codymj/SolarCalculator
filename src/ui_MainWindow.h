@@ -45,10 +45,9 @@ public:
     QComboBox *lonCombo;
     QSpacerItem *horizontalSpacer_2;
     QVBoxLayout *verticalLayout_3;
-    QLabel *elevLabel;
+    QLabel *label_4;
     QHBoxLayout *horizontalLayout_3;
-    QLineEdit *elevInput;
-    QComboBox *elevCombo;
+    QLabel *dateLabel;
     QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_4;
     QHBoxLayout *horizontalLayout_5;
@@ -152,25 +151,17 @@ public:
 
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
-        elevLabel = new QLabel(layoutWidget);
-        elevLabel->setObjectName(QStringLiteral("elevLabel"));
+        label_4 = new QLabel(layoutWidget);
+        label_4->setObjectName(QStringLiteral("label_4"));
 
-        verticalLayout_3->addWidget(elevLabel);
+        verticalLayout_3->addWidget(label_4);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        elevInput = new QLineEdit(layoutWidget);
-        elevInput->setObjectName(QStringLiteral("elevInput"));
+        dateLabel = new QLabel(layoutWidget);
+        dateLabel->setObjectName(QStringLiteral("dateLabel"));
 
-        horizontalLayout_3->addWidget(elevInput);
-
-        elevCombo = new QComboBox(layoutWidget);
-        elevCombo->setObjectName(QStringLiteral("elevCombo"));
-        sizePolicy.setHeightForWidth(elevCombo->sizePolicy().hasHeightForWidth());
-        elevCombo->setSizePolicy(sizePolicy);
-        elevCombo->setMaximumSize(QSize(45, 25));
-
-        horizontalLayout_3->addWidget(elevCombo);
+        horizontalLayout_3->addWidget(dateLabel);
 
 
         verticalLayout_3->addLayout(horizontalLayout_3);
@@ -180,7 +171,7 @@ public:
 
         layoutWidget1 = new QWidget(centralwidget);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(20, 80, 111, 78));
+        layoutWidget1->setGeometry(QRect(20, 80, 111, 80));
         verticalLayout_4 = new QVBoxLayout(layoutWidget1);
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
@@ -269,26 +260,21 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         latLabel->setText(QApplication::translate("MainWindow", "Latitude:", Q_NULLPTR));
-        latInput->setText(QApplication::translate("MainWindow", "0.0", Q_NULLPTR));
+        latInput->setText(QApplication::translate("MainWindow", "0.000000", Q_NULLPTR));
         latCombo->clear();
         latCombo->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "N", Q_NULLPTR)
          << QApplication::translate("MainWindow", "S", Q_NULLPTR)
         );
         lonLabel->setText(QApplication::translate("MainWindow", "Longitude:", Q_NULLPTR));
-        lonInput->setText(QApplication::translate("MainWindow", "0.0", Q_NULLPTR));
+        lonInput->setText(QApplication::translate("MainWindow", "0.000000", Q_NULLPTR));
         lonCombo->clear();
         lonCombo->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "E", Q_NULLPTR)
          << QApplication::translate("MainWindow", "W", Q_NULLPTR)
         );
-        elevLabel->setText(QApplication::translate("MainWindow", "Elevation:", Q_NULLPTR));
-        elevInput->setText(QApplication::translate("MainWindow", "0", Q_NULLPTR));
-        elevCombo->clear();
-        elevCombo->insertItems(0, QStringList()
-         << QApplication::translate("MainWindow", "m", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "ft", Q_NULLPTR)
-        );
+        label_4->setText(QApplication::translate("MainWindow", "Current Date:", Q_NULLPTR));
+        dateLabel->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
         label->setText(QApplication::translate("MainWindow", "Sunrise:", Q_NULLPTR));
         sunriseLabel->setText(QApplication::translate("MainWindow", "--:--", Q_NULLPTR));
         label_2->setText(QApplication::translate("MainWindow", "Noon:", Q_NULLPTR));
