@@ -49,6 +49,8 @@ public:
     double sunDeclination(const double &t);
     double equationOfTime(const double &t);
     double hourAngleSunrise(const double &lat, const double &sd);
+    void azimuthElevation(const double &T, const double &tLocal, const double &lat,
+        const double &lon, const double &tz);
     void solarNoon(const double &jd, const double &lon, const double &tz, const bool &dst);
     double sunriseSunsetUTC(
         const int &i, const double &jd, const double &lat, const double &lon);
@@ -60,6 +62,9 @@ public:
     void calculate();
     
     // Get'er functions
+    QString getEquationOfTime();
+    QString getSolarDeclination();
+    QString getAzimuthElevation();
     QString getSunrise();
     QString getNoon();
     QString getSunset();
@@ -78,6 +83,9 @@ private:
     QString sunriseTimeStr;
     QString noonTimeStr;
     QString sunsetTimeStr;
+    QString equationOfTimeStr;
+    QString solarDeclinationStr;
+    QString azimuthElevationStr;
 };
 
 #endif // _SOLARCALC_H_

@@ -113,14 +113,12 @@ int SolarCalc::doyFromJD(const double &jd) {
 //
 double SolarCalc::sunGeoMeanLon(const double &t) {
     double L0 = 280.46646 + t*(36000.76983 + t*0.0003032);
-    
     while (L0 > 360.0) {
         L0 -= 360.0;
     }
     while (L0 < 0.0) {
         L0 += 360.0;
     }
-    
     return L0;  // In degrees
 }
 
@@ -204,7 +202,7 @@ double SolarCalc::sunRightAscension(const double &t) {
     double e = earthObliquityCorrection(t);
     double lambda = sunApparentLon(t);
     
-    double alpha = atan2(cos(e*RAD)*sin(lambda*RAD), cos(lambda*RAD));
+    double alpha = atan2(cos(e*RAD)*sin(lambda*RAD), cos(lambda*RAD))*DEG;
     return alpha;  // In degrees
 }
 
@@ -243,6 +241,109 @@ double SolarCalc::hourAngleSunrise(const double &lat, const double &sd) {
 }
 
 //
+void SolarCalc::azimuthElevation(const double &T, const double &tLocal, const double &lat,
+const double &lon, const double &tz) {
+    double eqTime = equationOfTime(T);
+    double theta = sunDeclination(T);
+    double solarTimeFix = eqTime + 4.0*lon - 60.0*tz;
+    
+    double eqt = floor(eqTime*100 + 0.5)/100.0;
+    QString eqTimeStr = QString::number(eqt);
+    this->equationOfTimeStr = eqTimeStr;
+    
+    double sd = floor(theta*100 + 0.5)/100.0;
+    QString sdStr = QString::number(sd);
+    this->solarDeclinationStr = sdStr;
+    
+    double trueSolarTime = tLocal + solarTimeFix;
+    while (trueSolarTime > 1440.0) {
+        trueSolarTime -= 1440.0;
+    }
+    
+    double hourAngle = trueSolarTime/4.0 - 180.0;
+    if (hourAngle < -180.0) {
+        hourAngle += 360.0;
+    }
+    
+    double csz = sin(lat*RAD)*sin(theta*RAD) + cos(lat*RAD)*cos(theta*RAD)*cos(hourAngle*RAD);
+    if (csz > 1.0) {
+        csz = 1.0;
+    }
+    else if (csz < -1.0) {
+        csz = -1.0;
+    }
+    
+    double zenith = acos(csz)*DEG;
+    double azimuthNum = sin(lat*RAD)*cos(zenith*RAD) - sin(theta*RAD);
+    double azimuthDenom = cos(lat*RAD)*sin(zenith*RAD);
+    double azimuth = 0.0;
+    
+    double azimuthRadian = 0.0;
+    if (abs(azimuthDenom) > 0.001) {
+        azimuthRadian = azimuthNum/azimuthDenom;
+        if (abs(azimuthRadian) > 1.0) {
+            if (azimuthRadian < 0.0) {
+                azimuthRadian = -1.0;
+            }
+            else {
+                azimuthRadian = 1.0;
+            }
+        }
+        azimuth = 180.0 - acos(azimuthRadian)*DEG;
+        if (hourAngle > 0.0) {
+            azimuth = -azimuth;
+        }
+    }
+    else {
+        if (lat > 0.0) {
+            azimuth = 180.0;
+        }
+        else {
+            azimuth = 0.0;
+        }
+    }
+    if (azimuth < 0.0) {
+        azimuth += 360.0;
+    }
+    
+    double elevation = 90.0 - zenith;
+    
+    // Atmospheric refraction correction
+    double refractionCorrection = 0.0;
+    if (elevation > 85.0) {
+        refractionCorrection = 0.0;
+    }
+    else {
+        double te = tan(elevation*RAD);
+        if (elevation > 5.0) {
+            refractionCorrection = 58.1/te - 0.07/(pow(te,3)) + 0.000086/(pow(te,5));
+        }
+        else if (elevation > -0.575) {
+            refractionCorrection = 1735.0 + 
+                elevation*(-518.2 + elevation*(103.4 + elevation*(-12.79 + elevation*0.711)));
+        }
+        else {
+            refractionCorrection = -20.774/te;
+        }
+        refractionCorrection /= 3600.0;
+    }
+    
+    double solarZenith = zenith - refractionCorrection;
+    QString azimuthStr, elevationStr;
+    if (solarZenith > 108.0) {
+        azimuthStr = "DARK";
+        elevationStr = "DARK";
+    }
+    else {
+        double az = floor(azimuth*100 + 0.5)/100.0;
+        double e = (floor(90.0 - solarZenith)*100 + 0.5)/100.0;
+        azimuthStr = QString::number(az);
+        elevationStr = QString::number(e);
+    }
+    this->azimuthElevationStr = QString(azimuthStr + " | " + elevationStr);
+}
+
+//
 void SolarCalc::solarNoon(const double &jd, const double &lon, const double &tz,
 const bool &dst) {
     double tNoon = timeJulianCent(jd - lon/360.0);
@@ -272,7 +373,10 @@ const int &i, const double &jd, const double &lat, const double &lon) {
     double eqTime = equationOfTime(t);
     double sd = sunDeclination(t);
     double HA = hourAngleSunrise(lat, sd);
-    if (i == 0) {HA = -HA;} // If i=0, get HA for sunset
+    if (i == 0) {
+        HA = -HA;
+    } // If i=0, get HA for sunset
+    
     double delta = lon + HA*DEG;
     
     return 720 - 4.0*delta - eqTime; // In minutes
@@ -372,8 +476,11 @@ const double &lat, const double &lon, const double &tz, const bool &dst) {
 
 // Calculating function
 void SolarCalc::calculate() {
-    //double totalTime = julianDay + localTime/1440.0 - timeZone/24.0;
-    //double T = timeJulianCent(totalTime);
+    double totalTime = julianDay + localTime/1440.0 - timeZone/24.0;
+    double T = timeJulianCent(totalTime);
+    
+    // Azimuth & elevation
+    azimuthElevation(T, localTime, location.getLat(), location.getLon(), timeZone);
     
     // Noon
     solarNoon(julianDay, location.getLon(), timeZone, dst);
@@ -403,4 +510,19 @@ QString SolarCalc::getSunset() {
 // Returns date (may be updated), dd.MMM.yyyy
 QString SolarCalc::getDate() {
     return dateStr;
+}
+
+// Returns equation of time as a QString in minutes
+QString SolarCalc::getEquationOfTime() {
+    return equationOfTimeStr;
+}
+
+// Returns solar declination as a QString in degrees
+QString SolarCalc::getSolarDeclination() {
+    return solarDeclinationStr;
+}
+
+// Returns azimuth & elevation as a QString, both in degrees
+QString SolarCalc::getAzimuthElevation() {
+    return azimuthElevationStr;
 }

@@ -53,6 +53,9 @@ void MainWindow::runCalculation() {
     
     // Set results
     this->dateLabel->setText(sCalc.getDate());
+    this->eqTimeLabel->setText(sCalc.getEquationOfTime());
+    this->sdLabel->setText(sCalc.getSolarDeclination());
+    this->aeLabel->setText(sCalc.getAzimuthElevation());
     this->sunriseLabel->setText(sCalc.getSunrise());
     this->noonLabel->setText(sCalc.getNoon());
     this->sunsetLabel->setText(sCalc.getSunset());

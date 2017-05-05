@@ -372,8 +372,8 @@ public:
         eqTimeLabel->setText(QApplication::translate("MainWindow", "0.00", Q_NULLPTR));
         label_8->setText(QApplication::translate("MainWindow", "Solar Declination (degrees):", Q_NULLPTR));
         sdLabel->setText(QApplication::translate("MainWindow", "0.00", Q_NULLPTR));
-        label_10->setText(QApplication::translate("MainWindow", "Azimuth - Elevation (degrees):", Q_NULLPTR));
-        aeLabel->setText(QApplication::translate("MainWindow", "0.00 - 0.00", Q_NULLPTR));
+        label_10->setText(QApplication::translate("MainWindow", "Azimuth | Elevation (degrees):", Q_NULLPTR));
+        aeLabel->setText(QApplication::translate("MainWindow", "0.00 | 0.00", Q_NULLPTR));
     } // retranslateUi
 
 };
