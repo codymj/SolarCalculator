@@ -12,8 +12,10 @@ SolarCalc::SolarCalc(Location &l, const double &tz, const bool &d) {
     timeZone = tz;
     dst = d;
     
-    julianDay = QDate::currentDate().toJulianDay();
-    localTime = QTime::currentTime().hour()*60 + QTime::currentTime().minute(); // In minutes
+    julianDay = (double)QDate::currentDate().toJulianDay();
+    localTime = (double)QTime::currentTime().hour()*60 + 
+                (double)QTime::currentTime().minute() +
+                (double)QTime::currentTime().second()/60; // In minutes
     
     QDateTime date;
     currentDateTime = date.currentDateTime();
@@ -69,12 +71,14 @@ QString SolarCalc::convertMinsToHHmm(const double &mins) {
 
 //
 double SolarCalc::timeJulianCent(const double &jd) {
-    return (jd - 2451545.0)/36525.0;
+    double tjc = (jd - 2451545.0)/36525.0;
+    return tjc;
 }
 
 //
 double SolarCalc::jdFromJulianCent(const double &t) {
-    return t*36525.0 + 2451545.0;
+    double jd = t*36525.0 + 2451545.0;
+    return jd;
 }
 
 // Determines if the current year is a leap year
@@ -247,12 +251,12 @@ const double &lon, const double &tz) {
     double theta = sunDeclination(T);
     double solarTimeFix = eqTime + 4.0*lon - 60.0*tz;
     
-    double eqt = floor(eqTime*100 + 0.5)/100.0;
-    QString eqTimeStr = QString::number(eqt);
+    //double eqt = floor(eqTime*100 + 0.5)/100.0;
+    QString eqTimeStr = QString::number(eqTime);
     this->equationOfTimeStr = eqTimeStr;
     
-    double sd = floor(theta*100 + 0.5)/100.0;
-    QString sdStr = QString::number(sd);
+    //double sd = floor(theta*100 + 0.5)/100.0;
+    QString sdStr = QString::number(theta);
     this->solarDeclinationStr = sdStr;
     
     double trueSolarTime = tLocal + solarTimeFix;
@@ -325,7 +329,7 @@ const double &lon, const double &tz) {
         else {
             refractionCorrection = -20.774/te;
         }
-        refractionCorrection /= 3600.0;
+        refractionCorrection = refractionCorrection/3600.0;
     }
     
     double solarZenith = zenith - refractionCorrection;
@@ -335,10 +339,12 @@ const double &lon, const double &tz) {
         elevationStr = "DARK";
     }
     else {
-        double az = floor(azimuth*100 + 0.5)/100.0;
-        double e = (floor(90.0 - solarZenith)*100 + 0.5)/100.0;
-        azimuthStr = QString::number(az);
-        elevationStr = QString::number(e);
+        //double az = floor(azimuth*100.0 + 0.5)/100.0;
+        //double e = (floor(90.0 - solarZenith)*100.0 + 0.5)/100.0;
+        //myqDebug() << azimuth + 10.0;
+        //myqDebug() << (90.0 - solarZenith + 11.0);
+        azimuthStr = QString::number(azimuth);
+        elevationStr = QString::number(90.0 - solarZenith);
     }
     this->azimuthElevationStr = QString(azimuthStr + " | " + elevationStr);
 }
@@ -420,7 +426,7 @@ const double &tz, const bool &dst) {
         }
     }
     else {  // No sunrise or sunset time found, find next/prev sunrise/sunset date
-        int doy = doyFromJD(jd);
+        double doy = (double)doyFromJD(jd);
         QDate newDate;
         
         if (((lat > 66.4) && (doy > 79) && (doy < 267)) || 
@@ -476,7 +482,7 @@ const double &lat, const double &lon, const double &tz, const bool &dst) {
 
 // Calculating function
 void SolarCalc::calculate() {
-    double totalTime = julianDay + localTime/1440.0 - timeZone/24.0;
+    double totalTime = julianDay + (double)localTime/1440.0 - (double)timeZone/24.0;
     double T = timeJulianCent(totalTime);
     
     // Azimuth & elevation

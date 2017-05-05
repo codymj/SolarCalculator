@@ -73,8 +73,8 @@ private:
     Location location;
     QString dateStr;
     QDateTime currentDateTime;
-    int julianDay;
-    int localTime;  // In minutes
+    double julianDay;
+    double localTime;  // In minutes
     double timeZone;
     bool dst;
 
