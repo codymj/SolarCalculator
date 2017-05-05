@@ -28,12 +28,15 @@ public slots:
 
 private:
     Location location;
+    double timeZone;
+    bool dst;
     QDate currentDate;
     
     void connectActions();
 
 private slots:
     void runCalculation();
+    void updateDST(const int &);
 };
 
 #endif // _MAINWINDOW_H_

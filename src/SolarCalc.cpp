@@ -7,8 +7,10 @@
 #include "SolarCalc.h"
 
 // Constructor
-SolarCalc::SolarCalc(Location &l) {
+SolarCalc::SolarCalc(Location &l, const double &tz, const bool &d) {
     location = l;
+    timeZone = tz;
+    dst = d;
     
     julianDay = QDate::currentDate().toJulianDay();
     localTime = QTime::currentTime().hour()*60 + QTime::currentTime().minute(); // In minutes
@@ -16,9 +18,6 @@ SolarCalc::SolarCalc(Location &l) {
     QDateTime date;
     currentDateTime = date.currentDateTime();
     dateStr = currentDateTime.date().toString(QString("dd.MMM.yyyy"));
-    
-    QTimeZone tz;
-    timeZone = tz.offsetFromUtc(currentDateTime)/3600;
 }
 
 //
@@ -113,7 +112,7 @@ int SolarCalc::doyFromJD(const double &jd) {
 
 //
 double SolarCalc::sunGeoMeanLon(const double &t) {
-    double L0 = 280.46646 + t*(36000.76983 + t*(0.0003032));
+    double L0 = 280.46646 + t*(36000.76983 + t*0.0003032);
     
     while (L0 > 360.0) {
         L0 -= 360.0;
@@ -127,12 +126,14 @@ double SolarCalc::sunGeoMeanLon(const double &t) {
 
 //
 double SolarCalc::sunGeoMeanAnomaly(const double &t) {
-    return 357.52911 + t*(35999.05029 - t*0.0001537);   // In degrees
+    double M = 357.52911 + t*(35999.05029 - t*0.0001537);
+    return M;   // In degrees
 }
 
 //
 double SolarCalc::earthEccentricityOrbit(const double &t) {
-    return 0.016708634 - t*(0.000042037 + t*0.0000001267);  // Unitless
+    double e = 0.016708634 - t*(0.000042037 + t*0.0000001267);
+    return e;  // Unitless
 }
 
 //
@@ -152,7 +153,7 @@ double SolarCalc::sunTrueLon(const double &t) {
     double L0 = sunGeoMeanLon(t);
     double C = sunEquationofCenter(t);
     
-    return L0 + C;  // In degrees
+    return (L0 + C);  // In degrees
 }
 
 //
@@ -160,7 +161,7 @@ double SolarCalc::sunTrueAnomaly(const double &t) {
     double M = sunGeoMeanAnomaly(t);
     double C = sunEquationofCenter(t);
     
-    return M + C;   // In degrees
+    return (M + C);   // In degrees
 }
 
 //
@@ -168,7 +169,8 @@ double SolarCalc::sunRadialVector(const double &t) {
     double v = sunTrueAnomaly(t);
     double e = earthEccentricityOrbit(t);
     
-    return (1.000001018*(1 - e*e))/(1 + e*cos(v*RAD));  // In AUs (astronomical units)
+    double R = (1.000001018*(1 - e*e))/(1 + e*cos(v*RAD));
+    return R;  // In AUs (astronomical units)
 }
 
 //
@@ -176,14 +178,16 @@ double SolarCalc::sunApparentLon(const double &t) {
     double o = sunTrueLon(t);
     double omega = 125.04 - t*1934.136;
     
-    return o - 0.00569 - 0.00478*sin(omega*RAD);    // In degrees
+    double lambda = o - 0.00569 - 0.00478*sin(omega*RAD);
+    return lambda;    // In degrees
 }
 
 //
 double SolarCalc::earthMeanObliquityOfEcliptic(const double &t) {
     double seconds = 21.448 - t*(46.8150 + t*(0.00059 - t*(0.001813)));
     
-    return 23.0 + (26.0 + (seconds/60.0))/60.0;
+    double e0 = 23.0 + (26.0 + (seconds/60.0))/60.0;
+    return e0;  // In degrees
 }
 
 //
@@ -191,7 +195,8 @@ double SolarCalc::earthObliquityCorrection(const double &t) {
     double e0 = earthMeanObliquityOfEcliptic(t);
     double omega = 125.04 - t*1934.136;
     
-    return e0 + 0.00256*cos(omega*RAD); // In degrees
+    double e = e0 + 0.00256*cos(omega*RAD);
+    return e; // In degrees
 }
 
 //
@@ -199,7 +204,8 @@ double SolarCalc::sunRightAscension(const double &t) {
     double e = earthObliquityCorrection(t);
     double lambda = sunApparentLon(t);
     
-    return atan2(cos(e*RAD)*sin(lambda*RAD), cos(lambda*RAD));  // In degrees
+    double alpha = atan2(cos(e*RAD)*sin(lambda*RAD), cos(lambda*RAD));
+    return alpha;  // In degrees
 }
 
 //
@@ -207,7 +213,8 @@ double SolarCalc::sunDeclination(const double &t) {
     double e = earthObliquityCorrection(t);
     double lambda = sunApparentLon(t);
     
-    return asin(sin(e*RAD)*sin(lambda*RAD))*DEG;    // In degrees
+    double theta = asin(sin(e*RAD)*sin(lambda*RAD))*DEG;
+    return theta;    // In degrees
 }
 
 //
@@ -216,7 +223,7 @@ double SolarCalc::equationOfTime(const double &t) {
     double L0 = sunGeoMeanLon(t);
     double e = earthEccentricityOrbit(t);
     double m = sunGeoMeanAnomaly(t);
-    double y = tan(epsilon*RAD)/2.0;
+    double y = tan(epsilon*RAD/2.0);
     y *= y;
     double sin2L0 = sin(2.0*L0*RAD);
     double cos2L0 = cos(2.0*L0*RAD);
@@ -236,13 +243,17 @@ double SolarCalc::hourAngleSunrise(const double &lat, const double &sd) {
 }
 
 //
-void SolarCalc::solarNoon(const double &jd, const double &lon, const int &tz) {
+void SolarCalc::solarNoon(const double &jd, const double &lon, const double &tz,
+const bool &dst) {
     double tNoon = timeJulianCent(jd - lon/360.0);
     double eqTime = equationOfTime(tNoon);
     double solarNoonOffset = 720.0 - lon*4.0 - eqTime;    // In minutes
     double tNew = timeJulianCent(jd + solarNoonOffset/1440.0);
     eqTime = equationOfTime(tNew);
-    double solarNoonLocal = 720.0 - lon*4.0 - eqTime + (tz*60.0);   // In minutes
+    double solarNoonLocal = 720.0 - lon*4.0 - eqTime + tz*60.0;   // In minutes
+    if (dst) {
+        solarNoonLocal += 60.0;
+    }
     
     while (solarNoonLocal < 0.0) {
         solarNoonLocal += 1440.0;
@@ -269,14 +280,15 @@ const int &i, const double &jd, const double &lat, const double &lon) {
 
 //
 void SolarCalc::sunriseSunset(
-const int &i, const double &jd, const double &lat, const double &lon, const int &tz) {
+const int &i, const double &jd, const double &lat, const double &lon,
+const double &tz, const bool &dst) {
     double jDay = jd;
     double tUTC = sunriseSunsetUTC(i, jd, lat, lon);
     double tNewUTC = sunriseSunsetUTC(i, jd + tUTC/1400.0, lat, lon);
     
     if (isNumber(tNewUTC)) {
-        double tLocal = tNewUTC + (tz*60.0);
-        
+        double tLocal = tNewUTC + tz*60.0;
+        tLocal += dst ? 60.0 : 0.0;
         if ((tLocal >= 0.0) && (tLocal < 1440.0)) {
             if (i == 0) {
                 this->sunsetTimeStr = convertMinsToHHmm(tLocal);
@@ -305,37 +317,39 @@ const int &i, const double &jd, const double &lat, const double &lon, const int 
     }
     else {  // No sunrise or sunset time found, find next/prev sunrise/sunset date
         int doy = doyFromJD(jd);
-        QString msg;
+        QDate newDate;
         
         if (((lat > 66.4) && (doy > 79) && (doy < 267)) || 
         ((lat < -66.4) && ((doy < 83) || (doy > 263)))) {
             if (i == 1) {   // Find previous sunrise (date)
-                jDay = jdOfNextPrevRiseSet(0, i, jd, lat, lon, tz);
-                msg = QString("Previous sunrise was ");
+                jDay = jdOfNextPrevRiseSet(0, i, jd, lat, lon, tz, dst);
+                newDate = QDate::fromJulianDay(round(jDay));
+                this->sunriseTimeStr = newDate.toString("dd.MMM.yyyy");
             }
             else {  // Find next sunset (date)
-                jDay = jdOfNextPrevRiseSet(1, i, jd, lat, lon, tz);
-                msg = QString("Next sunset is ");
+                jDay = jdOfNextPrevRiseSet(1, i, jd, lat, lon, tz, dst);
+                newDate = QDate::fromJulianDay(round(jDay));
+                this->sunsetTimeStr = newDate.toString("dd.MMM.yyyy");
             }
         }
         else {
             if (i == 1) {   // Find next sunrise (date)
-                jDay = jdOfNextPrevRiseSet(1, i, jd, lat, lon, tz);
-                msg = QString("Next sunrise is ");
+                jDay = jdOfNextPrevRiseSet(1, i, jd, lat, lon, tz, dst);
+                newDate = QDate::fromJulianDay(round(jDay));
+                this->sunriseTimeStr = newDate.toString("dd.MMM.yyyy");
             }
             else {  // Find previous sunset (date)
-                jDay = jdOfNextPrevRiseSet(0, i, jd, lat, lon, tz);
-                msg = QString("Previous sunset was ");
+                jDay = jdOfNextPrevRiseSet(0, i, jd, lat, lon, tz, dst);
+                newDate = QDate::fromJulianDay(round(jDay));
+                this->sunsetTimeStr = newDate.toString("dd.MMM.yyyy");
             }
         }
-        QDate newDate = QDate::fromJulianDay(round(jDay));
-        this->dateStr = msg + newDate.toString("dd.MMM.yyyy");
     }
 }
 
 //
 double SolarCalc::jdOfNextPrevRiseSet(const int &next, const int &i, const double &jd,
-const double &lat, const double &lon, const int &tz) {
+const double &lat, const double &lon, const double &tz, const bool &dst) {
     double jDay = jd;
     int increment = next ? 1 : -1;
     double t = sunriseSunsetUTC(i, jd, lat, lon);
@@ -345,7 +359,7 @@ const double &lat, const double &lon, const int &tz) {
         t = sunriseSunsetUTC(i, jDay, lat, lon);
     }
     
-    double tLocal = t + tz*60.0;
+    double tLocal = t + tz*60.0 + (dst ? 60.0 : 0.0);
     
     while ((tLocal < 0.0) || (tLocal >= 1440.0)) {
         int incr = (tLocal < 0) ? 1 : -1;
@@ -358,14 +372,17 @@ const double &lat, const double &lon, const int &tz) {
 
 // Calculating function
 void SolarCalc::calculate() {
+    //double totalTime = julianDay + localTime/1440.0 - timeZone/24.0;
+    //double T = timeJulianCent(totalTime);
+    
     // Noon
-    solarNoon(julianDay, location.getLat(), timeZone);
+    solarNoon(julianDay, location.getLon(), timeZone, dst);
     
     // Sunrise
-    sunriseSunset(1, julianDay, location.getLat(), location.getLon(), timeZone);
+    sunriseSunset(1, julianDay, location.getLat(), location.getLon(), timeZone, dst);
     
     // Sunset
-    sunriseSunset(0, julianDay, location.getLat(), location.getLon(), timeZone);
+    sunriseSunset(0, julianDay, location.getLat(), location.getLon(), timeZone, dst);
 }
 
 // Returns sunrise time as a QString, HH:MM

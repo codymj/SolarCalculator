@@ -31,6 +31,10 @@ void MainWindow::connectActions() {
         this->calcButton, SIGNAL(clicked()),
         this, SLOT(runCalculation())
     );
+    connect(
+        this->dstCheckBox, SIGNAL(stateChanged(int)),
+        this, SLOT(updateDST(int))
+    );
 }
 
 // Slot to run calculation when button is clicked
@@ -38,12 +42,13 @@ void MainWindow::runCalculation() {
     // Set location data
     double lat = latInput->text().toDouble();
     double lon = lonInput->text().toDouble();
+    this->timeZone = tzInput->text().toDouble();
     int ns = latCombo->currentIndex();
     int ew = lonCombo->currentIndex();
     this->location = Location(lat, ns, lon, ew);
     
     // Run calculation
-    SolarCalc sCalc(location);
+    SolarCalc sCalc(location, timeZone, dst);
     sCalc.calculate();
     
     // Set results
@@ -51,4 +56,14 @@ void MainWindow::runCalculation() {
     this->sunriseLabel->setText(sCalc.getSunrise());
     this->noonLabel->setText(sCalc.getNoon());
     this->sunsetLabel->setText(sCalc.getSunset());
+}
+
+// Slot to update DST value
+void MainWindow::updateDST(const int &state) {
+    if (state) {
+        this->dst = true;
+    }
+    else {
+        this->dst = false;
+    }
 }

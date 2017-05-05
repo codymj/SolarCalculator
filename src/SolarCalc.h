@@ -26,7 +26,7 @@
 class SolarCalc {
 public:
     // Constructor
-    SolarCalc(Location &l);
+    SolarCalc(Location &l, const double &tz, const bool &d);
     
     // Calculating functions
     bool isNumber(const double &num);
@@ -49,13 +49,14 @@ public:
     double sunDeclination(const double &t);
     double equationOfTime(const double &t);
     double hourAngleSunrise(const double &lat, const double &sd);
-    void solarNoon(const double &jd, const double &lon, const int &tz);
+    void solarNoon(const double &jd, const double &lon, const double &tz, const bool &dst);
     double sunriseSunsetUTC(
         const int &i, const double &jd, const double &lat, const double &lon);
     void sunriseSunset(
-        const int &i, const double &jd, const double &lat, const double &lon, const int &tz);
+        const int &i, const double &jd, const double &lat, const double &lon,
+        const double &tz, const bool &dst);
     double jdOfNextPrevRiseSet(const int &next, const int &i, const double &jd,
-        const double &lat, const double &lon, const int &tz);
+        const double &lat, const double &lon, const double &tz, const bool &dst);
     void calculate();
     
     // Get'er functions
@@ -70,8 +71,9 @@ private:
     QString dateStr;
     QDateTime currentDateTime;
     int julianDay;
-    int localTime;
-    int timeZone;
+    int localTime;  // In minutes
+    double timeZone;
+    bool dst;
 
     QString sunriseTimeStr;
     QString noonTimeStr;
