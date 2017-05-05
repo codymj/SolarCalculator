@@ -13,7 +13,6 @@
 #include <QRegExpValidator>
 #include <QString>
 #include "ui_MainWindow.h"
-#include "Elevation.h"
 #include "Location.h"
 #include "SolarCalc.h"
 

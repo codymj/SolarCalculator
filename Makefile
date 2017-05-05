@@ -48,13 +48,11 @@ OBJECTS_DIR   = obj/
 
 ####### Files
 
-SOURCES       = src/Elevation.cpp \
-		src/Location.cpp \
+SOURCES       = src/Location.cpp \
 		src/MainWindow.cpp \
 		src/SolarCalc.cpp \
 		src/main.cpp moc/moc_MainWindow.cpp
-OBJECTS       = obj/Elevation.o \
-		obj/Location.o \
+OBJECTS       = obj/Location.o \
 		obj/MainWindow.o \
 		obj/SolarCalc.o \
 		obj/main.o \
@@ -68,6 +66,40 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/g++-base.conf \
 		/usr/lib/qt/mkspecs/common/g++-unix.conf \
 		/usr/lib/qt/mkspecs/qconfig.pri \
+		/usr/lib/qt/mkspecs/modules/qt_Attica.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KArchive.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KAuth.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KBookmarks.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KCodecs.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KCompletion.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KConfigCore.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KConfigGui.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KConfigWidgets.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KCoreAddons.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KCrash.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KDBusAddons.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KEmoticons.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KGlobalAccel.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KGuiAddons.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KI18n.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KIconThemes.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KIOCore.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KIOFileWidgets.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KIOGui.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KIOWidgets.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KItemModels.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KItemViews.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KJobWidgets.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KNotifications.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KNTLM.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KParts.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KService.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KTextWidgets.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KUnitConversion.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KWallet.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KWidgetsAddons.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KWindowSystem.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KXmlGui.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_3dcore.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_3dcore_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_3dextras.pri \
@@ -212,10 +244,15 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xml_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xmlpatterns.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xmlpatterns_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_phonon4qt5.pri \
+		/usr/lib/qt/mkspecs/modules/qt_Solid.pri \
+		/usr/lib/qt/mkspecs/modules/qt_SonnetCore.pri \
+		/usr/lib/qt/mkspecs/modules/qt_SonnetUi.pri \
 		/usr/lib/qt/mkspecs/features/qt_functions.prf \
 		/usr/lib/qt/mkspecs/features/qt_config.prf \
 		/usr/lib/qt/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/qt/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/usr/lib/qt/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/qt/mkspecs/features/toolchain.prf \
 		/usr/lib/qt/mkspecs/features/default_pre.prf \
@@ -234,12 +271,10 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/exceptions.prf \
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
-		SolarCalculator.pro src/Elevation.h \
-		src/Location.h \
+		SolarCalculator.pro src/Location.h \
 		src/MainWindow.h \
 		src/SolarCalc.h \
-		src/ui_MainWindow.h src/Elevation.cpp \
-		src/Location.cpp \
+		src/ui_MainWindow.h src/Location.cpp \
 		src/MainWindow.cpp \
 		src/SolarCalc.cpp \
 		src/main.cpp
@@ -263,6 +298,40 @@ Makefile: SolarCalculator.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/
 		/usr/lib/qt/mkspecs/common/g++-base.conf \
 		/usr/lib/qt/mkspecs/common/g++-unix.conf \
 		/usr/lib/qt/mkspecs/qconfig.pri \
+		/usr/lib/qt/mkspecs/modules/qt_Attica.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KArchive.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KAuth.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KBookmarks.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KCodecs.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KCompletion.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KConfigCore.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KConfigGui.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KConfigWidgets.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KCoreAddons.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KCrash.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KDBusAddons.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KEmoticons.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KGlobalAccel.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KGuiAddons.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KI18n.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KIconThemes.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KIOCore.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KIOFileWidgets.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KIOGui.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KIOWidgets.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KItemModels.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KItemViews.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KJobWidgets.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KNotifications.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KNTLM.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KParts.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KService.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KTextWidgets.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KUnitConversion.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KWallet.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KWidgetsAddons.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KWindowSystem.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KXmlGui.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_3dcore.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_3dcore_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_3dextras.pri \
@@ -407,10 +476,15 @@ Makefile: SolarCalculator.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/
 		/usr/lib/qt/mkspecs/modules/qt_lib_xml_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xmlpatterns.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xmlpatterns_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_phonon4qt5.pri \
+		/usr/lib/qt/mkspecs/modules/qt_Solid.pri \
+		/usr/lib/qt/mkspecs/modules/qt_SonnetCore.pri \
+		/usr/lib/qt/mkspecs/modules/qt_SonnetUi.pri \
 		/usr/lib/qt/mkspecs/features/qt_functions.prf \
 		/usr/lib/qt/mkspecs/features/qt_config.prf \
 		/usr/lib/qt/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/qt/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/usr/lib/qt/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/qt/mkspecs/features/toolchain.prf \
 		/usr/lib/qt/mkspecs/features/default_pre.prf \
@@ -443,6 +517,40 @@ Makefile: SolarCalculator.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/
 /usr/lib/qt/mkspecs/common/g++-base.conf:
 /usr/lib/qt/mkspecs/common/g++-unix.conf:
 /usr/lib/qt/mkspecs/qconfig.pri:
+/usr/lib/qt/mkspecs/modules/qt_Attica.pri:
+/usr/lib/qt/mkspecs/modules/qt_KArchive.pri:
+/usr/lib/qt/mkspecs/modules/qt_KAuth.pri:
+/usr/lib/qt/mkspecs/modules/qt_KBookmarks.pri:
+/usr/lib/qt/mkspecs/modules/qt_KCodecs.pri:
+/usr/lib/qt/mkspecs/modules/qt_KCompletion.pri:
+/usr/lib/qt/mkspecs/modules/qt_KConfigCore.pri:
+/usr/lib/qt/mkspecs/modules/qt_KConfigGui.pri:
+/usr/lib/qt/mkspecs/modules/qt_KConfigWidgets.pri:
+/usr/lib/qt/mkspecs/modules/qt_KCoreAddons.pri:
+/usr/lib/qt/mkspecs/modules/qt_KCrash.pri:
+/usr/lib/qt/mkspecs/modules/qt_KDBusAddons.pri:
+/usr/lib/qt/mkspecs/modules/qt_KEmoticons.pri:
+/usr/lib/qt/mkspecs/modules/qt_KGlobalAccel.pri:
+/usr/lib/qt/mkspecs/modules/qt_KGuiAddons.pri:
+/usr/lib/qt/mkspecs/modules/qt_KI18n.pri:
+/usr/lib/qt/mkspecs/modules/qt_KIconThemes.pri:
+/usr/lib/qt/mkspecs/modules/qt_KIOCore.pri:
+/usr/lib/qt/mkspecs/modules/qt_KIOFileWidgets.pri:
+/usr/lib/qt/mkspecs/modules/qt_KIOGui.pri:
+/usr/lib/qt/mkspecs/modules/qt_KIOWidgets.pri:
+/usr/lib/qt/mkspecs/modules/qt_KItemModels.pri:
+/usr/lib/qt/mkspecs/modules/qt_KItemViews.pri:
+/usr/lib/qt/mkspecs/modules/qt_KJobWidgets.pri:
+/usr/lib/qt/mkspecs/modules/qt_KNotifications.pri:
+/usr/lib/qt/mkspecs/modules/qt_KNTLM.pri:
+/usr/lib/qt/mkspecs/modules/qt_KParts.pri:
+/usr/lib/qt/mkspecs/modules/qt_KService.pri:
+/usr/lib/qt/mkspecs/modules/qt_KTextWidgets.pri:
+/usr/lib/qt/mkspecs/modules/qt_KUnitConversion.pri:
+/usr/lib/qt/mkspecs/modules/qt_KWallet.pri:
+/usr/lib/qt/mkspecs/modules/qt_KWidgetsAddons.pri:
+/usr/lib/qt/mkspecs/modules/qt_KWindowSystem.pri:
+/usr/lib/qt/mkspecs/modules/qt_KXmlGui.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_3dcore.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_3dcore_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_3dextras.pri:
@@ -587,10 +695,15 @@ Makefile: SolarCalculator.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/
 /usr/lib/qt/mkspecs/modules/qt_lib_xml_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_xmlpatterns.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_xmlpatterns_private.pri:
+/usr/lib/qt/mkspecs/modules/qt_phonon4qt5.pri:
+/usr/lib/qt/mkspecs/modules/qt_Solid.pri:
+/usr/lib/qt/mkspecs/modules/qt_SonnetCore.pri:
+/usr/lib/qt/mkspecs/modules/qt_SonnetUi.pri:
 /usr/lib/qt/mkspecs/features/qt_functions.prf:
 /usr/lib/qt/mkspecs/features/qt_config.prf:
 /usr/lib/qt/mkspecs/linux-g++/qmake.conf:
 /usr/lib/qt/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /usr/lib/qt/mkspecs/features/exclusive_builds.prf:
 /usr/lib/qt/mkspecs/features/toolchain.prf:
 /usr/lib/qt/mkspecs/features/default_pre.prf:
@@ -628,8 +741,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents src/Elevation.h src/Location.h src/MainWindow.h src/SolarCalc.h src/ui_MainWindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/Elevation.cpp src/Location.cpp src/MainWindow.cpp src/SolarCalc.cpp src/main.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents src/Location.h src/MainWindow.h src/SolarCalc.h src/ui_MainWindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents src/Location.cpp src/MainWindow.cpp src/SolarCalc.cpp src/main.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents src/MainWindow.ui $(DISTDIR)/
 
 
@@ -666,9 +779,8 @@ compiler_moc_header_make_all: moc/moc_MainWindow.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc/moc_MainWindow.cpp
 moc/moc_MainWindow.cpp: src/ui_MainWindow.h \
-		src/SolarCalc.h \
 		src/Location.h \
-		src/Elevation.h \
+		src/SolarCalc.h \
 		src/MainWindow.h \
 		moc/moc_predefs.h \
 		/usr/bin/moc
@@ -693,29 +805,23 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-obj/Elevation.o: src/Elevation.cpp src/Elevation.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/Elevation.o src/Elevation.cpp
-
 obj/Location.o: src/Location.cpp src/Location.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/Location.o src/Location.cpp
 
 obj/MainWindow.o: src/MainWindow.cpp src/MainWindow.h \
 		src/ui_MainWindow.h \
-		src/SolarCalc.h \
 		src/Location.h \
-		src/Elevation.h
+		src/SolarCalc.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/MainWindow.o src/MainWindow.cpp
 
 obj/SolarCalc.o: src/SolarCalc.cpp src/SolarCalc.h \
-		src/Location.h \
-		src/Elevation.h
+		src/Location.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/SolarCalc.o src/SolarCalc.cpp
 
 obj/main.o: src/main.cpp src/MainWindow.h \
 		src/ui_MainWindow.h \
-		src/SolarCalc.h \
 		src/Location.h \
-		src/Elevation.h
+		src/SolarCalc.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/main.o src/main.cpp
 
 obj/moc_MainWindow.o: moc/moc_MainWindow.cpp 

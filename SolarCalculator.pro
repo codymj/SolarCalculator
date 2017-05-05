@@ -11,15 +11,16 @@ MOC_DIR = ./moc
 UI_DIR = ./src
 
 # Input
-HEADERS += src/Elevation.h \
-		src/Location.h \
-		src/MainWindow.h \
-		src/SolarCalc.h \
-		src/ui_MainWindow.h
-SOURCES += src/Elevation.cpp \
-		src/Location.cpp \
-		src/MainWindow.cpp \
-		src/SolarCalc.cpp \
-		src/main.cpp
-FORMS += src/MainWindow.ui
+HEADERS += \
+	src/Location.h \
+	src/MainWindow.h \
+	src/SolarCalc.h \
+	src/ui_MainWindow.h
+SOURCES += \
+	src/Location.cpp \
+	src/MainWindow.cpp \
+	src/SolarCalc.cpp \
+	src/main.cpp
+FORMS += \
+	src/MainWindow.ui
 

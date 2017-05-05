@@ -16,7 +16,6 @@
 #include <QTime>
 #include <QTimeZone>
 #include "Location.h"
-#include "Elevation.h"
 
 #define PI 3.14159265   // pi constant
 #define RAD PI/180.0    // Convert degrees to radians
@@ -72,7 +71,6 @@ public:
     
 private:
     Location location;
-    Elevation elevation;
     QString dateStr;
     QDateTime currentDateTime;
     int julianDay;
