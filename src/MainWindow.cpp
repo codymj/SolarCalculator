@@ -19,7 +19,7 @@ MainWindow::MainWindow() {
     latInput->setValidator(latValidator);
     lonInput->setValidator(lonValidator);
     
-    dateLabel->setText(QDate::currentDate().toString(QString("dd.MMM.yyyy")));
+    dateLabel->setText(QDate::currentDate().toString(QString("dd MMM yyyy")));
     
     // Connect signals and slots
     connectActions();

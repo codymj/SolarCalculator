@@ -20,7 +20,7 @@
 #define PI 3.14159265   // pi constant
 #define RAD PI/180.0    // Convert degrees to radians
 #define DEG 180.0/PI    // Convert radians to degrees
-#define myqDebug() qDebug() << fixed << qSetRealNumberPrecision(8)
+#define myqDebug() qDebug() << fixed << qSetRealNumberPrecision(10)
 
 class SolarCalc {
 public:
