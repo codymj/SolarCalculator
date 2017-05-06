@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>550</width>
+    <width>570</width>
     <height>200</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>550</width>
+    <width>570</width>
     <height>200</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>550</width>
+    <width>570</width>
     <height>200</height>
    </size>
   </property>
@@ -29,7 +29,7 @@
    <widget class="QPushButton" name="calcButton">
     <property name="geometry">
      <rect>
-      <x>460</x>
+      <x>480</x>
       <y>170</y>
       <width>80</width>
       <height>24</height>
@@ -44,399 +44,383 @@
      <rect>
       <x>20</x>
       <y>10</y>
-      <width>406</width>
-      <height>181</height>
+      <width>449</width>
+      <height>53</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_5">
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout">
-         <item>
-          <widget class="QLabel" name="latLabel">
-           <property name="text">
-            <string>Latitude:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout">
-           <item>
-            <widget class="QLineEdit" name="latInput">
-             <property name="minimumSize">
-              <size>
-               <width>75</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>75</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>Latitude of location as decimal.</string>
-             </property>
-             <property name="text">
-              <string>0.000000</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QComboBox" name="latCombo">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>45</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>Is the latitude north or south of the equator?</string>
-             </property>
-             <item>
-              <property name="text">
-               <string>N</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>S</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
+        <widget class="QLabel" name="latLabel">
+         <property name="text">
+          <string>Latitude:</string>
+         </property>
+        </widget>
        </item>
        <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
+        <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QLabel" name="lonLabel">
-           <property name="text">
-            <string>Longitude:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
-           <item>
-            <widget class="QLineEdit" name="lonInput">
-             <property name="minimumSize">
-              <size>
-               <width>75</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>75</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>Longitude of location as decimal.</string>
-             </property>
-             <property name="text">
-              <string>0.000000</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QComboBox" name="lonCombo">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>45</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>Is the longitude east or west of the Prime Meridian?</string>
-             </property>
-             <item>
-              <property name="text">
-               <string>E</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>W</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_3">
-         <item>
-          <widget class="QLabel" name="label_5">
-           <property name="text">
-            <string>Time Zone:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="tzInput">
+          <widget class="QLineEdit" name="latInput">
            <property name="minimumSize">
             <size>
-             <width>70</width>
+             <width>75</width>
              <height>0</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>70</width>
+             <width>75</width>
              <height>16777215</height>
             </size>
            </property>
-           <property name="contextMenuPolicy">
-            <enum>Qt::ActionsContextMenu</enum>
+           <property name="toolTip">
+            <string>Latitude of location as decimal.</string>
+           </property>
+           <property name="text">
+            <string>0.000000</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="latCombo">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>45</width>
+             <height>25</height>
+            </size>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;
+            <string>Is the latitude north or south of the equator?</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>N</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>S</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="lonLabel">
+         <property name="text">
+          <string>Longitude:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLineEdit" name="lonInput">
+           <property name="minimumSize">
+            <size>
+             <width>75</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>75</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Longitude of location as decimal.</string>
+           </property>
+           <property name="text">
+            <string>0.000000</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="lonCombo">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>45</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Is the longitude east or west of the Prime Meridian?</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>E</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>W</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Time Zone:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="tzInput">
+         <property name="minimumSize">
+          <size>
+           <width>70</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>70</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="contextMenuPolicy">
+          <enum>Qt::ActionsContextMenu</enum>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;
 &lt;head/&gt;
 &lt;body&gt;
 &lt;p&gt;UTC offset of the location.&lt;br /&gt;&lt;br /&gt;For example, Florida, US' UTC offset is -5. &lt;br /&gt;China's UTC offset is 8. For 15 minute offsets, such as in Nepal (UTC +5:45), &lt;br /&gt;enter 5.75.&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_6">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_4">
-         <item>
-          <widget class="QCheckBox" name="dstCheckBox">
-           <property name="toolTip">
-            <string>Is Daylight Savings Time in affect at location?</string>
-           </property>
-           <property name="text">
-            <string>DST?</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        </widget>
        </item>
       </layout>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
-       <item>
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>Date:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="dateLabel">
-         <property name="text">
-          <string>TextLabel</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
+      <spacer name="horizontalSpacer_6">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
-        <layout class="QFormLayout" name="formLayout_2">
-         <item row="0" column="0">
-          <widget class="QLabel" name="label">
-           <property name="text">
-            <string>Sunrise:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="sunriseLabel">
-           <property name="text">
-            <string>--:--</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_2">
-           <property name="text">
-            <string>Noon:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QLabel" name="noonLabel">
-           <property name="text">
-            <string>--:--</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_3">
-           <property name="text">
-            <string>Sunset:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLabel" name="sunsetLabel">
-           <property name="text">
-            <string>--:--</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_10">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+        <widget class="QCheckBox" name="dstCheckBox">
+         <property name="toolTip">
+          <string>Is Daylight Savings Time in affect at location?</string>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>13</width>
-           <height>17</height>
-          </size>
+         <property name="text">
+          <string>DST?</string>
          </property>
-        </spacer>
-       </item>
-       <item>
-        <layout class="QFormLayout" name="formLayout">
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_6">
-           <property name="text">
-            <string>Equation of Time (minutes):</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="eqTimeLabel">
-           <property name="text">
-            <string>0.00</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_8">
-           <property name="text">
-            <string>Solar Declination (degrees):</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QLabel" name="sdLabel">
-           <property name="text">
-            <string>0.00</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_10">
-           <property name="text">
-            <string>Azimuth | Elevation (degrees):</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLabel" name="aeLabel">
-           <property name="text">
-            <string>0.00 | 0.00</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        </widget>
        </item>
       </layout>
      </item>
     </layout>
    </widget>
-   <zorder>layoutWidget</zorder>
-   <zorder>layoutWidget</zorder>
-   <zorder>layoutWidget</zorder>
-   <zorder>dateLabel</zorder>
-   <zorder>label_4</zorder>
-   <zorder>label_5</zorder>
-   <zorder>tzCombo</zorder>
-   <zorder>horizontalSpacer_6</zorder>
-   <zorder>dstCheckBox</zorder>
-   <zorder>dateLabel</zorder>
-   <zorder>label_6</zorder>
-   <zorder>eqTimeLabel</zorder>
-   <zorder>label_8</zorder>
-   <zorder>sdLabel</zorder>
-   <zorder>label_10</zorder>
-   <zorder>aeLabel</zorder>
-   <zorder>horizontalSpacer_10</zorder>
-   <zorder>horizontalSpacer_11</zorder>
-   <zorder>label_7</zorder>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>21</x>
+      <y>80</y>
+      <width>138</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Date:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="dateLabel">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>22</x>
+      <y>126</y>
+      <width>151</width>
+      <height>63</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Sunrise:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="sunriseLabel">
+       <property name="text">
+        <string>--:--</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Noon:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLabel" name="noonLabel">
+       <property name="text">
+        <string>--:--</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Sunset:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLabel" name="sunsetLabel">
+       <property name="text">
+        <string>--:--</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>126</y>
+      <width>291</width>
+      <height>63</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Equation of Time (minutes):</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="eqTimeLabel">
+       <property name="text">
+        <string>0.000</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>Solar Declination (degrees):</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLabel" name="sdLabel">
+       <property name="text">
+        <string>0.000</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>Azimuth | Elevation (degrees):</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLabel" name="aeLabel">
+       <property name="text">
+        <string>0.000 | 0.000</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
  </widget>
  <resources/>
