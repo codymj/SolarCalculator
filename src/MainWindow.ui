@@ -39,7 +39,7 @@
      <string>Calculate</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -234,12 +234,7 @@
           <enum>Qt::ActionsContextMenu</enum>
          </property>
          <property name="toolTip">
-          <string>&lt;html&gt;
-&lt;head/&gt;
-&lt;body&gt;
-&lt;p&gt;UTC offset of the location.&lt;br /&gt;&lt;br /&gt;For example, Florida, US' UTC offset is -5. &lt;br /&gt;China's UTC offset is 8. For 15 minute offsets, such as in Nepal (UTC +5:45), &lt;br /&gt;enter 5.75.&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;UTC offset of the location. For example, Florida, US' UTC offset is -5. China's UTC offset is 8. For 15 minute offsets, such as in Nepal (UTC +5:45), enter 5.75.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </item>
@@ -274,7 +269,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>21</x>
@@ -313,7 +308,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>22</x>
@@ -367,7 +362,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -386,6 +381,9 @@
      </item>
      <item row="0" column="1">
       <widget class="QLabel" name="eqTimeLabel">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;An astronomical term accounting for changes in the time of solar noon for a given location over the course of a year.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>0.000</string>
        </property>
@@ -400,6 +398,9 @@
      </item>
      <item row="1" column="1">
       <widget class="QLabel" name="sdLabel">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The solar declination varies from -23.44° at the (northern hemisphere) winter solstice, through 0° at the vernal equinox, to +23.44° at the summer solstice.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>0.000</string>
        </property>
@@ -414,6 +415,12 @@
      </item>
      <item row="2" column="1">
       <widget class="QLabel" name="aeLabel">
+       <property name="mouseTracking">
+        <bool>false</bool>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;An angular coordinate system for locating positions in the sky. Azimuth is measured clockwise from true north to the point on the horizon directly below the object. Elevation is measured vertically from that point on the horizon up to the object.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>0.000 | 0.000</string>
        </property>
