@@ -43,6 +43,7 @@ void MainWindow::runCalculation() {
     double lat = latInput->text().toDouble();
     double lon = lonInput->text().toDouble();
     this->timeZone = tzInput->text().toDouble();
+    this->dst = dstCheckBox->isChecked();
     int ns = latCombo->currentIndex();
     int ew = lonCombo->currentIndex();
     this->location = Location(lat, ns, lon, ew);

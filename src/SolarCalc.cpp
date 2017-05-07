@@ -13,7 +13,7 @@ SolarCalc::SolarCalc(Location &l, const double &tz, const bool &d) {
     dst = d;
     
     julianDay = (double)QDate::currentDate().toJulianDay() - 0.5;
-    localTime = (double)QTime::currentTime().hour()*60 + 
+    localTime = (double)QTime::currentTime().hour()*60 - (dst? 60.0 : 0.0) +
                 (double)QTime::currentTime().minute() +
                 (double)QTime::currentTime().second()/60; // In minutes
     
@@ -431,24 +431,24 @@ const double &tz, const bool &dst) {
             if (i == 1) {   // Find previous sunrise (date)
                 jDay = jdOfNextPrevRiseSet(0, i, jd, lat, lon, tz, dst);
                 newDate = QDate::fromJulianDay(round(jDay));
-                this->sunriseTimeStr = newDate.toString("dd.MMM.yyyy");
+                this->sunriseTimeStr = newDate.toString("dd MMM yyyy");
             }
             else {  // Find next sunset (date)
                 jDay = jdOfNextPrevRiseSet(1, i, jd, lat, lon, tz, dst);
                 newDate = QDate::fromJulianDay(round(jDay));
-                this->sunsetTimeStr = newDate.toString("dd.MMM.yyyy");
+                this->sunsetTimeStr = newDate.toString("dd MMM yyyy");
             }
         }
         else {
             if (i == 1) {   // Find next sunrise (date)
                 jDay = jdOfNextPrevRiseSet(1, i, jd, lat, lon, tz, dst);
                 newDate = QDate::fromJulianDay(round(jDay));
-                this->sunriseTimeStr = newDate.toString("dd.MMM.yyyy");
+                this->sunriseTimeStr = newDate.toString("dd MMM yyyy");
             }
             else {  // Find previous sunset (date)
                 jDay = jdOfNextPrevRiseSet(0, i, jd, lat, lon, tz, dst);
                 newDate = QDate::fromJulianDay(round(jDay));
-                this->sunsetTimeStr = newDate.toString("dd.MMM.yyyy");
+                this->sunsetTimeStr = newDate.toString("dd MMM yyyy");
             }
         }
     }

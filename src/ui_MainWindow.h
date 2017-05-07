@@ -33,7 +33,7 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QPushButton *calcButton;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout_3;
     QVBoxLayout *verticalLayout;
     QLabel *latLabel;
@@ -53,12 +53,12 @@ public:
     QSpacerItem *horizontalSpacer_6;
     QVBoxLayout *verticalLayout_4;
     QCheckBox *dstCheckBox;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_4;
     QLabel *label_4;
     QLabel *dateLabel;
     QSpacerItem *horizontalSpacer_3;
-    QWidget *widget2;
+    QWidget *layoutWidget2;
     QFormLayout *formLayout_2;
     QLabel *label;
     QLabel *sunriseLabel;
@@ -66,7 +66,7 @@ public:
     QLabel *noonLabel;
     QLabel *label_3;
     QLabel *sunsetLabel;
-    QWidget *widget3;
+    QWidget *layoutWidget3;
     QFormLayout *formLayout;
     QLabel *label_6;
     QLabel *eqTimeLabel;
@@ -87,29 +87,29 @@ public:
         calcButton = new QPushButton(centralwidget);
         calcButton->setObjectName(QStringLiteral("calcButton"));
         calcButton->setGeometry(QRect(480, 170, 80, 24));
-        widget = new QWidget(centralwidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(20, 10, 449, 53));
-        horizontalLayout_3 = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(centralwidget);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(20, 10, 449, 53));
+        horizontalLayout_3 = new QHBoxLayout(layoutWidget);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        latLabel = new QLabel(widget);
+        latLabel = new QLabel(layoutWidget);
         latLabel->setObjectName(QStringLiteral("latLabel"));
 
         verticalLayout->addWidget(latLabel);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        latInput = new QLineEdit(widget);
+        latInput = new QLineEdit(layoutWidget);
         latInput->setObjectName(QStringLiteral("latInput"));
         latInput->setMinimumSize(QSize(75, 0));
         latInput->setMaximumSize(QSize(75, 16777215));
 
         horizontalLayout->addWidget(latInput);
 
-        latCombo = new QComboBox(widget);
+        latCombo = new QComboBox(layoutWidget);
         latCombo->setObjectName(QStringLiteral("latCombo"));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
@@ -132,21 +132,21 @@ public:
 
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        lonLabel = new QLabel(widget);
+        lonLabel = new QLabel(layoutWidget);
         lonLabel->setObjectName(QStringLiteral("lonLabel"));
 
         verticalLayout_2->addWidget(lonLabel);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        lonInput = new QLineEdit(widget);
+        lonInput = new QLineEdit(layoutWidget);
         lonInput->setObjectName(QStringLiteral("lonInput"));
         lonInput->setMinimumSize(QSize(75, 0));
         lonInput->setMaximumSize(QSize(75, 16777215));
 
         horizontalLayout_2->addWidget(lonInput);
 
-        lonCombo = new QComboBox(widget);
+        lonCombo = new QComboBox(layoutWidget);
         lonCombo->setObjectName(QStringLiteral("lonCombo"));
         sizePolicy.setHeightForWidth(lonCombo->sizePolicy().hasHeightForWidth());
         lonCombo->setSizePolicy(sizePolicy);
@@ -166,12 +166,12 @@ public:
 
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
-        label_5 = new QLabel(widget);
+        label_5 = new QLabel(layoutWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
 
         verticalLayout_3->addWidget(label_5);
 
-        tzInput = new QLineEdit(widget);
+        tzInput = new QLineEdit(layoutWidget);
         tzInput->setObjectName(QStringLiteral("tzInput"));
         tzInput->setMinimumSize(QSize(70, 0));
         tzInput->setMaximumSize(QSize(70, 16777215));
@@ -188,7 +188,7 @@ public:
 
         verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
-        dstCheckBox = new QCheckBox(widget);
+        dstCheckBox = new QCheckBox(layoutWidget);
         dstCheckBox->setObjectName(QStringLiteral("dstCheckBox"));
 
         verticalLayout_4->addWidget(dstCheckBox);
@@ -196,18 +196,18 @@ public:
 
         horizontalLayout_3->addLayout(verticalLayout_4);
 
-        widget1 = new QWidget(centralwidget);
-        widget1->setObjectName(QStringLiteral("widget1"));
-        widget1->setGeometry(QRect(21, 80, 138, 22));
-        horizontalLayout_4 = new QHBoxLayout(widget1);
+        layoutWidget1 = new QWidget(centralwidget);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(21, 80, 138, 22));
+        horizontalLayout_4 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
         horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
-        label_4 = new QLabel(widget1);
+        label_4 = new QLabel(layoutWidget1);
         label_4->setObjectName(QStringLiteral("label_4"));
 
         horizontalLayout_4->addWidget(label_4);
 
-        dateLabel = new QLabel(widget1);
+        dateLabel = new QLabel(layoutWidget1);
         dateLabel->setObjectName(QStringLiteral("dateLabel"));
 
         horizontalLayout_4->addWidget(dateLabel);
@@ -216,75 +216,76 @@ public:
 
         horizontalLayout_4->addItem(horizontalSpacer_3);
 
-        widget2 = new QWidget(centralwidget);
-        widget2->setObjectName(QStringLiteral("widget2"));
-        widget2->setGeometry(QRect(22, 126, 151, 63));
-        formLayout_2 = new QFormLayout(widget2);
+        layoutWidget2 = new QWidget(centralwidget);
+        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(22, 126, 151, 63));
+        formLayout_2 = new QFormLayout(layoutWidget2);
         formLayout_2->setObjectName(QStringLiteral("formLayout_2"));
         formLayout_2->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget2);
+        label = new QLabel(layoutWidget2);
         label->setObjectName(QStringLiteral("label"));
 
         formLayout_2->setWidget(0, QFormLayout::LabelRole, label);
 
-        sunriseLabel = new QLabel(widget2);
+        sunriseLabel = new QLabel(layoutWidget2);
         sunriseLabel->setObjectName(QStringLiteral("sunriseLabel"));
 
         formLayout_2->setWidget(0, QFormLayout::FieldRole, sunriseLabel);
 
-        label_2 = new QLabel(widget2);
+        label_2 = new QLabel(layoutWidget2);
         label_2->setObjectName(QStringLiteral("label_2"));
 
         formLayout_2->setWidget(1, QFormLayout::LabelRole, label_2);
 
-        noonLabel = new QLabel(widget2);
+        noonLabel = new QLabel(layoutWidget2);
         noonLabel->setObjectName(QStringLiteral("noonLabel"));
 
         formLayout_2->setWidget(1, QFormLayout::FieldRole, noonLabel);
 
-        label_3 = new QLabel(widget2);
+        label_3 = new QLabel(layoutWidget2);
         label_3->setObjectName(QStringLiteral("label_3"));
 
         formLayout_2->setWidget(2, QFormLayout::LabelRole, label_3);
 
-        sunsetLabel = new QLabel(widget2);
+        sunsetLabel = new QLabel(layoutWidget2);
         sunsetLabel->setObjectName(QStringLiteral("sunsetLabel"));
 
         formLayout_2->setWidget(2, QFormLayout::FieldRole, sunsetLabel);
 
-        widget3 = new QWidget(centralwidget);
-        widget3->setObjectName(QStringLiteral("widget3"));
-        widget3->setGeometry(QRect(180, 126, 291, 63));
-        formLayout = new QFormLayout(widget3);
+        layoutWidget3 = new QWidget(centralwidget);
+        layoutWidget3->setObjectName(QStringLiteral("layoutWidget3"));
+        layoutWidget3->setGeometry(QRect(180, 126, 291, 63));
+        formLayout = new QFormLayout(layoutWidget3);
         formLayout->setObjectName(QStringLiteral("formLayout"));
         formLayout->setContentsMargins(0, 0, 0, 0);
-        label_6 = new QLabel(widget3);
+        label_6 = new QLabel(layoutWidget3);
         label_6->setObjectName(QStringLiteral("label_6"));
 
         formLayout->setWidget(0, QFormLayout::LabelRole, label_6);
 
-        eqTimeLabel = new QLabel(widget3);
+        eqTimeLabel = new QLabel(layoutWidget3);
         eqTimeLabel->setObjectName(QStringLiteral("eqTimeLabel"));
 
         formLayout->setWidget(0, QFormLayout::FieldRole, eqTimeLabel);
 
-        label_8 = new QLabel(widget3);
+        label_8 = new QLabel(layoutWidget3);
         label_8->setObjectName(QStringLiteral("label_8"));
 
         formLayout->setWidget(1, QFormLayout::LabelRole, label_8);
 
-        sdLabel = new QLabel(widget3);
+        sdLabel = new QLabel(layoutWidget3);
         sdLabel->setObjectName(QStringLiteral("sdLabel"));
 
         formLayout->setWidget(1, QFormLayout::FieldRole, sdLabel);
 
-        label_10 = new QLabel(widget3);
+        label_10 = new QLabel(layoutWidget3);
         label_10->setObjectName(QStringLiteral("label_10"));
 
         formLayout->setWidget(2, QFormLayout::LabelRole, label_10);
 
-        aeLabel = new QLabel(widget3);
+        aeLabel = new QLabel(layoutWidget3);
         aeLabel->setObjectName(QStringLiteral("aeLabel"));
+        aeLabel->setMouseTracking(false);
 
         formLayout->setWidget(2, QFormLayout::FieldRole, aeLabel);
 
@@ -327,12 +328,7 @@ public:
 #endif // QT_NO_TOOLTIP
         label_5->setText(QApplication::translate("MainWindow", "Time Zone:", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        tzInput->setToolTip(QApplication::translate("MainWindow", "<html>\n"
-"<head/>\n"
-"<body>\n"
-"<p>UTC offset of the location.<br /><br />For example, Florida, US' UTC offset is -5. <br />China's UTC offset is 8. For 15 minute offsets, such as in Nepal (UTC +5:45), <br />enter 5.75.</p>\n"
-"</body>\n"
-"</html>", Q_NULLPTR));
+        tzInput->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>UTC offset of the location. For example, Florida, US' UTC offset is -5. China's UTC offset is 8. For 15 minute offsets, such as in Nepal (UTC +5:45), enter 5.75.</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
 #ifndef QT_NO_TOOLTIP
         dstCheckBox->setToolTip(QApplication::translate("MainWindow", "Is Daylight Savings Time in affect at location?", Q_NULLPTR));
@@ -347,10 +343,19 @@ public:
         label_3->setText(QApplication::translate("MainWindow", "Sunset:", Q_NULLPTR));
         sunsetLabel->setText(QApplication::translate("MainWindow", "--:--", Q_NULLPTR));
         label_6->setText(QApplication::translate("MainWindow", "Equation of Time (minutes):", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        eqTimeLabel->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>An astronomical term accounting for changes in the time of solar noon for a given location over the course of a year.</p></body></html>", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         eqTimeLabel->setText(QApplication::translate("MainWindow", "0.000", Q_NULLPTR));
         label_8->setText(QApplication::translate("MainWindow", "Solar Declination (degrees):", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        sdLabel->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>The solar declination varies from -23.44\302\260 at the (northern hemisphere) winter solstice, through 0\302\260 at the vernal equinox, to +23.44\302\260 at the summer solstice.</p></body></html>", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         sdLabel->setText(QApplication::translate("MainWindow", "0.000", Q_NULLPTR));
         label_10->setText(QApplication::translate("MainWindow", "Azimuth | Elevation (degrees):", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        aeLabel->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>An angular coordinate system for locating positions in the sky. Azimuth is measured clockwise from true north to the point on the horizon directly below the object. Elevation is measured vertically from that point on the horizon up to the object.</p></body></html>", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         aeLabel->setText(QApplication::translate("MainWindow", "0.000 | 0.000", Q_NULLPTR));
     } // retranslateUi
 
