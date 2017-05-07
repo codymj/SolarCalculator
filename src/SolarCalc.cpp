@@ -284,9 +284,9 @@ const double &lon, const double &tz) {
     double azimuth = 0.0;
     
     double azimuthRadian = 0.0;
-    if (abs(azimuthDenom) > 0.001) {
+    if (fabs(azimuthDenom) > 0.001) {
         azimuthRadian = azimuthNum/azimuthDenom;
-        if (abs(azimuthRadian) > 1.0) {
+        if (fabs(azimuthRadian) > 1.0) {
             if (azimuthRadian < 0.0) {
                 azimuthRadian = -1.0;
             }
