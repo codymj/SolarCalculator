@@ -7,19 +7,16 @@
 #include "SolarCalc.h"
 
 // Constructor
-SolarCalc::SolarCalc(Location &l, const double &tz, const bool &d) {
+SolarCalc::SolarCalc(QDate &da, Location &l, const double &tz, const bool &d) {
+    date = da;
     location = l;
     timeZone = tz;
     dst = d;
     
-    julianDay = (double)QDate::currentDate().toJulianDay() - 0.5;
-    localTime = (double)QTime::currentTime().hour()*60 - (dst? 60.0 : 0.0) +
-                (double)QTime::currentTime().minute() +
-                (double)QTime::currentTime().second()/60; // In minutes
-    
-    QDateTime date;
-    currentDateTime = date.currentDateTime();
-    dateStr = currentDateTime.date().toString(QString("dd MMM yyyy"));
+    julianDay = this->date.toJulianDay() - 0.5;
+    localTime = QTime::currentTime().hour()*60 - (dst? 60.0 : 0.0) +
+                QTime::currentTime().minute() +
+                QTime::currentTime().second()/60; // In minutes
 }
 
 //
@@ -410,10 +407,6 @@ const double &tz, const bool &dst) {
                 tLocal += increment*1440.0;
                 jDay -= increment;
             }
-            
-            // Display new date & time
-            QDate newDate = QDate::fromJulianDay(round(jDay));
-            this->dateStr = newDate.toString("dd.MMM.yyyy");
             if (i == 0) {
                 this->sunsetTimeStr = convertMinsToHHmm(tLocal);
             }
@@ -508,11 +501,6 @@ QString SolarCalc::getNoon() {
 // Returns sunset time as a QString, HH:SS
 QString SolarCalc::getSunset() {
     return sunsetTimeStr;
-}
-
-// Returns date (may be updated), dd.MMM.yyyy
-QString SolarCalc::getDate() {
-    return dateStr;
 }
 
 // Returns equation of time as a QString in minutes
