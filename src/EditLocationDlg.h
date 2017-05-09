@@ -9,8 +9,10 @@
 
 #include <QDate>
 #include <QDebug>
+#include <QFile>
 #include <QList>
 #include <QString>
+#include <QTableWidgetItem>
 #include <QTime>
 #include "SolarCalc.h"
 #include "ui_EditLocationDlg.h"
@@ -23,11 +25,11 @@ public:
     EditLocationDlg(SolarCalc &);
 
 private:
-    QList<SolarCalc> solarCalcList;
+    QList<QTableWidgetItem *> tableItemList;
     void loadTableFromFile();
     void saveTableToFile();
     SolarCalc loadLocationFromTable();
-
+    void parseLineInFile(QString &);
 };
 
 #endif // _EDITLOCATIONDLG_H_

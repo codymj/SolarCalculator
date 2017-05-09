@@ -38,10 +38,10 @@ class Ui_MainWindow
 {
 public:
     QAction *closeAction;
-    QAction *action_Save_Location;
-    QAction *action_Load_Location;
-    QAction *action_Locations;
-    QAction *action_About;
+    QAction *saveLocationAction;
+    QAction *loadLocationAction;
+    QAction *LocationsAction;
+    QAction *aboutAction;
     QWidget *centralwidget;
     QPushButton *calcButton;
     QWidget *layoutWidget;
@@ -105,14 +105,14 @@ public:
         MainWindow->setMaximumSize(QSize(570, 230));
         closeAction = new QAction(MainWindow);
         closeAction->setObjectName(QStringLiteral("closeAction"));
-        action_Save_Location = new QAction(MainWindow);
-        action_Save_Location->setObjectName(QStringLiteral("action_Save_Location"));
-        action_Load_Location = new QAction(MainWindow);
-        action_Load_Location->setObjectName(QStringLiteral("action_Load_Location"));
-        action_Locations = new QAction(MainWindow);
-        action_Locations->setObjectName(QStringLiteral("action_Locations"));
-        action_About = new QAction(MainWindow);
-        action_About->setObjectName(QStringLiteral("action_About"));
+        saveLocationAction = new QAction(MainWindow);
+        saveLocationAction->setObjectName(QStringLiteral("saveLocationAction"));
+        loadLocationAction = new QAction(MainWindow);
+        loadLocationAction->setObjectName(QStringLiteral("loadLocationAction"));
+        LocationsAction = new QAction(MainWindow);
+        LocationsAction->setObjectName(QStringLiteral("LocationsAction"));
+        aboutAction = new QAction(MainWindow);
+        aboutAction->setObjectName(QStringLiteral("aboutAction"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         calcButton = new QPushButton(centralwidget);
@@ -369,12 +369,12 @@ public:
         menuBar->addAction(menu_File->menuAction());
         menuBar->addAction(menu_Edit->menuAction());
         menuBar->addAction(menu_Help->menuAction());
-        menu_File->addAction(action_Load_Location);
-        menu_File->addAction(action_Save_Location);
+        menu_File->addAction(loadLocationAction);
+        menu_File->addAction(saveLocationAction);
         menu_File->addSeparator();
         menu_File->addAction(closeAction);
-        menu_Edit->addAction(action_Locations);
-        menu_Help->addAction(action_About);
+        menu_Edit->addAction(LocationsAction);
+        menu_Help->addAction(aboutAction);
 
         retranslateUi(MainWindow);
 
@@ -385,10 +385,10 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         closeAction->setText(QApplication::translate("MainWindow", "&Close", Q_NULLPTR));
-        action_Save_Location->setText(QApplication::translate("MainWindow", "&Save Location", Q_NULLPTR));
-        action_Load_Location->setText(QApplication::translate("MainWindow", "&Load Location", Q_NULLPTR));
-        action_Locations->setText(QApplication::translate("MainWindow", "&Locations", Q_NULLPTR));
-        action_About->setText(QApplication::translate("MainWindow", "&About", Q_NULLPTR));
+        saveLocationAction->setText(QApplication::translate("MainWindow", "&Save Location", Q_NULLPTR));
+        loadLocationAction->setText(QApplication::translate("MainWindow", "&Load Location", Q_NULLPTR));
+        LocationsAction->setText(QApplication::translate("MainWindow", "&Locations", Q_NULLPTR));
+        aboutAction->setText(QApplication::translate("MainWindow", "&About", Q_NULLPTR));
         calcButton->setText(QApplication::translate("MainWindow", "Calculate", Q_NULLPTR));
         latLabel->setText(QApplication::translate("MainWindow", "Latitude:", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP

@@ -504,8 +504,8 @@
     <property name="title">
      <string>&amp;File</string>
     </property>
-    <addaction name="action_Load_Location"/>
-    <addaction name="action_Save_Location"/>
+    <addaction name="loadLocationAction"/>
+    <addaction name="saveLocationAction"/>
     <addaction name="separator"/>
     <addaction name="closeAction"/>
    </widget>
@@ -513,13 +513,13 @@
     <property name="title">
      <string>&amp;Edit</string>
     </property>
-    <addaction name="action_Locations"/>
+    <addaction name="LocationsAction"/>
    </widget>
    <widget class="QMenu" name="menu_Help">
     <property name="title">
      <string>&amp;Help</string>
     </property>
-    <addaction name="action_About"/>
+    <addaction name="aboutAction"/>
    </widget>
    <addaction name="menu_File"/>
    <addaction name="menu_Edit"/>
@@ -530,22 +530,22 @@
     <string>&amp;Close</string>
    </property>
   </action>
-  <action name="action_Save_Location">
+  <action name="saveLocationAction">
    <property name="text">
     <string>&amp;Save Location</string>
    </property>
   </action>
-  <action name="action_Load_Location">
+  <action name="loadLocationAction">
    <property name="text">
     <string>&amp;Load Location</string>
    </property>
   </action>
-  <action name="action_Locations">
+  <action name="LocationsAction">
    <property name="text">
     <string>&amp;Locations</string>
    </property>
   </action>
-  <action name="action_About">
+  <action name="aboutAction">
    <property name="text">
     <string>&amp;About</string>
    </property>

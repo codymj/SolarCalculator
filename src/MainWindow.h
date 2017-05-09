@@ -16,6 +16,7 @@
 #include "ui_MainWindow.h"
 #include "Location.h"
 #include "SolarCalc.h"
+#include "EditLocationDlg.h"
 
 class MainWindow : public QMainWindow, public Ui::MainWindow {
     Q_OBJECT
@@ -44,8 +45,8 @@ private slots:
     void toggleCustomDateTime(const int &);
     void changeDate(const QDate &);
     void changeTime(const QTime &);
-    void loadLocations();
-    void saveLocations();
+    void loadLocation();
+    void saveLocation(SolarCalc &);
 };
 
 #endif // _MAINWINDOW_H_

@@ -89,6 +89,10 @@ void MainWindow::connectActions() {
         this->closeAction, SIGNAL(triggered()),
         this, SLOT(close())
     );
+    connect(
+        this->loadLocationAction, SIGNAL(triggered()),
+        this, SLOT(loadLocation())
+    );
 }
 
 // Slot to update DST value
@@ -130,11 +134,15 @@ void MainWindow::toggleCustomDateTime(const int &state) {
 }
 
 // Slot to load locations from file
-void MainWindow::loadLocations() {
-    
+void MainWindow::loadLocation() {
+    EditLocationDlg *dlg = new EditLocationDlg();
+    if (dlg->exec()) {
+        
+    }
+    delete dlg;
 }
 
 // Slot to save locations to file
-void MainWindow::saveLocations() {
+void MainWindow::saveLocation(SolarCalc &sc) {
     
 }
