@@ -37,7 +37,11 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
-    QAction *actionClose;
+    QAction *closeAction;
+    QAction *action_Save_Location;
+    QAction *action_Load_Location;
+    QAction *action_Locations;
+    QAction *action_About;
     QWidget *centralwidget;
     QPushButton *calcButton;
     QWidget *layoutWidget;
@@ -89,6 +93,8 @@ public:
     QTimeEdit *timeEdit;
     QMenuBar *menuBar;
     QMenu *menu_File;
+    QMenu *menu_Edit;
+    QMenu *menu_Help;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -97,8 +103,16 @@ public:
         MainWindow->resize(570, 230);
         MainWindow->setMinimumSize(QSize(570, 230));
         MainWindow->setMaximumSize(QSize(570, 230));
-        actionClose = new QAction(MainWindow);
-        actionClose->setObjectName(QStringLiteral("actionClose"));
+        closeAction = new QAction(MainWindow);
+        closeAction->setObjectName(QStringLiteral("closeAction"));
+        action_Save_Location = new QAction(MainWindow);
+        action_Save_Location->setObjectName(QStringLiteral("action_Save_Location"));
+        action_Load_Location = new QAction(MainWindow);
+        action_Load_Location->setObjectName(QStringLiteral("action_Load_Location"));
+        action_Locations = new QAction(MainWindow);
+        action_Locations->setObjectName(QStringLiteral("action_Locations"));
+        action_About = new QAction(MainWindow);
+        action_About->setObjectName(QStringLiteral("action_About"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         calcButton = new QPushButton(centralwidget);
@@ -346,10 +360,21 @@ public:
         menuBar->setGeometry(QRect(0, 0, 570, 22));
         menu_File = new QMenu(menuBar);
         menu_File->setObjectName(QStringLiteral("menu_File"));
+        menu_Edit = new QMenu(menuBar);
+        menu_Edit->setObjectName(QStringLiteral("menu_Edit"));
+        menu_Help = new QMenu(menuBar);
+        menu_Help->setObjectName(QStringLiteral("menu_Help"));
         MainWindow->setMenuBar(menuBar);
 
         menuBar->addAction(menu_File->menuAction());
-        menu_File->addAction(actionClose);
+        menuBar->addAction(menu_Edit->menuAction());
+        menuBar->addAction(menu_Help->menuAction());
+        menu_File->addAction(action_Load_Location);
+        menu_File->addAction(action_Save_Location);
+        menu_File->addSeparator();
+        menu_File->addAction(closeAction);
+        menu_Edit->addAction(action_Locations);
+        menu_Help->addAction(action_About);
 
         retranslateUi(MainWindow);
 
@@ -359,7 +384,11 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
-        actionClose->setText(QApplication::translate("MainWindow", "&Close", Q_NULLPTR));
+        closeAction->setText(QApplication::translate("MainWindow", "&Close", Q_NULLPTR));
+        action_Save_Location->setText(QApplication::translate("MainWindow", "&Save Location", Q_NULLPTR));
+        action_Load_Location->setText(QApplication::translate("MainWindow", "&Load Location", Q_NULLPTR));
+        action_Locations->setText(QApplication::translate("MainWindow", "&Locations", Q_NULLPTR));
+        action_About->setText(QApplication::translate("MainWindow", "&About", Q_NULLPTR));
         calcButton->setText(QApplication::translate("MainWindow", "Calculate", Q_NULLPTR));
         latLabel->setText(QApplication::translate("MainWindow", "Latitude:", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
@@ -424,6 +453,8 @@ public:
         dateEdit->setDisplayFormat(QApplication::translate("MainWindow", "dd/MMM/yyyy", Q_NULLPTR));
         timeEdit->setDisplayFormat(QApplication::translate("MainWindow", "HH:mm", Q_NULLPTR));
         menu_File->setTitle(QApplication::translate("MainWindow", "&File", Q_NULLPTR));
+        menu_Edit->setTitle(QApplication::translate("MainWindow", "&Edit", Q_NULLPTR));
+        menu_Help->setTitle(QApplication::translate("MainWindow", "&Help", Q_NULLPTR));
     } // retranslateUi
 
 };

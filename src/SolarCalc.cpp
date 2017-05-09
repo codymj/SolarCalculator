@@ -423,24 +423,24 @@ const double &tz, const bool &dst) {
             if (i == 1) {   // Find previous sunrise (date)
                 jDay = jdOfNextPrevRiseSet(0, i, jd, lat, lon, tz, dst);
                 newDate = QDate::fromJulianDay(round(jDay));
-                this->sunriseTimeStr = newDate.toString("dd MMM yyyy");
+                this->sunriseTimeStr = newDate.toString("dd/MMM/yyyy");
             }
             else {  // Find next sunset (date)
                 jDay = jdOfNextPrevRiseSet(1, i, jd, lat, lon, tz, dst);
                 newDate = QDate::fromJulianDay(round(jDay));
-                this->sunsetTimeStr = newDate.toString("dd MMM yyyy");
+                this->sunsetTimeStr = newDate.toString("dd/MMM/yyyy");
             }
         }
         else {
             if (i == 1) {   // Find next sunrise (date)
                 jDay = jdOfNextPrevRiseSet(1, i, jd, lat, lon, tz, dst);
                 newDate = QDate::fromJulianDay(round(jDay));
-                this->sunriseTimeStr = newDate.toString("dd MMM yyyy");
+                this->sunriseTimeStr = newDate.toString("dd/MMM/yyyy");
             }
             else {  // Find previous sunset (date)
                 jDay = jdOfNextPrevRiseSet(0, i, jd, lat, lon, tz, dst);
                 newDate = QDate::fromJulianDay(round(jDay));
-                this->sunsetTimeStr = newDate.toString("dd MMM yyyy");
+                this->sunsetTimeStr = newDate.toString("dd/MMM/yyyy");
             }
         }
     }
@@ -489,30 +489,55 @@ void SolarCalc::calculate() {
 
 // Returns sunrise time as a QString, HH:MM
 QString SolarCalc::getSunrise() {
-    return sunriseTimeStr;
+    return this->sunriseTimeStr;
 }
 
 // Returns mean solar noon time as a QString, HH:MM
 QString SolarCalc::getNoon() {
-    return noonTimeStr;
+    return this->noonTimeStr;
 }
 
 // Returns sunset time as a QString, HH:SS
 QString SolarCalc::getSunset() {
-    return sunsetTimeStr;
+    return this->sunsetTimeStr;
 }
 
 // Returns equation of time as a QString in minutes
 QString SolarCalc::getEquationOfTime() {
-    return equationOfTimeStr;
+    return this->equationOfTimeStr;
 }
 
 // Returns solar declination as a QString in degrees
 QString SolarCalc::getSolarDeclination() {
-    return solarDeclinationStr;
+    return this->solarDeclinationStr;
 }
 
 // Returns azimuth & elevation as a QString, both in degrees
 QString SolarCalc::getAzimuthElevation() {
-    return azimuthElevationStr;
+    return this->azimuthElevationStr;
+}
+
+// Returns location
+Location SolarCalc::getLocation() {
+    return this->location;
+}
+
+// Returns date
+QDate SolarCalc::getDate() {
+    return this->date;
+}
+
+// Returns time
+QTime SolarCalc::getTime() {
+    return this->time;
+}
+
+// Returns time zone
+double SolarCalc::getTimeZone() {
+    return this->timeZone;
+}
+
+// Returns DST
+bool SolarCalc::getDST() {
+    return this->dst;
 }

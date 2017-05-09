@@ -20,7 +20,7 @@
 #define PI 3.14159265   // pi constant
 #define RAD PI/180.0    // Convert degrees to radians
 #define DEG 180.0/PI    // Convert radians to degrees
-#define myqDebug() qDebug() << fixed << qSetRealNumberPrecision(10)
+#define myqDebug() qDebug() << fixed << qSetRealNumberPrecision(6)
 
 class SolarCalc {
 public:
@@ -67,8 +67,14 @@ public:
     QString getSunrise();
     QString getNoon();
     QString getSunset();
+    Location getLocation();
+    QDate getDate();
+    QTime getTime();
+    double getTimeZone();
+    bool getDST();
     
 private:
+    QString name;
     Location location;
     QString dateStr;
     QDate date;

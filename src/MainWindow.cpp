@@ -10,7 +10,7 @@
 MainWindow::MainWindow() {
     setupUi(this);
     
-    
+    // Setup custom date/time
     toggleCustomDateTime(customDateTime);
     this->dateEdit->setMinimumDate(minCustomDate);
     this->dateEdit->setMaximumDate(maxCustomDate);
@@ -26,7 +26,7 @@ MainWindow::MainWindow() {
     this->latInput->setValidator(latValidator);
     this->lonInput->setValidator(lonValidator);
     
-    this->dateLabel->setText(QDate::currentDate().toString(QString("dd MMM yyyy")));
+    this->dateLabel->setText(QDate::currentDate().toString(QString("dd/MMM/yyyy")));
     this->timeLabel->setText(QTime::currentTime().toString(QString("HH:mm")));
     
     // Connect signals and slots
@@ -63,7 +63,7 @@ void MainWindow::runCalculation() {
     this->sunsetLabel->setText(sCalc.getSunset());
 }
 
-// Connects signals and slots
+// Connects signals/slots and file menu actions
 void MainWindow::connectActions() {
     connect(
         this->calcButton, SIGNAL(clicked()),
@@ -85,6 +85,10 @@ void MainWindow::connectActions() {
         this->timeEdit, SIGNAL(timeChanged(QTime)),
         this, SLOT(changeTime(QTime))
     );
+    connect(
+        this->closeAction, SIGNAL(triggered()),
+        this, SLOT(close())
+    );
 }
 
 // Slot to update DST value
@@ -99,7 +103,7 @@ void MainWindow::updateDST(const int &state) {
 
 void MainWindow::changeDate(const QDate &d) {
     this->date = d;
-    dateLabel->setText(this->date.toString(QString("dd MMM yyyy")));
+    dateLabel->setText(this->date.toString(QString("dd/MMM/yyyy")));
 }
 
 void MainWindow::changeTime(const QTime &t) {
@@ -123,4 +127,14 @@ void MainWindow::toggleCustomDateTime(const int &state) {
         changeDate(QDate::currentDate());
         changeTime(QTime::currentTime());
     }
+}
+
+// Slot to load locations from file
+void MainWindow::loadLocations() {
+    
+}
+
+// Slot to save locations to file
+void MainWindow::saveLocations() {
+    
 }

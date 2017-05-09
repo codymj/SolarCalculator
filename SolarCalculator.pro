@@ -15,12 +15,15 @@ HEADERS += \
 	src/Location.h \
 	src/MainWindow.h \
 	src/SolarCalc.h \
+	src/EditLocationDlg.h \
 	src/ui_MainWindow.h
 SOURCES += \
 	src/Location.cpp \
 	src/MainWindow.cpp \
 	src/SolarCalc.cpp \
+	src/EditLocationDlg.cpp \
 	src/main.cpp
 FORMS += \
-	src/MainWindow.ui
+	src/MainWindow.ui \
+	src/EditLocationDlg.ui
 

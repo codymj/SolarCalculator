@@ -44,6 +44,8 @@ private slots:
     void toggleCustomDateTime(const int &);
     void changeDate(const QDate &);
     void changeTime(const QTime &);
+    void loadLocations();
+    void saveLocations();
 };
 
 #endif // _MAINWINDOW_H_
