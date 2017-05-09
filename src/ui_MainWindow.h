@@ -18,13 +18,17 @@
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDateEdit>
 #include <QtWidgets/QFormLayout>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QTimeEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -33,6 +37,7 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionClose;
     QWidget *centralwidget;
     QPushButton *calcButton;
     QWidget *layoutWidget;
@@ -73,19 +78,27 @@ public:
     QLabel *aeLabel;
     QWidget *widget;
     QHBoxLayout *horizontalLayout_4;
+    QGridLayout *gridLayout;
     QLabel *label_4;
     QLabel *dateLabel;
+    QLabel *label_7;
+    QLabel *timeLabel;
     QSpacerItem *horizontalSpacer_3;
     QCheckBox *customDateCheckBox;
     QDateEdit *dateEdit;
+    QTimeEdit *timeEdit;
+    QMenuBar *menuBar;
+    QMenu *menu_File;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(570, 200);
-        MainWindow->setMinimumSize(QSize(570, 200));
-        MainWindow->setMaximumSize(QSize(570, 200));
+        MainWindow->resize(570, 230);
+        MainWindow->setMinimumSize(QSize(570, 230));
+        MainWindow->setMaximumSize(QSize(570, 230));
+        actionClose = new QAction(MainWindow);
+        actionClose->setObjectName(QStringLiteral("actionClose"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         calcButton = new QPushButton(centralwidget);
@@ -93,7 +106,7 @@ public:
         calcButton->setGeometry(QRect(480, 170, 80, 24));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(20, 10, 461, 53));
+        layoutWidget->setGeometry(QRect(20, 20, 491, 53));
         horizontalLayout_3 = new QHBoxLayout(layoutWidget);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -202,7 +215,7 @@ public:
 
         layoutWidget1 = new QWidget(centralwidget);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(22, 126, 151, 63));
+        layoutWidget1->setGeometry(QRect(20, 130, 151, 63));
         formLayout_2 = new QFormLayout(layoutWidget1);
         formLayout_2->setObjectName(QStringLiteral("formLayout_2"));
         formLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -238,7 +251,7 @@ public:
 
         layoutWidget2 = new QWidget(centralwidget);
         layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
-        layoutWidget2->setGeometry(QRect(180, 126, 291, 63));
+        layoutWidget2->setGeometry(QRect(180, 130, 291, 63));
         formLayout = new QFormLayout(layoutWidget2);
         formLayout->setObjectName(QStringLiteral("formLayout"));
         formLayout->setContentsMargins(0, 0, 0, 0);
@@ -275,19 +288,34 @@ public:
 
         widget = new QWidget(centralwidget);
         widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(24, 80, 451, 26));
+        widget->setGeometry(QRect(20, 80, 491, 43));
         horizontalLayout_4 = new QHBoxLayout(widget);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
         horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
+        gridLayout = new QGridLayout();
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
         label_4 = new QLabel(widget);
         label_4->setObjectName(QStringLiteral("label_4"));
 
-        horizontalLayout_4->addWidget(label_4);
+        gridLayout->addWidget(label_4, 0, 0, 1, 1);
 
         dateLabel = new QLabel(widget);
         dateLabel->setObjectName(QStringLiteral("dateLabel"));
 
-        horizontalLayout_4->addWidget(dateLabel);
+        gridLayout->addWidget(dateLabel, 0, 1, 1, 1);
+
+        label_7 = new QLabel(widget);
+        label_7->setObjectName(QStringLiteral("label_7"));
+
+        gridLayout->addWidget(label_7, 1, 0, 1, 1);
+
+        timeLabel = new QLabel(widget);
+        timeLabel->setObjectName(QStringLiteral("timeLabel"));
+
+        gridLayout->addWidget(timeLabel, 1, 1, 1, 1);
+
+
+        horizontalLayout_4->addLayout(gridLayout);
 
         horizontalSpacer_3 = new QSpacerItem(35, 17, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -306,7 +334,22 @@ public:
 
         horizontalLayout_4->addWidget(dateEdit);
 
+        timeEdit = new QTimeEdit(widget);
+        timeEdit->setObjectName(QStringLiteral("timeEdit"));
+        timeEdit->setCalendarPopup(true);
+
+        horizontalLayout_4->addWidget(timeEdit);
+
         MainWindow->setCentralWidget(centralwidget);
+        menuBar = new QMenuBar(MainWindow);
+        menuBar->setObjectName(QStringLiteral("menuBar"));
+        menuBar->setGeometry(QRect(0, 0, 570, 22));
+        menu_File = new QMenu(menuBar);
+        menu_File->setObjectName(QStringLiteral("menu_File"));
+        MainWindow->setMenuBar(menuBar);
+
+        menuBar->addAction(menu_File->menuAction());
+        menu_File->addAction(actionClose);
 
         retranslateUi(MainWindow);
 
@@ -316,6 +359,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
+        actionClose->setText(QApplication::translate("MainWindow", "&Close", Q_NULLPTR));
         calcButton->setText(QApplication::translate("MainWindow", "Calculate", Q_NULLPTR));
         latLabel->setText(QApplication::translate("MainWindow", "Latitude:", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
@@ -374,8 +418,12 @@ public:
         aeLabel->setText(QApplication::translate("MainWindow", "0.000 | 0.000", Q_NULLPTR));
         label_4->setText(QApplication::translate("MainWindow", "Date:", Q_NULLPTR));
         dateLabel->setText(QString());
+        label_7->setText(QApplication::translate("MainWindow", "Time:", Q_NULLPTR));
+        timeLabel->setText(QString());
         customDateCheckBox->setText(QApplication::translate("MainWindow", "Custom Date:", Q_NULLPTR));
         dateEdit->setDisplayFormat(QApplication::translate("MainWindow", "dd/MMM/yyyy", Q_NULLPTR));
+        timeEdit->setDisplayFormat(QApplication::translate("MainWindow", "HH:mm", Q_NULLPTR));
+        menu_File->setTitle(QApplication::translate("MainWindow", "&File", Q_NULLPTR));
     } // retranslateUi
 
 };

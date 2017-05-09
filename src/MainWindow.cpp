@@ -11,9 +11,11 @@ MainWindow::MainWindow() {
     setupUi(this);
     
     
-    toggleCustomDate(customDate);
+    toggleCustomDateTime(customDateTime);
     this->dateEdit->setMinimumDate(minCustomDate);
     this->dateEdit->setMaximumDate(maxCustomDate);
+    this->dateEdit->setDate(QDate::currentDate());
+    this->timeEdit->setTime(QTime::currentTime());
     
     // Create lat and lon regex & validators
     QRegExp latRegExp(
@@ -21,10 +23,11 @@ MainWindow::MainWindow() {
     QRegExp lonRegExp("(\\+)?(?:180(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\\.[0-9]{1,6})?))");
     QValidator *latValidator = new QRegExpValidator(latRegExp, this);
     QValidator *lonValidator = new QRegExpValidator(lonRegExp, this);
-    latInput->setValidator(latValidator);
-    lonInput->setValidator(lonValidator);
+    this->latInput->setValidator(latValidator);
+    this->lonInput->setValidator(lonValidator);
     
-    dateLabel->setText(QDate::currentDate().toString(QString("dd MMM yyyy")));
+    this->dateLabel->setText(QDate::currentDate().toString(QString("dd MMM yyyy")));
+    this->timeLabel->setText(QTime::currentTime().toString(QString("HH:mm")));
     
     // Connect signals and slots
     connectActions();
@@ -40,7 +43,7 @@ void MainWindow::runCalculation() {
     int ew = lonCombo->currentIndex();
     this->location = Location(lat, ns, lon, ew);
     
-    if (customDate) {
+    if (customDateTime) {
         this->date = dateEdit->date();
     }
     else {
@@ -48,7 +51,7 @@ void MainWindow::runCalculation() {
     }
     
     // Run calculation
-    SolarCalc sCalc(date, location, timeZone, dst);
+    SolarCalc sCalc(date, time, location, timeZone, dst);
     sCalc.calculate();
     
     // Set results
@@ -72,11 +75,15 @@ void MainWindow::connectActions() {
     );
     connect(
         this->customDateCheckBox, SIGNAL(stateChanged(int)),
-        this, SLOT(toggleCustomDate(int))
+        this, SLOT(toggleCustomDateTime(int))
     );
     connect(
         this->dateEdit, SIGNAL(dateChanged(QDate)),
         this, SLOT(changeDate(QDate))
+    );
+    connect(
+        this->timeEdit, SIGNAL(timeChanged(QTime)),
+        this, SLOT(changeTime(QTime))
     );
 }
 
@@ -95,16 +102,25 @@ void MainWindow::changeDate(const QDate &d) {
     dateLabel->setText(this->date.toString(QString("dd MMM yyyy")));
 }
 
+void MainWindow::changeTime(const QTime &t) {
+    this->time = t;
+    timeLabel->setText(this->time.toString(QString("HH:mm")));
+}
+
 // Slot to enable or disable custom date
-void MainWindow::toggleCustomDate(const int &state) {
+void MainWindow::toggleCustomDateTime(const int &state) {
     if (state) {
-        this->customDate = 1;
+        this->customDateTime = 1;
         this->dateEdit->setEnabled(true);
+        this->timeEdit->setEnabled(true);
         changeDate(dateEdit->date());
+        changeTime(timeEdit->time());
     }
     else {
-        this->customDate = 0;
+        this->customDateTime = 0;
         this->dateEdit->setEnabled(false);
+        this->timeEdit->setEnabled(false);
         changeDate(QDate::currentDate());
+        changeTime(QTime::currentTime());
     }
 }

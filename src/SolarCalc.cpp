@@ -7,16 +7,15 @@
 #include "SolarCalc.h"
 
 // Constructor
-SolarCalc::SolarCalc(QDate &da, Location &l, const double &tz, const bool &d) {
-    date = da;
-    location = l;
-    timeZone = tz;
-    dst = d;
+SolarCalc::SolarCalc(QDate &d, QTime &t, Location &l, const double &tz, const bool &dst) {
+    this->date = d;
+    this->time = t;
+    this->location = l;
+    this->timeZone = tz;
+    this->dst = dst;
     
-    julianDay = this->date.toJulianDay() - 0.5;
-    localTime = QTime::currentTime().hour()*60 - (dst? 60.0 : 0.0) +
-                QTime::currentTime().minute() +
-                QTime::currentTime().second()/60; // In minutes
+    this->julianDay = d.toJulianDay() - 0.5;
+    this->localTime = t.hour()*60 - (dst? 60.0 : 0.0) + t.minute() + t.second()/60; // In minutes
 }
 
 //
