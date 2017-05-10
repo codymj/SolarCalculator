@@ -24,6 +24,10 @@ void EditLocationDlg::connectActions() {
         this->okButton, SIGNAL(clicked()),
         this, SLOT(saveTableToFile())
     );
+    connect(
+        this->locationTableWidget, SIGNAL(itemClicked(QTableWidgetItem*)),
+        this, SLOT(setDateTimeInTable(QTableWidgetItem *))
+    );
 }
 
 void EditLocationDlg::loadTableFromFile() {
@@ -42,6 +46,7 @@ void EditLocationDlg::loadTableFromFile() {
         parseLineInFile(line);
     }
     f.close();
+    this->locationTableWidget->resizeColumnsToContents();
 }
 
 void EditLocationDlg::parseLineInFile(QString &l) {
@@ -175,5 +180,18 @@ void EditLocationDlg::validateInput(QTableWidgetItem *item) {
     // Date and time will be input by widgets
     else {
         return;
+    }
+}
+
+void EditLocationDlg::setDateTimeInTable(QTableWidgetItem *item) {
+    int col = item->column();
+
+    // Set date
+    if (col == 3) {
+        QDate date;
+        QCalendarWidget cw;
+        cw.raise();
+        date = cw.selectedDate();
+        item->setText(date.toString("yyyy/mm/dd"));
     }
 }

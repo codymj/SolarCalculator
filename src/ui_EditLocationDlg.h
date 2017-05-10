@@ -40,7 +40,7 @@ public:
     {
         if (EditLocationDlg->objectName().isEmpty())
             EditLocationDlg->setObjectName(QStringLiteral("EditLocationDlg"));
-        EditLocationDlg->resize(722, 329);
+        EditLocationDlg->resize(548, 251);
         gridLayout = new QGridLayout(EditLocationDlg);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         verticalLayout = new QVBoxLayout();
@@ -68,12 +68,12 @@ public:
         locationTableWidget->setSortingEnabled(true);
         locationTableWidget->setColumnCount(7);
         locationTableWidget->horizontalHeader()->setCascadingSectionResizes(false);
-        locationTableWidget->horizontalHeader()->setDefaultSectionSize(100);
-        locationTableWidget->horizontalHeader()->setHighlightSections(true);
+        locationTableWidget->horizontalHeader()->setDefaultSectionSize(75);
+        locationTableWidget->horizontalHeader()->setHighlightSections(false);
         locationTableWidget->horizontalHeader()->setMinimumSectionSize(5);
         locationTableWidget->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
         locationTableWidget->horizontalHeader()->setStretchLastSection(false);
-        locationTableWidget->verticalHeader()->setVisible(true);
+        locationTableWidget->verticalHeader()->setVisible(false);
         locationTableWidget->verticalHeader()->setCascadingSectionResizes(false);
         locationTableWidget->verticalHeader()->setHighlightSections(true);
         locationTableWidget->verticalHeader()->setStretchLastSection(false);

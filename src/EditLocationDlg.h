@@ -7,6 +7,7 @@
 #ifndef _EDITLOCATIONDLG_H_
 #define _EDITLOCATIONDLG_H_
 
+#include <QCalendarWidget>
 #include <QDate>
 #include <QDebug>
 #include <QFile>
@@ -30,13 +31,14 @@ private:
     void loadTableFromFile();
     SolarCalc loadLocationFromTable();
     void parseLineInFile(QString &);
-    QString locationsTXTDir = "./src/";
+    QString locationsTXTDir = "./config/";
 
     void connectActions();
 
 private slots:
     void saveTableToFile();
     void validateInput(QTableWidgetItem *);
+    void setDateTimeInTable(QTableWidgetItem *);
 };
 
 #endif // _EDITLOCATIONDLG_H_

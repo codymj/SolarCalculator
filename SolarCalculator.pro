@@ -17,14 +17,17 @@ HEADERS += \
 	src/MainWindow.h \
 	src/SolarCalc.h \
 	src/EditLocationDlg.h \
+        src/SelectDateDlg.h\
 	src/ui_MainWindow.h
 SOURCES += \
 	src/Location.cpp \
 	src/MainWindow.cpp \
 	src/SolarCalc.cpp \
 	src/EditLocationDlg.cpp \
+        src/SelectDateDlg.cpp\
 	src/main.cpp
 FORMS += \
 	src/MainWindow.ui \
-	src/EditLocationDlg.ui
+        src/EditLocationDlg.ui \
+        src/SelectDateDlg.ui
 
