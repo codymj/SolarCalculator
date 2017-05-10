@@ -31,16 +31,16 @@ public:
     QVBoxLayout *verticalLayout;
     QTableWidget *locationTableWidget;
     QHBoxLayout *horizontalLayout;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
+    QPushButton *addButton;
+    QPushButton *deleteButton;
     QSpacerItem *horizontalSpacer;
-    QPushButton *pushButton;
+    QPushButton *okButton;
 
     void setupUi(QDialog *EditLocationDlg)
     {
         if (EditLocationDlg->objectName().isEmpty())
             EditLocationDlg->setObjectName(QStringLiteral("EditLocationDlg"));
-        EditLocationDlg->resize(689, 329);
+        EditLocationDlg->resize(722, 329);
         gridLayout = new QGridLayout(EditLocationDlg);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         verticalLayout = new QVBoxLayout();
@@ -68,37 +68,38 @@ public:
         locationTableWidget->setSortingEnabled(true);
         locationTableWidget->setColumnCount(7);
         locationTableWidget->horizontalHeader()->setCascadingSectionResizes(false);
+        locationTableWidget->horizontalHeader()->setDefaultSectionSize(100);
         locationTableWidget->horizontalHeader()->setHighlightSections(true);
         locationTableWidget->horizontalHeader()->setMinimumSectionSize(5);
         locationTableWidget->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
         locationTableWidget->horizontalHeader()->setStretchLastSection(false);
-        locationTableWidget->verticalHeader()->setVisible(false);
+        locationTableWidget->verticalHeader()->setVisible(true);
         locationTableWidget->verticalHeader()->setCascadingSectionResizes(false);
-        locationTableWidget->verticalHeader()->setHighlightSections(false);
+        locationTableWidget->verticalHeader()->setHighlightSections(true);
         locationTableWidget->verticalHeader()->setStretchLastSection(false);
 
         verticalLayout->addWidget(locationTableWidget);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        pushButton_2 = new QPushButton(EditLocationDlg);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        addButton = new QPushButton(EditLocationDlg);
+        addButton->setObjectName(QStringLiteral("addButton"));
 
-        horizontalLayout->addWidget(pushButton_2);
+        horizontalLayout->addWidget(addButton);
 
-        pushButton_3 = new QPushButton(EditLocationDlg);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        deleteButton = new QPushButton(EditLocationDlg);
+        deleteButton->setObjectName(QStringLiteral("deleteButton"));
 
-        horizontalLayout->addWidget(pushButton_3);
+        horizontalLayout->addWidget(deleteButton);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        pushButton = new QPushButton(EditLocationDlg);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+        okButton = new QPushButton(EditLocationDlg);
+        okButton->setObjectName(QStringLiteral("okButton"));
 
-        horizontalLayout->addWidget(pushButton);
+        horizontalLayout->addWidget(okButton);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -129,9 +130,9 @@ public:
         ___qtablewidgetitem5->setText(QApplication::translate("EditLocationDlg", "Time Zone", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem6 = locationTableWidget->horizontalHeaderItem(6);
         ___qtablewidgetitem6->setText(QApplication::translate("EditLocationDlg", "DST", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("EditLocationDlg", "&Add", Q_NULLPTR));
-        pushButton_3->setText(QApplication::translate("EditLocationDlg", "&Delete", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("EditLocationDlg", "&Ok", Q_NULLPTR));
+        addButton->setText(QApplication::translate("EditLocationDlg", "&Add", Q_NULLPTR));
+        deleteButton->setText(QApplication::translate("EditLocationDlg", "&Delete", Q_NULLPTR));
+        okButton->setText(QApplication::translate("EditLocationDlg", "&Ok", Q_NULLPTR));
     } // retranslateUi
 
 };

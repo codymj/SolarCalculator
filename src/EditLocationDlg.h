@@ -13,6 +13,7 @@
 #include <QList>
 #include <QString>
 #include <QTableWidgetItem>
+#include <QTextStream>
 #include <QTime>
 #include "SolarCalc.h"
 #include "ui_EditLocationDlg.h"
@@ -27,9 +28,15 @@ public:
 private:
     QList<QTableWidgetItem *> tableItemList;
     void loadTableFromFile();
-    void saveTableToFile();
     SolarCalc loadLocationFromTable();
     void parseLineInFile(QString &);
+    QString locationsTXTDir = "./src/";
+
+    void connectActions();
+
+private slots:
+    void saveTableToFile();
+    void validateInput(QTableWidgetItem *);
 };
 
 #endif // _EDITLOCATIONDLG_H_
