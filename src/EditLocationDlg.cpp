@@ -192,8 +192,19 @@ void EditLocationDlg::setDateTimeInTable(QTableWidgetItem *item) {
         SelectDateDlg *dateDlg = new SelectDateDlg();
         if (dateDlg->exec()) {
             dateStr = dateDlg->getDateStr();
+            item->setText(dateStr);
         }
-        item->setText(dateStr);
         delete dateDlg;
+    }
+
+    // Set time
+    else if (col == 4) {
+        QString timeStr;
+        SelectTimeDlg *timeDlg = new SelectTimeDlg();
+        if (timeDlg->exec()) {
+            timeStr = timeDlg->getTimeStr();
+            item->setText(timeStr);
+        }
+        delete timeDlg;
     }
 }

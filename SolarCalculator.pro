@@ -18,6 +18,7 @@ HEADERS += \
 	src/SolarCalc.h \
 	src/EditLocationDlg.h \
         src/SelectDateDlg.h\
+        src/SelectTimeDlg.h\
 	src/ui_MainWindow.h
 SOURCES += \
 	src/Location.cpp \
@@ -25,9 +26,11 @@ SOURCES += \
 	src/SolarCalc.cpp \
 	src/EditLocationDlg.cpp \
         src/SelectDateDlg.cpp\
+        src/SelectTimeDlg.cpp\
 	src/main.cpp
 FORMS += \
 	src/MainWindow.ui \
         src/EditLocationDlg.ui \
-        src/SelectDateDlg.ui
+        src/SelectDateDlg.ui \
+        src/SelectTimeDlg.ui
 

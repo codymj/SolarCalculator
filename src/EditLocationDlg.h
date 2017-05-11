@@ -18,6 +18,7 @@
 #include <QTime>
 #include "SolarCalc.h"
 #include "SelectDateDlg.h"
+#include "SelectTimeDlg.h"
 #include "ui_EditLocationDlg.h"
 
 class EditLocationDlg : public QDialog, public Ui::EditLocationDlg {
