@@ -6,8 +6,27 @@
 
 #include "EditLocationDlg.h"
 
-EditLocationDlg::EditLocationDlg() {
+EditLocationDlg::EditLocationDlg(int mode) {
     setupUi(this);
+
+    this->mode = mode;
+
+    if (this->mode == 1) {    // Load location
+        this->okButton->setText("&Load");
+        this->addButton->setEnabled(false);
+        this->deleteButton->setEnabled(false);
+        connect(
+            this->okButton, SIGNAL(clicked()),
+            this, SLOT(createLocationToLoad())
+        );
+    }
+    else if (this->mode == 2) {    // Edit/save data to file
+        this->okButton->setText("&Save");
+        connect(
+            this->okButton, SIGNAL(clicked()),
+            this, SLOT(saveTableToFile())
+        );
+    }
     connectActions();
 
     this->locationTableWidget->setColumnCount(7);
@@ -20,10 +39,6 @@ EditLocationDlg::EditLocationDlg(SolarCalc &sc) {
 }
 
 void EditLocationDlg::connectActions() {
-    connect(
-        this->okButton, SIGNAL(clicked()),
-        this, SLOT(saveTableToFile())
-    );
     connect(
         this->locationTableWidget, SIGNAL(itemClicked(QTableWidgetItem*)),
         this, SLOT(setDateTimeInTable(QTableWidgetItem *))
@@ -93,6 +108,9 @@ void EditLocationDlg::parseLineInFile(QString &l) {
         QTableWidgetItem *item = new QTableWidgetItem;
         item->setText(params.at(i));
         locationTableWidget->setItem(0,i,item);
+        if (this->mode == 1) {  // Read-only for loading
+            item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+        }
     }
     locationTableWidget->setSortingEnabled(true);
     locationTableWidget->sortItems(0);
@@ -242,4 +260,48 @@ void EditLocationDlg::addRowToTable() {
 void EditLocationDlg::deleteRowFromTable() {
     int row = this->locationTableWidget->currentRow();
     this->locationTableWidget->removeRow(row);
+}
+
+void EditLocationDlg::createLocationToLoad() {
+    int row = this->locationTableWidget->currentRow();
+    int cols = this->locationTableWidget->columnCount();
+    QTableWidgetItem *item;
+    QString id;
+    QDate date;
+    QTime time;
+    Location location;
+    double tz;
+    bool dst;
+
+    for (int i=0; i<cols; i++) {
+        item = this->locationTableWidget->item(row,i);
+        if (i == 0) {   // ID
+            id = item->text();
+        }
+        else if (i == 1) {  // Latitude
+            location.setLat(item->text().toDouble());
+        }
+        else if (i == 2) {  // Longitude
+            location.setLon(item->text().toDouble());
+        }
+        else if (i == 3) {  // Date
+            date = QDate::fromString(item->text(), "yyyy/MM/dd");
+        }
+        else if (i == 4) {  // Time
+            time = QTime::fromString(item->text(), "HH:mm");
+        }
+        else if (i == 5) {  // Time Zone
+            tz = item->text().toDouble();
+        }
+        else if (i == 6) {  // DST
+            dst = item->text().toInt();
+        }
+    }
+
+    this->locationToLoad = SolarCalc(date, time, location, tz, dst);
+    this->locationToLoad.setId(id);
+}
+
+SolarCalc EditLocationDlg::loadLocation() {
+    return this->locationToLoad;
 }

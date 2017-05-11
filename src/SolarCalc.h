@@ -25,6 +25,7 @@
 class SolarCalc {
 public:
     // Constructor
+    SolarCalc();
     SolarCalc(QDate &, QTime &, Location &, const double &, const bool &);
     
     // Calculating functions
@@ -72,9 +73,13 @@ public:
     QTime getTime();
     double getTimeZone();
     bool getDST();
+    QString getId();
+
+    // Set ID
+    void setId(QString &);
     
 private:
-    QString name;
+    QString id;
     Location location;
     QString dateStr;
     QDate date;

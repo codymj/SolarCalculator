@@ -34,6 +34,7 @@ public:
     QPushButton *addButton;
     QPushButton *deleteButton;
     QSpacerItem *horizontalSpacer;
+    QPushButton *cancelButton;
     QPushButton *okButton;
 
     void setupUi(QDialog *EditLocationDlg)
@@ -97,6 +98,11 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
+        cancelButton = new QPushButton(EditLocationDlg);
+        cancelButton->setObjectName(QStringLiteral("cancelButton"));
+
+        horizontalLayout->addWidget(cancelButton);
+
         okButton = new QPushButton(EditLocationDlg);
         okButton->setObjectName(QStringLiteral("okButton"));
 
@@ -110,13 +116,15 @@ public:
 
 
         retranslateUi(EditLocationDlg);
+        QObject::connect(cancelButton, SIGNAL(clicked()), EditLocationDlg, SLOT(reject()));
+        QObject::connect(okButton, SIGNAL(clicked()), EditLocationDlg, SLOT(accept()));
 
         QMetaObject::connectSlotsByName(EditLocationDlg);
     } // setupUi
 
     void retranslateUi(QDialog *EditLocationDlg)
     {
-        EditLocationDlg->setWindowTitle(QApplication::translate("EditLocationDlg", "Dialog", Q_NULLPTR));
+        EditLocationDlg->setWindowTitle(QApplication::translate("EditLocationDlg", "Load Location", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem = locationTableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("EditLocationDlg", "ID", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem1 = locationTableWidget->horizontalHeaderItem(1);
@@ -133,6 +141,7 @@ public:
         ___qtablewidgetitem6->setText(QApplication::translate("EditLocationDlg", "DST", Q_NULLPTR));
         addButton->setText(QApplication::translate("EditLocationDlg", "&Add", Q_NULLPTR));
         deleteButton->setText(QApplication::translate("EditLocationDlg", "&Delete", Q_NULLPTR));
+        cancelButton->setText(QApplication::translate("EditLocationDlg", "&Cancel", Q_NULLPTR));
         okButton->setText(QApplication::translate("EditLocationDlg", "&Ok", Q_NULLPTR));
     } // retranslateUi
 

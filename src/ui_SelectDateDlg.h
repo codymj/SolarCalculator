@@ -75,7 +75,7 @@ public:
 
     void retranslateUi(QDialog *SelectDateDlg)
     {
-        SelectDateDlg->setWindowTitle(QApplication::translate("SelectDateDlg", "Dialog", Q_NULLPTR));
+        SelectDateDlg->setWindowTitle(QApplication::translate("SelectDateDlg", "Enter Date", Q_NULLPTR));
         cancelButton->setText(QApplication::translate("SelectDateDlg", "&Cancel", Q_NULLPTR));
         okButton->setText(QApplication::translate("SelectDateDlg", "&Ok", Q_NULLPTR));
     } // retranslateUi

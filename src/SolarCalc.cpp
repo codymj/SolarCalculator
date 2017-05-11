@@ -7,6 +7,10 @@
 #include "SolarCalc.h"
 
 // Constructor
+SolarCalc::SolarCalc() {
+
+}
+
 SolarCalc::SolarCalc(QDate &d, QTime &t, Location &l, const double &tz, const bool &dst) {
     this->date = d;
     this->time = t;
@@ -540,4 +544,12 @@ double SolarCalc::getTimeZone() {
 // Returns DST
 bool SolarCalc::getDST() {
     return this->dst;
+}
+
+QString SolarCalc::getId() {
+    return this->id;
+}
+
+void SolarCalc::setId(QString &id) {
+    this->id = id;
 }

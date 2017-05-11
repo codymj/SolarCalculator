@@ -135,11 +135,33 @@ void MainWindow::toggleCustomDateTime(const int &state) {
 
 // Slot to load locations from file
 void MainWindow::loadLocation() {
-    EditLocationDlg *dlg = new EditLocationDlg();
-    if (dlg->exec()) {
-        
+    // Get location from table
+    EditLocationDlg *editDlg = new EditLocationDlg(1);
+    if (editDlg->exec()) {
+        this->currentLocation = editDlg->loadLocation();
     }
-    delete dlg;
+    delete editDlg;
+
+    // Enter location data
+    this->setWindowTitle("Solar Calculator - " + this->currentLocation.getId());
+    this->latInput->setText(QString::number(this->currentLocation.getLocation().getLat()));
+    this->lonInput->setText(QString::number(this->currentLocation.getLocation().getLon()));
+    if (this->latInput->text().toDouble() >= 0) {
+        this->latCombo->setCurrentIndex(0);
+    }
+    else {
+        this->latCombo->setCurrentIndex(1);
+    }
+    if (this->lonInput->text().toDouble() >= 0) {
+        this->lonCombo->setCurrentIndex(0);
+    }
+    else {
+        this->lonCombo->setCurrentIndex(1);
+    }
+    this->dateEdit->setDate(this->currentLocation.getDate());
+    this->timeEdit->setTime(this->currentLocation.getTime());
+    this->tzInput->setText(QString::number(this->currentLocation.getTimeZone()));
+    this->dstCheckBox->setChecked(this->currentLocation.getDST());
 }
 
 // Slot to save locations to file

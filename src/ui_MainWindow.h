@@ -80,7 +80,7 @@ public:
     QLabel *sdLabel;
     QLabel *label_10;
     QLabel *aeLabel;
-    QWidget *widget;
+    QWidget *layoutWidget3;
     QHBoxLayout *horizontalLayout_4;
     QGridLayout *gridLayout;
     QLabel *label_4;
@@ -300,30 +300,30 @@ public:
 
         formLayout->setWidget(2, QFormLayout::FieldRole, aeLabel);
 
-        widget = new QWidget(centralwidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(20, 80, 491, 43));
-        horizontalLayout_4 = new QHBoxLayout(widget);
+        layoutWidget3 = new QWidget(centralwidget);
+        layoutWidget3->setObjectName(QStringLiteral("layoutWidget3"));
+        layoutWidget3->setGeometry(QRect(20, 80, 491, 43));
+        horizontalLayout_4 = new QHBoxLayout(layoutWidget3);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
         horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
         gridLayout = new QGridLayout();
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        label_4 = new QLabel(widget);
+        label_4 = new QLabel(layoutWidget3);
         label_4->setObjectName(QStringLiteral("label_4"));
 
         gridLayout->addWidget(label_4, 0, 0, 1, 1);
 
-        dateLabel = new QLabel(widget);
+        dateLabel = new QLabel(layoutWidget3);
         dateLabel->setObjectName(QStringLiteral("dateLabel"));
 
         gridLayout->addWidget(dateLabel, 0, 1, 1, 1);
 
-        label_7 = new QLabel(widget);
+        label_7 = new QLabel(layoutWidget3);
         label_7->setObjectName(QStringLiteral("label_7"));
 
         gridLayout->addWidget(label_7, 1, 0, 1, 1);
 
-        timeLabel = new QLabel(widget);
+        timeLabel = new QLabel(layoutWidget3);
         timeLabel->setObjectName(QStringLiteral("timeLabel"));
 
         gridLayout->addWidget(timeLabel, 1, 1, 1, 1);
@@ -335,12 +335,12 @@ public:
 
         horizontalLayout_4->addItem(horizontalSpacer_3);
 
-        customDateCheckBox = new QCheckBox(widget);
+        customDateCheckBox = new QCheckBox(layoutWidget3);
         customDateCheckBox->setObjectName(QStringLiteral("customDateCheckBox"));
 
         horizontalLayout_4->addWidget(customDateCheckBox);
 
-        dateEdit = new QDateEdit(widget);
+        dateEdit = new QDateEdit(layoutWidget3);
         dateEdit->setObjectName(QStringLiteral("dateEdit"));
         dateEdit->setMaximumDateTime(QDateTime(QDate(7999, 12, 31), QTime(23, 59, 59)));
         dateEdit->setMaximumDate(QDate(7999, 12, 31));
@@ -348,7 +348,7 @@ public:
 
         horizontalLayout_4->addWidget(dateEdit);
 
-        timeEdit = new QTimeEdit(widget);
+        timeEdit = new QTimeEdit(layoutWidget3);
         timeEdit->setObjectName(QStringLiteral("timeEdit"));
         timeEdit->setCalendarPopup(true);
 
@@ -383,7 +383,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Solar Calculator", Q_NULLPTR));
         closeAction->setText(QApplication::translate("MainWindow", "&Close", Q_NULLPTR));
         saveLocationAction->setText(QApplication::translate("MainWindow", "&Save Location", Q_NULLPTR));
         loadLocationAction->setText(QApplication::translate("MainWindow", "&Load Location", Q_NULLPTR));

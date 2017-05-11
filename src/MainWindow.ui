@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Solar Calculator</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="calcButton">
@@ -389,7 +389,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>20</x>

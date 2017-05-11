@@ -106,7 +106,7 @@ public:
 
     void retranslateUi(QDialog *SelectTimeDlg)
     {
-        SelectTimeDlg->setWindowTitle(QApplication::translate("SelectTimeDlg", "Dialog", Q_NULLPTR));
+        SelectTimeDlg->setWindowTitle(QApplication::translate("SelectTimeDlg", "Enter Time", Q_NULLPTR));
         label->setText(QApplication::translate("SelectTimeDlg", "Hours", Q_NULLPTR));
         label_2->setText(QApplication::translate("SelectTimeDlg", "Minutes", Q_NULLPTR));
         cancelButton->setText(QApplication::translate("SelectTimeDlg", "&Cancel", Q_NULLPTR));
