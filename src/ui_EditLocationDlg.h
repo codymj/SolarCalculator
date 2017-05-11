@@ -40,6 +40,7 @@ public:
     {
         if (EditLocationDlg->objectName().isEmpty())
             EditLocationDlg->setObjectName(QStringLiteral("EditLocationDlg"));
+        EditLocationDlg->setWindowModality(Qt::ApplicationModal);
         EditLocationDlg->resize(548, 251);
         gridLayout = new QGridLayout(EditLocationDlg);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));

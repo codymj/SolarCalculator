@@ -14,33 +14,34 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCalendarWidget>
+#include <QtWidgets/QDialog>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Form
+class Ui_SelectDateDlg
 {
 public:
     QGridLayout *gridLayout;
     QCalendarWidget *calendarWidget;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton;
+    QPushButton *cancelButton;
+    QPushButton *okButton;
 
-    void setupUi(QWidget *Form)
+    void setupUi(QDialog *SelectDateDlg)
     {
-        if (Form->objectName().isEmpty())
-            Form->setObjectName(QStringLiteral("Form"));
-        Form->resize(476, 375);
-        gridLayout = new QGridLayout(Form);
+        if (SelectDateDlg->objectName().isEmpty())
+            SelectDateDlg->setObjectName(QStringLiteral("SelectDateDlg"));
+        SelectDateDlg->setWindowModality(Qt::ApplicationModal);
+        SelectDateDlg->resize(400, 300);
+        gridLayout = new QGridLayout(SelectDateDlg);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        calendarWidget = new QCalendarWidget(Form);
+        calendarWidget = new QCalendarWidget(SelectDateDlg);
         calendarWidget->setObjectName(QStringLiteral("calendarWidget"));
 
         gridLayout->addWidget(calendarWidget, 0, 0, 1, 1);
@@ -51,36 +52,38 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        pushButton_2 = new QPushButton(Form);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        cancelButton = new QPushButton(SelectDateDlg);
+        cancelButton->setObjectName(QStringLiteral("cancelButton"));
 
-        horizontalLayout->addWidget(pushButton_2);
+        horizontalLayout->addWidget(cancelButton);
 
-        pushButton = new QPushButton(Form);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+        okButton = new QPushButton(SelectDateDlg);
+        okButton->setObjectName(QStringLiteral("okButton"));
 
-        horizontalLayout->addWidget(pushButton);
+        horizontalLayout->addWidget(okButton);
 
 
         gridLayout->addLayout(horizontalLayout, 1, 0, 1, 1);
 
 
-        retranslateUi(Form);
+        retranslateUi(SelectDateDlg);
+        QObject::connect(okButton, SIGNAL(clicked()), SelectDateDlg, SLOT(accept()));
+        QObject::connect(cancelButton, SIGNAL(clicked()), SelectDateDlg, SLOT(reject()));
 
-        QMetaObject::connectSlotsByName(Form);
+        QMetaObject::connectSlotsByName(SelectDateDlg);
     } // setupUi
 
-    void retranslateUi(QWidget *Form)
+    void retranslateUi(QDialog *SelectDateDlg)
     {
-        Form->setWindowTitle(QApplication::translate("Form", "Form", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("Form", "&Cancel", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("Form", "&Ok", Q_NULLPTR));
+        SelectDateDlg->setWindowTitle(QApplication::translate("SelectDateDlg", "Dialog", Q_NULLPTR));
+        cancelButton->setText(QApplication::translate("SelectDateDlg", "&Cancel", Q_NULLPTR));
+        okButton->setText(QApplication::translate("SelectDateDlg", "&Ok", Q_NULLPTR));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class Form: public Ui_Form {};
+    class SelectDateDlg: public Ui_SelectDateDlg {};
 } // namespace Ui
 
 QT_END_NAMESPACE

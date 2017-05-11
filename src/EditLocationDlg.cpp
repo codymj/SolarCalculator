@@ -188,10 +188,12 @@ void EditLocationDlg::setDateTimeInTable(QTableWidgetItem *item) {
 
     // Set date
     if (col == 3) {
-        QDate date;
-        QCalendarWidget cw;
-        cw.raise();
-        date = cw.selectedDate();
-        item->setText(date.toString("yyyy/mm/dd"));
+        QString dateStr;
+        SelectDateDlg *dateDlg = new SelectDateDlg();
+        if (dateDlg->exec()) {
+            dateStr = dateDlg->getDateStr();
+        }
+        item->setText(dateStr);
+        delete dateDlg;
     }
 }
