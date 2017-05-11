@@ -33,34 +33,36 @@ MainWindow::MainWindow() {
     connectActions();
 }
 
-// Slot to run calculation when button is clicked
-void MainWindow::runCalculation() {
-    // Set location data
+void MainWindow::storeDataIntoObj() {
     double lat = latInput->text().toDouble();
     double lon = lonInput->text().toDouble();
     this->timeZone = tzInput->text().toDouble();
     int ns = latCombo->currentIndex();
     int ew = lonCombo->currentIndex();
     this->location = Location(lat, ns, lon, ew);
-    
+    this->time = this->timeEdit->time();
     if (customDateTime) {
         this->date = dateEdit->date();
     }
     else {
         this->date = QDate::currentDate();
     }
-    
-    // Run calculation
-    SolarCalc sCalc(date, time, location, timeZone, dst);
-    sCalc.calculate();
+
+    this->currentLocation = SolarCalc(date, time, location, timeZone, dst);
+}
+
+// Slot to run calculation when button is clicked
+void MainWindow::runCalculation() {
+    storeDataIntoObj();
+    this->currentLocation.calculate();
     
     // Set results
-    this->eqTimeLabel->setText(sCalc.getEquationOfTime());
-    this->sdLabel->setText(sCalc.getSolarDeclination());
-    this->aeLabel->setText(sCalc.getAzimuthElevation());
-    this->sunriseLabel->setText(sCalc.getSunrise());
-    this->noonLabel->setText(sCalc.getNoon());
-    this->sunsetLabel->setText(sCalc.getSunset());
+    this->eqTimeLabel->setText(this->currentLocation.getEquationOfTime());
+    this->sdLabel->setText(this->currentLocation.getSolarDeclination());
+    this->aeLabel->setText(this->currentLocation.getAzimuthElevation());
+    this->sunriseLabel->setText(this->currentLocation.getSunrise());
+    this->noonLabel->setText(this->currentLocation.getNoon());
+    this->sunsetLabel->setText(this->currentLocation.getSunset());
 }
 
 // Connects signals/slots and file menu actions
@@ -92,6 +94,10 @@ void MainWindow::connectActions() {
     connect(
         this->loadLocationAction, SIGNAL(triggered()),
         this, SLOT(loadLocation())
+    );
+    connect(
+        this->saveLocationAction, SIGNAL(triggered()),
+        this, SLOT(saveLocation())
     );
 }
 
@@ -165,6 +171,52 @@ void MainWindow::loadLocation() {
 }
 
 // Slot to save locations to file
-void MainWindow::saveLocation(SolarCalc &sc) {
-    
+void MainWindow::saveLocation() {
+    QString id;
+
+    IdDlg *idDlg = new IdDlg();
+    if (idDlg->exec()) {
+        id = idDlg->idInput->text();
+    }
+
+    QString dataToSave;
+    dataToSave = this->currentLocation.getId();
+    dataToSave += "$";
+    dataToSave += QString::number(this->currentLocation.getLocation().getLat());
+    dataToSave += " ";
+    dataToSave += QString::number(this->currentLocation.getLocation().getLon());
+    dataToSave += " ";
+    dataToSave += currentLocation.getDate().toString("yyyy/MM/dd");
+    dataToSave += " ";
+    dataToSave += currentLocation.getTime().toString("HH:mm");
+    dataToSave += " ";
+    dataToSave += QString::number(currentLocation.getTimeZone());
+    dataToSave += " ";
+    dataToSave += currentLocation.getDST() ? "1" : "0";
+
+
+    QFile f(QString(locationsTXTDir + "locations.txt"));
+    if (!f.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "Error opening locations.txt to save.";
+    }
+    QFile temp(QString(locationsTXTDir + "temp"));
+    if (!f.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        qDebug() << "Creating temp file for writing.";
+    }
+    QTextStream write(&temp);
+    QString line;
+
+    while (!f.atEnd()) {
+        line = f.readLine();
+        if (line == "\n") {
+            break;
+        }
+        write << line;
+    }
+    write << dataToSave;
+
+    f.close();
+    temp.close();
+    f.remove();
+    temp.rename(locationsTXTDir + "locations.txt");
 }

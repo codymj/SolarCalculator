@@ -1,5 +1,5 @@
 /*
- * SolarCalcs.h
+ * EditLocationDlg.cpp
  * 
  * Author:  Cody Johnson <codyj@protonmail.com>
 */

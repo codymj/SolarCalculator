@@ -1,5 +1,5 @@
 /*
- * SolarCalcs.h
+ * SolarCalc.h
  * 
  * Author:  Cody Johnson <codyj@protonmail.com>
 */
