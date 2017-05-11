@@ -39,6 +39,8 @@ private:
 
 private slots:
     void saveTableToFile();
+    void addRowToTable();
+    void deleteRowFromTable();
     void validateInput(QTableWidgetItem *);
     void setDateTimeInTable(QTableWidgetItem *);
 };

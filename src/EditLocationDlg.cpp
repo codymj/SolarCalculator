@@ -28,6 +28,14 @@ void EditLocationDlg::connectActions() {
         this->locationTableWidget, SIGNAL(itemClicked(QTableWidgetItem*)),
         this, SLOT(setDateTimeInTable(QTableWidgetItem *))
     );
+    connect(
+        this->addButton, SIGNAL(clicked()),
+        this, SLOT(addRowToTable())
+    );
+    connect(
+        this->deleteButton, SIGNAL(clicked()),
+        this, SLOT(deleteRowFromTable())
+    );
 }
 
 void EditLocationDlg::loadTableFromFile() {
@@ -207,4 +215,31 @@ void EditLocationDlg::setDateTimeInTable(QTableWidgetItem *item) {
         }
         delete timeDlg;
     }
+}
+
+void EditLocationDlg::addRowToTable() {
+    QDate date = QDate::currentDate();
+    QTime time = QTime::currentTime();
+    QTableWidgetItem *newId = new QTableWidgetItem("ID");
+    QTableWidgetItem *newLat = new QTableWidgetItem("0.000000");
+    QTableWidgetItem *newLon = new QTableWidgetItem("0.000000");
+    QTableWidgetItem *newDate = new QTableWidgetItem(date.toString("yyyy/MM/dd"));
+    QTableWidgetItem *newTime = new QTableWidgetItem(time.toString("HH:mm"));
+    QTableWidgetItem *newTz = new QTableWidgetItem("0");
+    QTableWidgetItem *newDst = new QTableWidgetItem("0");
+    QList<QTableWidgetItem *> newItemList;
+    newItemList << newId << newLat << newLon << newDate << newTime << newTz << newDst;
+
+    locationTableWidget->setSortingEnabled(false);
+    this->locationTableWidget->insertRow(0);
+    int cols = locationTableWidget->columnCount();
+    for (int i=0; i<cols; i++) {
+        locationTableWidget->setItem(0,i,newItemList.at(i));
+        qDebug() << newItemList.at(i)->text();
+    }
+}
+
+void EditLocationDlg::deleteRowFromTable() {
+    int row = this->locationTableWidget->currentRow();
+    this->locationTableWidget->removeRow(row);
 }
