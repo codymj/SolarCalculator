@@ -9,7 +9,7 @@
 // Constructor
 MainWindow::MainWindow() {
     setupUi(this);
-    
+
     // Setup custom date/time
     toggleCustomDateTime(customDateTime);
     this->dateEdit->setMinimumDate(minCustomDate);
@@ -99,6 +99,10 @@ void MainWindow::connectActions() {
         this->saveLocationAction, SIGNAL(triggered()),
         this, SLOT(saveLocation())
     );
+    connect(
+        this->editLocationAction, SIGNAL(triggered()),
+        this, SLOT(editLocations())
+    );
 }
 
 // Slot to update DST value
@@ -139,6 +143,16 @@ void MainWindow::toggleCustomDateTime(const int &state) {
     }
 }
 
+//
+void MainWindow::editLocations() {
+    // Get location from table
+    EditLocationDlg *editDlg = new EditLocationDlg(2);
+    if (editDlg->exec()) {
+        this->currentLocation = editDlg->loadLocation();
+    }
+    delete editDlg;
+}
+
 // Slot to load locations from file
 void MainWindow::loadLocation() {
     // Get location from table
@@ -172,15 +186,17 @@ void MainWindow::loadLocation() {
 
 // Slot to save locations to file
 void MainWindow::saveLocation() {
-    QString id;
+    storeDataIntoObj();
 
+    QString id;
     IdDlg *idDlg = new IdDlg();
     if (idDlg->exec()) {
         id = idDlg->idInput->text();
     }
+    delete idDlg;
 
     QString dataToSave;
-    dataToSave = this->currentLocation.getId();
+    dataToSave = id;
     dataToSave += "$";
     dataToSave += QString::number(this->currentLocation.getLocation().getLat());
     dataToSave += " ";
@@ -193,21 +209,24 @@ void MainWindow::saveLocation() {
     dataToSave += QString::number(currentLocation.getTimeZone());
     dataToSave += " ";
     dataToSave += currentLocation.getDST() ? "1" : "0";
+    qDebug() << dataToSave;
 
-
-    QFile f(QString(locationsTXTDir + "locations.txt"));
-    if (!f.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug() << "Error opening locations.txt to save.";
+    QFile locationsTxt("config/locations.txt");
+    if (!locationsTxt.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "Error opening locations.txt.";
+        return;
     }
-    QFile temp(QString(locationsTXTDir + "temp"));
-    if (!f.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        qDebug() << "Creating temp file for writing.";
+
+    QFile temp("config/temp");
+    if (!temp.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        qDebug() << "Error creating temp file.";
+        return;
     }
     QTextStream write(&temp);
-    QString line;
 
-    while (!f.atEnd()) {
-        line = f.readLine();
+    QString line = "";
+    while (!line.isNull()) {
+        line = locationsTxt.readLine();
         if (line == "\n") {
             break;
         }
@@ -215,8 +234,8 @@ void MainWindow::saveLocation() {
     }
     write << dataToSave;
 
-    f.close();
+    locationsTxt.close();
     temp.close();
-    f.remove();
-    temp.rename(locationsTXTDir + "locations.txt");
+    locationsTxt.remove();
+    temp.rename("config/locations.txt");
 }

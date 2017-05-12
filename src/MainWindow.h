@@ -27,7 +27,7 @@ class MainWindow : public QMainWindow, public Ui::MainWindow {
 public:
     // Constructors
     MainWindow();
-    
+
 public slots:
 
 private:
@@ -39,7 +39,6 @@ private:
     int customDateTime = 0; // 0 for disabled, 1 for enabled
     QDate minCustomDate = QDate(1800,1,1);
     QDate maxCustomDate = QDate(2099,12,31);
-    QString locationsTXTDir = "./config/";
     
     void connectActions();
 
@@ -54,6 +53,7 @@ private slots:
     void changeTime(const QTime &);
     void loadLocation();
     void saveLocation();
+    void editLocations();
 };
 
 #endif // _MAINWINDOW_H_

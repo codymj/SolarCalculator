@@ -40,7 +40,7 @@ public:
     QAction *closeAction;
     QAction *saveLocationAction;
     QAction *loadLocationAction;
-    QAction *LocationsAction;
+    QAction *editLocationAction;
     QAction *aboutAction;
     QWidget *centralwidget;
     QPushButton *calcButton;
@@ -109,8 +109,8 @@ public:
         saveLocationAction->setObjectName(QStringLiteral("saveLocationAction"));
         loadLocationAction = new QAction(MainWindow);
         loadLocationAction->setObjectName(QStringLiteral("loadLocationAction"));
-        LocationsAction = new QAction(MainWindow);
-        LocationsAction->setObjectName(QStringLiteral("LocationsAction"));
+        editLocationAction = new QAction(MainWindow);
+        editLocationAction->setObjectName(QStringLiteral("editLocationAction"));
         aboutAction = new QAction(MainWindow);
         aboutAction->setObjectName(QStringLiteral("aboutAction"));
         centralwidget = new QWidget(MainWindow);
@@ -373,7 +373,7 @@ public:
         menu_File->addAction(saveLocationAction);
         menu_File->addSeparator();
         menu_File->addAction(closeAction);
-        menu_Edit->addAction(LocationsAction);
+        menu_Edit->addAction(editLocationAction);
         menu_Help->addAction(aboutAction);
 
         retranslateUi(MainWindow);
@@ -387,7 +387,7 @@ public:
         closeAction->setText(QApplication::translate("MainWindow", "&Close", Q_NULLPTR));
         saveLocationAction->setText(QApplication::translate("MainWindow", "&Save Location", Q_NULLPTR));
         loadLocationAction->setText(QApplication::translate("MainWindow", "&Load Location", Q_NULLPTR));
-        LocationsAction->setText(QApplication::translate("MainWindow", "&Locations", Q_NULLPTR));
+        editLocationAction->setText(QApplication::translate("MainWindow", "&Locations", Q_NULLPTR));
         aboutAction->setText(QApplication::translate("MainWindow", "&About", Q_NULLPTR));
         calcButton->setText(QApplication::translate("MainWindow", "Calculate", Q_NULLPTR));
         latLabel->setText(QApplication::translate("MainWindow", "Latitude:", Q_NULLPTR));

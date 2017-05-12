@@ -8,7 +8,6 @@
 
 EditLocationDlg::EditLocationDlg(int mode) {
     setupUi(this);
-
     this->mode = mode;
 
     if (this->mode == 1) {    // Load location
@@ -33,11 +32,6 @@ EditLocationDlg::EditLocationDlg(int mode) {
     loadTableFromFile();
 }
 
-EditLocationDlg::EditLocationDlg(SolarCalc &sc) {
-    setupUi(this);
-    
-}
-
 void EditLocationDlg::connectActions() {
     connect(
         this->locationTableWidget, SIGNAL(itemClicked(QTableWidgetItem*)),
@@ -54,21 +48,22 @@ void EditLocationDlg::connectActions() {
 }
 
 void EditLocationDlg::loadTableFromFile() {
-    QFile f(QString(locationsTXTDir + "locations.txt"));
-    if (!f.open(QIODevice::ReadOnly | QIODevice::Text)) {
+    QFile locationsTxt("config/locations.txt");
+    if (!locationsTxt.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "Error opening locations.txt";
+        return;
     }
     
-    QString line;
-    while (!f.atEnd()) {
-        line = f.readLine();
-        if (line == "\n") {
-            break;
+    QString line = "";
+    while (!line.isNull()) {
+        line = locationsTxt.readLine();
+        if (line == "\n" || line == "") {
+            continue;
         }
         line = line.trimmed();
         parseLineInFile(line);
     }
-    f.close();
+    locationsTxt.close();
     this->locationTableWidget->resizeColumnsToContents();
 }
 
@@ -119,8 +114,18 @@ void EditLocationDlg::parseLineInFile(QString &l) {
 void EditLocationDlg::saveTableToFile() {
     int rows = locationTableWidget->rowCount();
     int cols = locationTableWidget->columnCount();
-    QFile l(QString(locationsTXTDir + "locations.txt"));
-    QFile temp(QString(locationsTXTDir + "temp"));
+
+    QFile locationsTxt("config/locations.txt");
+    if (!locationsTxt.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "Error opening locations.txt";
+        return;
+    }
+
+    QFile temp("config/temp");
+    if (!temp.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        qDebug() << "Error creating temp file.";
+        return;
+    }
     QTextStream write(&temp);
     QString line;
 
@@ -133,13 +138,6 @@ void EditLocationDlg::saveTableToFile() {
         }
     }
 
-    if (!l.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug() << "Creating locations.txt to store data.";
-    }
-    if (!temp.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        qDebug() << "Creating temp file for writing.";
-    }
-
     for (int i=0; i<rows; i++) {
         line.clear();
         for (int j=0; j<cols; j++) {
@@ -150,10 +148,10 @@ void EditLocationDlg::saveTableToFile() {
         write << line;
     }
 
-    l.close();
+    locationsTxt.close();
     temp.close();
-    l.remove();
-    temp.rename(QString(locationsTXTDir + "locations.txt"));
+    locationsTxt.remove();
+    temp.rename("config/locations.txt");
 
     this->close();
 }

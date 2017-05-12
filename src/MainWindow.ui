@@ -513,7 +513,7 @@
     <property name="title">
      <string>&amp;Edit</string>
     </property>
-    <addaction name="LocationsAction"/>
+    <addaction name="editLocationAction"/>
    </widget>
    <widget class="QMenu" name="menu_Help">
     <property name="title">
@@ -540,7 +540,7 @@
     <string>&amp;Load Location</string>
    </property>
   </action>
-  <action name="LocationsAction">
+  <action name="editLocationAction">
    <property name="text">
     <string>&amp;Locations</string>
    </property>

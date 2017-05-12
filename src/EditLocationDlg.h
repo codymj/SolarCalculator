@@ -17,6 +17,7 @@
 #include <QTextStream>
 #include <QTime>
 #include "Location.h"
+#include "MainWindow.h"
 #include "SolarCalc.h"
 #include "SelectDateDlg.h"
 #include "SelectTimeDlg.h"
@@ -27,7 +28,6 @@ class EditLocationDlg : public QDialog, public Ui::EditLocationDlg {
 
 public:
     EditLocationDlg(int);
-    EditLocationDlg(SolarCalc &);
 
     SolarCalc loadLocation();
 
@@ -36,7 +36,6 @@ private:
     QList<QTableWidgetItem *> tableItemList;
     void loadTableFromFile();
     void parseLineInFile(QString &);
-    QString locationsTXTDir = "./config/";
 
     void connectActions();
 
