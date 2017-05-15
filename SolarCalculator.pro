@@ -20,6 +20,7 @@ HEADERS += \
         src/SelectDateDlg.h\
         src/SelectTimeDlg.h\
         src/IdDlg.h \
+        src/AboutDlg.h \
 	src/ui_MainWindow.h
 SOURCES += \
 	src/Location.cpp \
@@ -29,11 +30,13 @@ SOURCES += \
         src/SelectDateDlg.cpp\
         src/SelectTimeDlg.cpp\
         src/IdDlg.cpp \
+        src/AboutDlg.cpp \
 	src/main.cpp
 FORMS += \
 	src/MainWindow.ui \
         src/EditLocationDlg.ui \
         src/SelectDateDlg.ui \
         src/IdDlg.ui \
+        src/AboutDlg.ui \
         src/SelectTimeDlg.ui
 

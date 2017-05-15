@@ -103,6 +103,10 @@ void MainWindow::connectActions() {
         this->editLocationAction, SIGNAL(triggered()),
         this, SLOT(editLocations())
     );
+    connect(
+        this->aboutAction, SIGNAL(triggered()),
+        this, SLOT(showAboutDlg())
+    );
 }
 
 // Slot to update DST value
@@ -250,4 +254,11 @@ void MainWindow::saveLocation() {
     temp.close();
     locationsTxt.remove();
     temp.rename("config/locations.txt");
+}
+
+//
+void MainWindow::showAboutDlg() {
+    AboutDlg *aboutDlg = new AboutDlg();
+    aboutDlg->exec();
+    delete aboutDlg;
 }

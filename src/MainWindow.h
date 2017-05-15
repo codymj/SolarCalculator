@@ -16,6 +16,7 @@
 #include <QString>
 #include <QTime>
 #include "ui_MainWindow.h"
+#include "AboutDlg.h"
 #include "Location.h"
 #include "SolarCalc.h"
 #include "IdDlg.h"
@@ -54,6 +55,7 @@ private slots:
     void loadLocation();
     void saveLocation();
     void editLocations();
+    void showAboutDlg();
 };
 
 #endif // _MAINWINDOW_H_
