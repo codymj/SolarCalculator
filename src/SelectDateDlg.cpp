@@ -13,6 +13,8 @@ SelectDateDlg::SelectDateDlg() {
     connectActions();
 
     this->date = QDate::currentDate();
+    this->calendarWidget->setMinimumDate(minDate);
+    this->calendarWidget->setMaximumDate(maxDate);
 }
 
 void SelectDateDlg::connectActions() {

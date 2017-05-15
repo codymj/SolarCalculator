@@ -45,7 +45,7 @@ private:
     SolarCalc currentLocation;
 
 private slots:
-    void storeDataIntoObj();
+    SolarCalc storeDataIntoObj();
     void runCalculation();
     void updateDST(const int &);
     void toggleCustomDateTime(const int &);

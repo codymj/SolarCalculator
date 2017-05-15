@@ -53,14 +53,17 @@ public:
     QHBoxLayout *horizontalLayout;
     QLineEdit *latInput;
     QComboBox *latCombo;
+    QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout_2;
     QLabel *lonLabel;
     QHBoxLayout *horizontalLayout_2;
     QLineEdit *lonInput;
     QComboBox *lonCombo;
+    QSpacerItem *horizontalSpacer_2;
     QVBoxLayout *verticalLayout_3;
     QLabel *label_5;
     QLineEdit *tzInput;
+    QSpacerItem *horizontalSpacer_6;
     QCheckBox *dstCheckBox;
     QHBoxLayout *horizontalLayout_3;
     QGridLayout *gridLayout;
@@ -104,8 +107,8 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(540, 300);
-        MainWindow->setMinimumSize(QSize(540, 300));
-        MainWindow->setMaximumSize(QSize(540, 300));
+        MainWindow->setMinimumSize(QSize(200, 200));
+        MainWindow->setMaximumSize(QSize(1000, 1000));
         closeAction = new QAction(MainWindow);
         closeAction->setObjectName(QStringLiteral("closeAction"));
         saveLocationAction = new QAction(MainWindow);
@@ -122,6 +125,7 @@ public:
         gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
         groupBox = new QGroupBox(centralwidget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
+        groupBox->setMinimumSize(QSize(0, 150));
         verticalLayout_4 = new QVBoxLayout(groupBox);
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
         horizontalLayout_4 = new QHBoxLayout();
@@ -159,6 +163,10 @@ public:
 
         horizontalLayout_4->addLayout(verticalLayout);
 
+        horizontalSpacer = new QSpacerItem(20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer);
+
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         lonLabel = new QLabel(groupBox);
@@ -189,6 +197,10 @@ public:
 
         horizontalLayout_4->addLayout(verticalLayout_2);
 
+        horizontalSpacer_2 = new QSpacerItem(20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_2);
+
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         label_5 = new QLabel(groupBox);
@@ -201,11 +213,16 @@ public:
         tzInput->setMinimumSize(QSize(70, 0));
         tzInput->setMaximumSize(QSize(70, 16777215));
         tzInput->setContextMenuPolicy(Qt::ActionsContextMenu);
+        tzInput->setMaxLength(5);
 
         verticalLayout_3->addWidget(tzInput);
 
 
         horizontalLayout_4->addLayout(verticalLayout_3);
+
+        horizontalSpacer_6 = new QSpacerItem(20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_6);
 
         dstCheckBox = new QCheckBox(groupBox);
         dstCheckBox->setObjectName(QStringLiteral("dstCheckBox"));
@@ -362,11 +379,11 @@ public:
 
         gridLayout_3->addWidget(groupBox_2, 1, 0, 2, 1);
 
-        verticalSpacer = new QSpacerItem(20, 82, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer = new QSpacerItem(20, 75, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         gridLayout_3->addItem(verticalSpacer, 1, 2, 1, 1);
 
-        horizontalSpacer_5 = new QSpacerItem(31, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_5 = new QSpacerItem(24, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         gridLayout_3->addItem(horizontalSpacer_5, 2, 1, 1, 1);
 
@@ -441,6 +458,7 @@ public:
 #ifndef QT_NO_TOOLTIP
         tzInput->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>UTC offset of the location. For example, Florida, US' UTC offset is -5. China's UTC offset is 8. For 15 minute offsets, such as in Nepal (UTC +5:45), enter 5.75.</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
+        tzInput->setText(QApplication::translate("MainWindow", "0", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         dstCheckBox->setToolTip(QApplication::translate("MainWindow", "Is Daylight Savings Time in affect at location?", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP

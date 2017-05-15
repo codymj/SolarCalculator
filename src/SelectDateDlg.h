@@ -20,6 +20,8 @@ public:
     QString getDateStr();
 private:
     QDate date;
+    QDate minDate = QDate(1800,1,1);
+    QDate maxDate = QDate(2099,12,31);
     QString dateStr;
 
     void connectActions();

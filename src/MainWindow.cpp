@@ -33,7 +33,7 @@ MainWindow::MainWindow() {
     connectActions();
 }
 
-void MainWindow::storeDataIntoObj() {
+SolarCalc MainWindow::storeDataIntoObj() {
     double lat = latInput->text().toDouble();
     double lon = lonInput->text().toDouble();
     this->timeZone = tzInput->text().toDouble();
@@ -48,12 +48,12 @@ void MainWindow::storeDataIntoObj() {
         this->date = QDate::currentDate();
     }
 
-    this->currentLocation = SolarCalc(date, time, location, timeZone, dst);
+    return SolarCalc(date, time, location, timeZone, dst);
 }
 
 // Slot to run calculation when button is clicked
 void MainWindow::runCalculation() {
-    storeDataIntoObj();
+    this->currentLocation = storeDataIntoObj();
     this->currentLocation.calculate();
     
     // Set results
@@ -147,18 +147,24 @@ void MainWindow::toggleCustomDateTime(const int &state) {
 void MainWindow::editLocations() {
     // Get location from table
     EditLocationDlg *editDlg = new EditLocationDlg(2);
-    if (editDlg->exec()) {
-        this->currentLocation = editDlg->loadLocation();
-    }
+    editDlg->exec();
     delete editDlg;
 }
 
 // Slot to load locations from file
 void MainWindow::loadLocation() {
+    // Save current input data in case load is cancelled
+    SolarCalc inputBackup = storeDataIntoObj();
+
     // Get location from table
     EditLocationDlg *editDlg = new EditLocationDlg(1);
     if (editDlg->exec()) {
         this->currentLocation = editDlg->loadLocation();
+    }
+    else {
+        this->currentLocation = inputBackup;
+        delete editDlg;
+        return;
     }
     delete editDlg;
 
@@ -181,6 +187,12 @@ void MainWindow::loadLocation() {
     this->dateEdit->setDate(this->currentLocation.getDate());
     this->timeEdit->setTime(this->currentLocation.getTime());
     this->tzInput->setText(QString::number(this->currentLocation.getTimeZone()));
+    if (this->tzInput->text().toDouble() > 14.0) {
+        this->tzInput->setText("14");
+    }
+    else if (this->tzInput->text().toDouble() < -12.0) {
+        this->tzInput->setText("-12");
+    }
     this->dstCheckBox->setChecked(this->currentLocation.getDST());
 }
 

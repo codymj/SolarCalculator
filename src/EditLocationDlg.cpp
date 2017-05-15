@@ -268,8 +268,8 @@ void EditLocationDlg::createLocationToLoad() {
     QDate date;
     QTime time;
     Location location;
-    double tz;
-    bool dst;
+    double tz = 0.0;
+    bool dst = false;
 
     for (int i=0; i<cols; i++) {
         item = this->locationTableWidget->item(row,i);
