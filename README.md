@@ -3,5 +3,5 @@ Small app to calculate sunrise and sunset based on date, latitude, longitude, ti
 Thanks to https://www.esrl.noaa.gov/gmd/grad/solcalc/
 
 <p align="center">
-	<img src="https://i.imgur.com/qx0yIL0.png" />
+	<img src="https://i.imgur.com/uYycvh5.png" />
 </p>
