@@ -35,8 +35,8 @@ private:
     QDate date;
     QTime time;
     Location location;
-    double timeZone;
-    bool dst;
+    double timeZone = 0;
+    bool dst = false;
     int customDateTime = 0; // 0 for disabled, 1 for enabled
     QDate minCustomDate = QDate(1800,1,1);
     QDate maxCustomDate = QDate(2099,12,31);
