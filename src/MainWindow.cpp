@@ -40,12 +40,13 @@ SolarCalc MainWindow::storeDataIntoObj() {
     int ns = latCombo->currentIndex();
     int ew = lonCombo->currentIndex();
     this->location = Location(lat, ns, lon, ew);
-    this->time = this->timeEdit->time();
     if (customDateTime) {
         this->date = dateEdit->date();
+        this->time = this->timeEdit->time();
     }
     else {
         this->date = QDate::currentDate();
+        this->time = QTime::currentTime();
     }
 
     return SolarCalc(date, time, location, timeZone, dst);
