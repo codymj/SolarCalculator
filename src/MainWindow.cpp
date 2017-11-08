@@ -138,6 +138,8 @@ void MainWindow::toggleCustomDateTime(const int &state) {
         this->timeEdit->setEnabled(true);
         changeDate(dateEdit->date());
         changeTime(timeEdit->time());
+	this->dateLabel->setEnabled(false);
+	this->timeLabel->setEnabled(false);
     }
     else {
         this->customDateTime = 0;
@@ -145,6 +147,8 @@ void MainWindow::toggleCustomDateTime(const int &state) {
         this->timeEdit->setEnabled(false);
         changeDate(QDate::currentDate());
         changeTime(QTime::currentTime());
+	this->dateLabel->setEnabled(true);
+	this->timeLabel->setEnabled(true);
     }
 }
 
