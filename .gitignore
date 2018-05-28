@@ -1,0 +1,10 @@
+.qmake.stash
+Makefile
+SolarCalculator
+SolarCalculator.pro.user
+SolarCalculator.pro.user.88e6f4d
+SolarCalculator.pro.user.cb42a6e
+SolarCalculator.sublime-project
+SolarCalculator.sublime-workspace
+moc/
+obj/
