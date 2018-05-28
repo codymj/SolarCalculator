@@ -1,9 +1,9 @@
-/*
- * IdDlg.h
- *
- * Author:  Cody Johnson <codyj@protonmail.com>
-*/
-
+// =============================================================================
+//
+// IdDlg.h
+// Author: Cody Johnson <codyj@protonmail.com>
+//
+// =============================================================================
 #ifndef _IDDLG_H_
 #define _IDDLG_H_
 

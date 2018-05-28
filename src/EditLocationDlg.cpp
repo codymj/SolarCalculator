@@ -1,9 +1,9 @@
-/*
- * EditLocationDlg.cpp
- * 
- * Author:  Cody Johnson <codyj@protonmail.com>
-*/
-
+// =============================================================================
+//
+// EditLocationDlg.cpp
+// Author: Cody Johnson <codyj@protonmail.com>
+//
+// =============================================================================
 #include "EditLocationDlg.h"
 
 EditLocationDlg::EditLocationDlg(int mode) {

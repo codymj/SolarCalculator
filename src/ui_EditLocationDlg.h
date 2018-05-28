@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'EditLocationDlg.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.2
+** Created by: Qt User Interface Compiler version 5.11.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,9 +10,7 @@
 #define UI_EDITLOCATIONDLG_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
@@ -124,25 +122,25 @@ public:
 
     void retranslateUi(QDialog *EditLocationDlg)
     {
-        EditLocationDlg->setWindowTitle(QApplication::translate("EditLocationDlg", "Load Location", Q_NULLPTR));
+        EditLocationDlg->setWindowTitle(QApplication::translate("EditLocationDlg", "Load Location", nullptr));
         QTableWidgetItem *___qtablewidgetitem = locationTableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QApplication::translate("EditLocationDlg", "ID", Q_NULLPTR));
+        ___qtablewidgetitem->setText(QApplication::translate("EditLocationDlg", "ID", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = locationTableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("EditLocationDlg", "Latitude", Q_NULLPTR));
+        ___qtablewidgetitem1->setText(QApplication::translate("EditLocationDlg", "Latitude", nullptr));
         QTableWidgetItem *___qtablewidgetitem2 = locationTableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QApplication::translate("EditLocationDlg", "Longitude", Q_NULLPTR));
+        ___qtablewidgetitem2->setText(QApplication::translate("EditLocationDlg", "Longitude", nullptr));
         QTableWidgetItem *___qtablewidgetitem3 = locationTableWidget->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QApplication::translate("EditLocationDlg", "Date", Q_NULLPTR));
+        ___qtablewidgetitem3->setText(QApplication::translate("EditLocationDlg", "Date", nullptr));
         QTableWidgetItem *___qtablewidgetitem4 = locationTableWidget->horizontalHeaderItem(4);
-        ___qtablewidgetitem4->setText(QApplication::translate("EditLocationDlg", "Time", Q_NULLPTR));
+        ___qtablewidgetitem4->setText(QApplication::translate("EditLocationDlg", "Time", nullptr));
         QTableWidgetItem *___qtablewidgetitem5 = locationTableWidget->horizontalHeaderItem(5);
-        ___qtablewidgetitem5->setText(QApplication::translate("EditLocationDlg", "Time Zone", Q_NULLPTR));
+        ___qtablewidgetitem5->setText(QApplication::translate("EditLocationDlg", "Time Zone", nullptr));
         QTableWidgetItem *___qtablewidgetitem6 = locationTableWidget->horizontalHeaderItem(6);
-        ___qtablewidgetitem6->setText(QApplication::translate("EditLocationDlg", "DST", Q_NULLPTR));
-        addButton->setText(QApplication::translate("EditLocationDlg", "&Add", Q_NULLPTR));
-        deleteButton->setText(QApplication::translate("EditLocationDlg", "&Delete", Q_NULLPTR));
-        cancelButton->setText(QApplication::translate("EditLocationDlg", "&Cancel", Q_NULLPTR));
-        okButton->setText(QApplication::translate("EditLocationDlg", "&Ok", Q_NULLPTR));
+        ___qtablewidgetitem6->setText(QApplication::translate("EditLocationDlg", "DST", nullptr));
+        addButton->setText(QApplication::translate("EditLocationDlg", "&Add", nullptr));
+        deleteButton->setText(QApplication::translate("EditLocationDlg", "&Delete", nullptr));
+        cancelButton->setText(QApplication::translate("EditLocationDlg", "&Cancel", nullptr));
+        okButton->setText(QApplication::translate("EditLocationDlg", "&Ok", nullptr));
     } // retranslateUi
 
 };

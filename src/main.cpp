@@ -1,9 +1,9 @@
-/*
- * main.cpp
- * 
- * Author:  Cody Johnson <codyj@protonmail.com>
-*/
-
+// =============================================================================
+//
+// main.cpp
+// Author: Cody Johnson <codyj@protonmail.com>
+//
+// =============================================================================
 #include <QtWidgets/QApplication>
 #include "MainWindow.h"
 

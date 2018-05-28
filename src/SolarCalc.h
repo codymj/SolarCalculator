@@ -1,9 +1,9 @@
-/*
- * SolarCalc.h
- * 
- * Author:  Cody Johnson <codyj@protonmail.com>
-*/
-
+// =============================================================================
+//
+// SolarCalc.h
+// Author: Cody Johnson <codyj@protonmail.com>
+//
+// =============================================================================
 #ifndef _SOLARCALC_H_
 #define _SOLARCALC_H_
 

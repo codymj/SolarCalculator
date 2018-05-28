@@ -1,9 +1,9 @@
-/*
- * MainWindow.cpp
- * 
- * Author:  Cody Johnson <codyj@protonmail.com>
-*/
-
+// =============================================================================
+//
+// MainWindow.cpp
+// Author: Cody Johnson <codyj@protonmail.com>
+//
+// =============================================================================
 #include "MainWindow.h"
 
 // Constructor
@@ -19,15 +19,18 @@ MainWindow::MainWindow() {
     
     // Create lat and lon regex & validators
     QRegExp latRegExp(
-    "(\\+)?(?:90(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\\.[0-9]{1,6})?))");
-    QRegExp lonRegExp("(\\+)?(?:180(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\\.[0-9]{1,6})?))");
+        "(\\+)?(?:90(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\\.[0-9]{1,6})?))");
+    QRegExp lonRegExp(
+        "(\\+)?(?:180(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\\.[0-9]{1,6})?))");
     QValidator *latValidator = new QRegExpValidator(latRegExp, this);
     QValidator *lonValidator = new QRegExpValidator(lonRegExp, this);
     this->latInput->setValidator(latValidator);
     this->lonInput->setValidator(lonValidator);
     
-    this->dateLabel->setText(QDate::currentDate().toString(QString("dd/MMM/yyyy")));
-    this->timeLabel->setText(QTime::currentTime().toString(QString("HH:mm")));
+    this->dateLabel->setText(
+        QDate::currentDate().toString(QString("dd/MMM/yyyy")));
+    this->timeLabel->setText(
+        QTime::currentTime().toString(QString("HH:mm")));
     
     // Connect signals and slots
     connectActions();
@@ -178,9 +181,12 @@ void MainWindow::loadLocation() {
     delete editDlg;
 
     // Enter location data
-    this->setWindowTitle("Solar Calculator - " + this->currentLocation.getId());
-    this->latInput->setText(QString::number(this->currentLocation.getLocation().getLat()));
-    this->lonInput->setText(QString::number(this->currentLocation.getLocation().getLon()));
+    this->setWindowTitle(
+        "Solar Calculator - " + this->currentLocation.getId());
+    this->latInput->setText(
+        QString::number(this->currentLocation.getLocation().getLat()));
+    this->lonInput->setText(
+        QString::number(this->currentLocation.getLocation().getLon()));
     if (this->latInput->text().toDouble() >= 0) {
         this->latCombo->setCurrentIndex(0);
     }
@@ -195,7 +201,8 @@ void MainWindow::loadLocation() {
     }
     this->dateEdit->setDate(this->currentLocation.getDate());
     this->timeEdit->setTime(this->currentLocation.getTime());
-    this->tzInput->setText(QString::number(this->currentLocation.getTimeZone()));
+    this->tzInput->setText(
+        QString::number(this->currentLocation.getTimeZone()));
     if (this->tzInput->text().toDouble() > 14.0) {
         this->tzInput->setText("14");
     }

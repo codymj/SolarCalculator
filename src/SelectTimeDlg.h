@@ -1,9 +1,9 @@
-/*
- * SelectTimeDlg.h
- *
- * Author:  Cody Johnson <codyj@protonmail.com>
-*/
-
+// =============================================================================
+//
+// SelectTimeDlg.h
+// Author: Cody Johnson <codyj@protonmail.com>
+//
+// =============================================================================
 #ifndef _SELECTTIMELG_H_
 #define _SELECTTIMEDLG_H_
 

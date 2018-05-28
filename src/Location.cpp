@@ -1,9 +1,9 @@
-/*
- * Location.cpp
- * 
- * Author:  Cody Johnson <codyj@protonmail.com>
-*/
-
+// =============================================================================
+//
+// Location.cpp
+// Author: Cody Johnson <codyj@protonmail.com>
+//
+// =============================================================================
 #include "Location.h"
 
 // Default onstructor

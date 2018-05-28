@@ -1,9 +1,9 @@
-/*
- * Location.h
- * 
- * Author:  Cody Johnson <codyj@protonmail.com>
-*/
-
+// =============================================================================
+//
+// Location.h
+// Author: Cody Johnson <codyj@protonmail.com>
+//
+// =============================================================================
 #ifndef _LOCATION_H_
 #define _LOCATION_H_
 

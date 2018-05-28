@@ -1,9 +1,9 @@
-/*
- * SolarCalc.cpp
- * 
- * Author:  Cody Johnson <codyj@protonmail.com>
-*/
-
+// =============================================================================
+//
+// SolarCalc.cpp
+// Author: Cody Johnson <codyj@protonmail.com>
+//
+// =============================================================================
 #include "SolarCalc.h"
 
 // Constructor
@@ -11,7 +11,8 @@ SolarCalc::SolarCalc() {
 
 }
 
-SolarCalc::SolarCalc(QDate &d, QTime &t, Location &l, const double &tz, const bool &dst) {
+SolarCalc::SolarCalc(
+QDate &d, QTime &t, Location &l, const double &tz, const bool &dst) {
     this->date = d;
     this->time = t;
     this->location = l;
@@ -19,7 +20,8 @@ SolarCalc::SolarCalc(QDate &d, QTime &t, Location &l, const double &tz, const bo
     this->dst = dst;
     
     this->julianDay = d.toJulianDay() - 0.5;
-    this->localTime = t.hour()*60 - (dst? 60.0 : 0.0) + t.minute() + t.second()/60; // In minutes
+    this->localTime = t.hour()*60 -
+        (dst? 60.0 : 0.0) + t.minute() + t.second()/60; // In minutes
 }
 
 //
@@ -234,20 +236,23 @@ double SolarCalc::equationOfTime(const double &t) {
     double sinm = sin(m*RAD);
     double sin2m = sin(2.0*m*RAD);
     
-    double Etime = y*sin2L0 - 2.0*e*sinm + 4.0*e*y*sinm*cos2L0 - 0.5*y*y*sin4L0 - 1.25*e*e*sin2m;
+    double Etime = y*sin2L0 - 2.0*e*sinm + 4.0*e*y*sinm*cos2L0
+        - 0.5*y*y*sin4L0 - 1.25*e*e*sin2m;
     return 4.0*Etime*DEG;   // In minutes of time
 }
 
 //
 double SolarCalc::hourAngleSunrise(const double &lat, const double &sd) {
-    double HAarg = cos(90.833*RAD)/(cos(lat*RAD)*cos(sd*RAD)) - tan(lat*RAD)*tan(sd*RAD);
+    double HAarg = cos(90.833*RAD)/(cos(lat*RAD)*cos(sd*RAD))
+        - tan(lat*RAD)*tan(sd*RAD);
     
     return acos(HAarg); // Hour Angle (HA) in radians. For sunset, use -HA
 }
 
 //
-void SolarCalc::azimuthElevation(const double &T, const double &tLocal, const double &lat,
-const double &lon, const double &tz) {
+void SolarCalc::azimuthElevation(
+const double &T, const double &tLocal,
+const double &lat, const double &lon, const double &tz) {
     double eqTime = equationOfTime(T);
     double theta = sunDeclination(T);
     double solarTimeFix = eqTime + 4.0*lon - 60.0*tz;
@@ -270,7 +275,8 @@ const double &lon, const double &tz) {
         hourAngle += 360.0;
     }
     
-    double csz = sin(lat*RAD)*sin(theta*RAD) + cos(lat*RAD)*cos(theta*RAD)*cos(hourAngle*RAD);
+    double csz = sin(lat*RAD)*sin(theta*RAD)
+        + cos(lat*RAD)*cos(theta*RAD)*cos(hourAngle*RAD);
     if (csz > 1.0) {
         csz = 1.0;
     }
@@ -321,11 +327,13 @@ const double &lon, const double &tz) {
     else {
         double te = tan(elevation*RAD);
         if (elevation > 5.0 && elevation < 85.0) {
-            refractionCorrection = 58.1/te - 0.07/pow(te,3) + 0.000086/pow(te,5);
+            refractionCorrection = 58.1/te
+                - 0.07/pow(te,3) + 0.000086/pow(te,5);
         }
         else if (elevation > -0.575 && elevation < 5.0) {
-            refractionCorrection = 1735.0 - 518.2*elevation + 103.4*pow(elevation,2) -
-                12.79*pow(elevation,3) + 0.711*pow(elevation,4);
+            refractionCorrection = 1735.0 - 518.2*elevation
+                + 103.4*pow(elevation,2)
+                - 12.79*pow(elevation,3) + 0.711*pow(elevation,4);
         }
         else {
             refractionCorrection = -20.774/te;
@@ -347,8 +355,8 @@ const double &lon, const double &tz) {
 }
 
 //
-void SolarCalc::solarNoon(const double &jd, const double &lon, const double &tz,
-const bool &dst) {
+void SolarCalc::solarNoon(const double &jd, const double &lon,
+const double &tz, const bool &dst) {
     double tNoon = timeJulianCent(jd - lon/360.0);
     double eqTime = equationOfTime(tNoon);
     double solarNoonOffset = 720.0 - lon*4.0 - eqTime;    // In minutes
@@ -418,7 +426,7 @@ const double &tz, const bool &dst) {
             }
         }
     }
-    else {  // No sunrise or sunset time found, find next/prev sunrise/sunset date
+    else {  // No sunrise or sunset time found, find next/prev sunrise/sunset
         double doy = (double)doyFromJD(jd);
         QDate newDate;
         
@@ -451,8 +459,9 @@ const double &tz, const bool &dst) {
 }
 
 //
-double SolarCalc::jdOfNextPrevRiseSet(const int &next, const int &i, const double &jd,
-const double &lat, const double &lon, const double &tz, const bool &dst) {
+double SolarCalc::jdOfNextPrevRiseSet(const int &next,
+const int &i, const double &jd, const double &lat,
+const double &lon, const double &tz, const bool &dst) {
     double jDay = jd;
     int increment = next ? 1 : -1;
     double t = sunriseSunsetUTC(i, jd, lat, lon);
@@ -479,16 +488,19 @@ void SolarCalc::calculate() {
     double T = timeJulianCent(totalTime);
     
     // Azimuth & elevation
-    azimuthElevation(T, localTime, location.getLat(), location.getLon(), timeZone);
+    azimuthElevation(T, localTime, location.getLat(),
+        location.getLon(), timeZone);
     
     // Noon
     solarNoon(julianDay, location.getLon(), timeZone, dst);
     
     // Sunrise
-    sunriseSunset(1, julianDay, location.getLat(), location.getLon(), timeZone, dst);
+    sunriseSunset(1, julianDay, location.getLat(),
+        location.getLon(), timeZone, dst);
     
     // Sunset
-    sunriseSunset(0, julianDay, location.getLat(), location.getLon(), timeZone, dst);
+    sunriseSunset(0, julianDay, location.getLat(),
+        location.getLon(), timeZone, dst);
 }
 
 // Returns sunrise time as a QString, HH:MM

@@ -1,9 +1,9 @@
-/*
- * MainWindow.h
- * 
- * Author:  Cody Johnson <codyj@protonmail.com>
-*/
-
+// =============================================================================
+//
+// MainWindow.h
+// Author: Cody Johnson <codyj@protonmail.com>
+//
+// =============================================================================
 #ifndef _MAINWINDOW_H_
 #define _MAINWINDOW_H_
 

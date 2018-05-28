@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'MainWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.2
+** Created by: Qt User Interface Compiler version 5.11.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -13,7 +13,6 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDateEdit>
@@ -21,7 +20,6 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
@@ -147,6 +145,8 @@ public:
         horizontalLayout->addWidget(latInput);
 
         latCombo = new QComboBox(groupBox);
+        latCombo->addItem(QString());
+        latCombo->addItem(QString());
         latCombo->setObjectName(QStringLiteral("latCombo"));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
@@ -184,6 +184,8 @@ public:
         horizontalLayout_2->addWidget(lonInput);
 
         lonCombo = new QComboBox(groupBox);
+        lonCombo->addItem(QString());
+        lonCombo->addItem(QString());
         lonCombo->setObjectName(QStringLiteral("lonCombo"));
         sizePolicy.setHeightForWidth(lonCombo->sizePolicy().hasHeightForWidth());
         lonCombo->setSizePolicy(sizePolicy);
@@ -421,81 +423,77 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Solar Calculator", Q_NULLPTR));
-        closeAction->setText(QApplication::translate("MainWindow", "&Close", Q_NULLPTR));
-        saveLocationAction->setText(QApplication::translate("MainWindow", "&Save Location", Q_NULLPTR));
-        loadLocationAction->setText(QApplication::translate("MainWindow", "&Load Location", Q_NULLPTR));
-        editLocationAction->setText(QApplication::translate("MainWindow", "&Locations", Q_NULLPTR));
-        aboutAction->setText(QApplication::translate("MainWindow", "&About", Q_NULLPTR));
-        groupBox->setTitle(QApplication::translate("MainWindow", "Inputs", Q_NULLPTR));
-        latLabel->setText(QApplication::translate("MainWindow", "Latitude:", Q_NULLPTR));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Solar Calculator", nullptr));
+        closeAction->setText(QApplication::translate("MainWindow", "&Close", nullptr));
+        saveLocationAction->setText(QApplication::translate("MainWindow", "&Save Location", nullptr));
+        loadLocationAction->setText(QApplication::translate("MainWindow", "&Load Location", nullptr));
+        editLocationAction->setText(QApplication::translate("MainWindow", "&Locations", nullptr));
+        aboutAction->setText(QApplication::translate("MainWindow", "&About", nullptr));
+        groupBox->setTitle(QApplication::translate("MainWindow", "Inputs", nullptr));
+        latLabel->setText(QApplication::translate("MainWindow", "Latitude:", nullptr));
 #ifndef QT_NO_TOOLTIP
-        latInput->setToolTip(QApplication::translate("MainWindow", "Latitude of location as decimal.", Q_NULLPTR));
+        latInput->setToolTip(QApplication::translate("MainWindow", "Latitude of location as decimal.", nullptr));
 #endif // QT_NO_TOOLTIP
-        latInput->setText(QApplication::translate("MainWindow", "0.000000", Q_NULLPTR));
-        latCombo->clear();
-        latCombo->insertItems(0, QStringList()
-         << QApplication::translate("MainWindow", "N", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "S", Q_NULLPTR)
-        );
+        latInput->setText(QApplication::translate("MainWindow", "0.000000", nullptr));
+        latCombo->setItemText(0, QApplication::translate("MainWindow", "N", nullptr));
+        latCombo->setItemText(1, QApplication::translate("MainWindow", "S", nullptr));
+
 #ifndef QT_NO_TOOLTIP
-        latCombo->setToolTip(QApplication::translate("MainWindow", "Is the latitude north or south of the equator?", Q_NULLPTR));
+        latCombo->setToolTip(QApplication::translate("MainWindow", "Is the latitude north or south of the equator?", nullptr));
 #endif // QT_NO_TOOLTIP
-        lonLabel->setText(QApplication::translate("MainWindow", "Longitude:", Q_NULLPTR));
+        lonLabel->setText(QApplication::translate("MainWindow", "Longitude:", nullptr));
 #ifndef QT_NO_TOOLTIP
-        lonInput->setToolTip(QApplication::translate("MainWindow", "Longitude of location as decimal.", Q_NULLPTR));
+        lonInput->setToolTip(QApplication::translate("MainWindow", "Longitude of location as decimal.", nullptr));
 #endif // QT_NO_TOOLTIP
-        lonInput->setText(QApplication::translate("MainWindow", "0.000000", Q_NULLPTR));
-        lonCombo->clear();
-        lonCombo->insertItems(0, QStringList()
-         << QApplication::translate("MainWindow", "E", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "W", Q_NULLPTR)
-        );
+        lonInput->setText(QApplication::translate("MainWindow", "0.000000", nullptr));
+        lonCombo->setItemText(0, QApplication::translate("MainWindow", "E", nullptr));
+        lonCombo->setItemText(1, QApplication::translate("MainWindow", "W", nullptr));
+
 #ifndef QT_NO_TOOLTIP
-        lonCombo->setToolTip(QApplication::translate("MainWindow", "Is the longitude east or west of the Prime Meridian?", Q_NULLPTR));
+        lonCombo->setToolTip(QApplication::translate("MainWindow", "Is the longitude east or west of the Prime Meridian?", nullptr));
 #endif // QT_NO_TOOLTIP
-        label_5->setText(QApplication::translate("MainWindow", "Time Zone:", Q_NULLPTR));
+        label_5->setText(QApplication::translate("MainWindow", "Time Zone:", nullptr));
 #ifndef QT_NO_TOOLTIP
-        tzInput->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>UTC offset of the location. For example, Florida, US' UTC offset is -5. China's UTC offset is 8. For 15 minute offsets, such as in Nepal (UTC +5:45), enter 5.75.</p></body></html>", Q_NULLPTR));
+        tzInput->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>UTC offset of the location. For example, Florida, US' UTC offset is -5. China's UTC offset is 8. For 15 minute offsets, such as in Nepal (UTC +5:45), enter 5.75.</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
-        tzInput->setText(QApplication::translate("MainWindow", "0", Q_NULLPTR));
+        tzInput->setText(QApplication::translate("MainWindow", "0", nullptr));
 #ifndef QT_NO_TOOLTIP
-        dstCheckBox->setToolTip(QApplication::translate("MainWindow", "Is Daylight Savings Time in affect at location?", Q_NULLPTR));
+        dstCheckBox->setToolTip(QApplication::translate("MainWindow", "Is Daylight Savings Time in affect at location?", nullptr));
 #endif // QT_NO_TOOLTIP
-        dstCheckBox->setText(QApplication::translate("MainWindow", "DST?", Q_NULLPTR));
-        label_4->setText(QApplication::translate("MainWindow", "Date:", Q_NULLPTR));
+        dstCheckBox->setText(QApplication::translate("MainWindow", "DST?", nullptr));
+        label_4->setText(QApplication::translate("MainWindow", "Date:", nullptr));
         dateLabel->setText(QString());
-        label_7->setText(QApplication::translate("MainWindow", "Time:", Q_NULLPTR));
+        label_7->setText(QApplication::translate("MainWindow", "Time:", nullptr));
         timeLabel->setText(QString());
-        customDateCheckBox->setText(QApplication::translate("MainWindow", "Custom Date:", Q_NULLPTR));
-        dateEdit->setDisplayFormat(QApplication::translate("MainWindow", "dd/MMM/yyyy", Q_NULLPTR));
-        timeEdit->setDisplayFormat(QApplication::translate("MainWindow", "HH:mm", Q_NULLPTR));
-        groupBox_2->setTitle(QApplication::translate("MainWindow", "Outputs", Q_NULLPTR));
-        label->setText(QApplication::translate("MainWindow", "Sunrise:", Q_NULLPTR));
-        sunriseLabel->setText(QApplication::translate("MainWindow", "--:--", Q_NULLPTR));
-        label_2->setText(QApplication::translate("MainWindow", "Noon:", Q_NULLPTR));
-        noonLabel->setText(QApplication::translate("MainWindow", "--:--", Q_NULLPTR));
-        label_3->setText(QApplication::translate("MainWindow", "Sunset:", Q_NULLPTR));
-        sunsetLabel->setText(QApplication::translate("MainWindow", "--:--", Q_NULLPTR));
-        label_6->setText(QApplication::translate("MainWindow", "Equation of Time (minutes):", Q_NULLPTR));
+        customDateCheckBox->setText(QApplication::translate("MainWindow", "Custom Date:", nullptr));
+        dateEdit->setDisplayFormat(QApplication::translate("MainWindow", "dd/MMM/yyyy", nullptr));
+        timeEdit->setDisplayFormat(QApplication::translate("MainWindow", "HH:mm", nullptr));
+        groupBox_2->setTitle(QApplication::translate("MainWindow", "Outputs", nullptr));
+        label->setText(QApplication::translate("MainWindow", "Sunrise:", nullptr));
+        sunriseLabel->setText(QApplication::translate("MainWindow", "--:--", nullptr));
+        label_2->setText(QApplication::translate("MainWindow", "Noon:", nullptr));
+        noonLabel->setText(QApplication::translate("MainWindow", "--:--", nullptr));
+        label_3->setText(QApplication::translate("MainWindow", "Sunset:", nullptr));
+        sunsetLabel->setText(QApplication::translate("MainWindow", "--:--", nullptr));
+        label_6->setText(QApplication::translate("MainWindow", "Equation of Time (minutes):", nullptr));
 #ifndef QT_NO_TOOLTIP
-        eqTimeLabel->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>An astronomical term accounting for changes in the time of solar noon for a given location over the course of a year.</p></body></html>", Q_NULLPTR));
+        eqTimeLabel->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>An astronomical term accounting for changes in the time of solar noon for a given location over the course of a year.</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
-        eqTimeLabel->setText(QApplication::translate("MainWindow", "0.000", Q_NULLPTR));
-        label_8->setText(QApplication::translate("MainWindow", "Solar Declination (degrees):", Q_NULLPTR));
+        eqTimeLabel->setText(QApplication::translate("MainWindow", "0.000", nullptr));
+        label_8->setText(QApplication::translate("MainWindow", "Solar Declination (degrees):", nullptr));
 #ifndef QT_NO_TOOLTIP
-        sdLabel->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>The solar declination varies from -23.44\302\260 at the (northern hemisphere) winter solstice, through 0\302\260 at the vernal equinox, to +23.44\302\260 at the summer solstice.</p></body></html>", Q_NULLPTR));
+        sdLabel->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>The solar declination varies from -23.44\302\260 at the (northern hemisphere) winter solstice, through 0\302\260 at the vernal equinox, to +23.44\302\260 at the summer solstice.</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
-        sdLabel->setText(QApplication::translate("MainWindow", "0.000", Q_NULLPTR));
-        label_10->setText(QApplication::translate("MainWindow", "Azimuth | Elevation (degrees):", Q_NULLPTR));
+        sdLabel->setText(QApplication::translate("MainWindow", "0.000", nullptr));
+        label_10->setText(QApplication::translate("MainWindow", "Azimuth | Elevation (degrees):", nullptr));
 #ifndef QT_NO_TOOLTIP
-        aeLabel->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>An angular coordinate system for locating positions in the sky. Azimuth is measured clockwise from true north to the point on the horizon directly below the object. Elevation is measured vertically from that point on the horizon up to the object.</p></body></html>", Q_NULLPTR));
+        aeLabel->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>An angular coordinate system for locating positions in the sky. Azimuth is measured clockwise from true north to the point on the horizon directly below the object. Elevation is measured vertically from that point on the horizon up to the object.</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
-        aeLabel->setText(QApplication::translate("MainWindow", "0.000 | 0.000", Q_NULLPTR));
-        calcButton->setText(QApplication::translate("MainWindow", "Calculate", Q_NULLPTR));
-        menu_File->setTitle(QApplication::translate("MainWindow", "&File", Q_NULLPTR));
-        menu_Edit->setTitle(QApplication::translate("MainWindow", "&Edit", Q_NULLPTR));
-        menu_Help->setTitle(QApplication::translate("MainWindow", "&Help", Q_NULLPTR));
+        aeLabel->setText(QApplication::translate("MainWindow", "0.000 | 0.000", nullptr));
+        calcButton->setText(QApplication::translate("MainWindow", "Calculate", nullptr));
+        menu_File->setTitle(QApplication::translate("MainWindow", "&File", nullptr));
+        menu_Edit->setTitle(QApplication::translate("MainWindow", "&Edit", nullptr));
+        menu_Help->setTitle(QApplication::translate("MainWindow", "&Help", nullptr));
     } // retranslateUi
 
 };

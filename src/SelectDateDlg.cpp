@@ -1,10 +1,9 @@
-/*
- * SelectDateDlg.cpp
- * 
- * Author:  Cody Johnson <codyj@protonmail.com>
-*/
-
-
+// =============================================================================
+//
+// SelectDateDlg.cpp
+// Author: Cody Johnson <codyj@protonmail.com>
+//
+// =============================================================================
 #include "SelectDateDlg.h"
 
 SelectDateDlg::SelectDateDlg() {

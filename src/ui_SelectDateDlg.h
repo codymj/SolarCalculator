@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'SelectDateDlg.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.2
+** Created by: Qt User Interface Compiler version 5.11.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,14 +10,11 @@
 #define UI_SELECTDATEDLG_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCalendarWidget>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 
@@ -75,9 +72,9 @@ public:
 
     void retranslateUi(QDialog *SelectDateDlg)
     {
-        SelectDateDlg->setWindowTitle(QApplication::translate("SelectDateDlg", "Enter Date", Q_NULLPTR));
-        cancelButton->setText(QApplication::translate("SelectDateDlg", "&Cancel", Q_NULLPTR));
-        okButton->setText(QApplication::translate("SelectDateDlg", "&Ok", Q_NULLPTR));
+        SelectDateDlg->setWindowTitle(QApplication::translate("SelectDateDlg", "Enter Date", nullptr));
+        cancelButton->setText(QApplication::translate("SelectDateDlg", "&Cancel", nullptr));
+        okButton->setText(QApplication::translate("SelectDateDlg", "&Ok", nullptr));
     } // retranslateUi
 
 };

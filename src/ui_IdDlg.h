@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'IdDlg.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.2
+** Created by: Qt User Interface Compiler version 5.11.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,13 +10,10 @@
 #define UI_IDDLG_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
@@ -89,10 +86,10 @@ public:
 
     void retranslateUi(QDialog *IdDlg)
     {
-        IdDlg->setWindowTitle(QApplication::translate("IdDlg", "Enter ID", Q_NULLPTR));
-        label->setText(QApplication::translate("IdDlg", "Enter a name for this location:", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("IdDlg", "&Cancel", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("IdDlg", "&Ok", Q_NULLPTR));
+        IdDlg->setWindowTitle(QApplication::translate("IdDlg", "Enter ID", nullptr));
+        label->setText(QApplication::translate("IdDlg", "Enter a name for this location:", nullptr));
+        pushButton_2->setText(QApplication::translate("IdDlg", "&Cancel", nullptr));
+        pushButton->setText(QApplication::translate("IdDlg", "&Ok", nullptr));
     } // retranslateUi
 
 };

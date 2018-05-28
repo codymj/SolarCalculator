@@ -1,9 +1,9 @@
-/*
- * SelectTimeDlg.h
- *
- * Author:  Cody Johnson <codyj@protonmail.com>
-*/
-
+// =============================================================================
+//
+// SelectTimeDlg.cpp
+// Author: Cody Johnson <codyj@protonmail.com>
+//
+// =============================================================================
 #include "SelectTimeDlg.h"
 
 SelectTimeDlg::SelectTimeDlg() {

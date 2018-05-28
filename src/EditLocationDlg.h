@@ -1,9 +1,9 @@
-/*
- * EditLocationDlg.h
- * 
- * Author:  Cody Johnson <codyj@protonmail.com>
-*/
-
+// =============================================================================
+//
+// EditLocationDlg.h
+// Author: Cody Johnson <codyj@protonmail.com>
+//
+// =============================================================================
 #ifndef _EDITLOCATIONDLG_H_
 #define _EDITLOCATIONDLG_H_
 

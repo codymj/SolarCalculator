@@ -1,9 +1,9 @@
-/*
- * SelectDateDlg.h
- * 
- * Author:  Cody Johnson <codyj@protonmail.com>
-*/
-
+// =============================================================================
+//
+// SelectDateDlg.h
+// Author: Cody Johnson <codyj@protonmail.com>
+//
+// =============================================================================
 #ifndef _SELECTDATEDLG_H_
 #define _SELECTDATEDLG_H_
 

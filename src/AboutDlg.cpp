@@ -1,9 +1,9 @@
-/*
- * AboutDlg.cpp
- *
- * Author:  Cody Johnson <codyj@protonmail.com>
-*/
-
+// =============================================================================
+//
+// AboutDlg.cpp
+// Author: Cody Johnson <codyj@protonmail.com>
+//
+// =============================================================================
 #include "AboutDlg.h"
 
 AboutDlg::AboutDlg() {

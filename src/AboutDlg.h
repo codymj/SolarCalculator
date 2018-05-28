@@ -1,9 +1,9 @@
-/*
- * AboutDlg.h
- *
- * Author:  Cody Johnson <codyj@protonmail.com>
-*/
-
+// =============================================================================
+//
+// AboutDlg.h
+// Author: Cody Johnson <codyj@protonmail.com>
+//
+// =============================================================================
 #ifndef _ABOUTDLG_H_
 #define _ABOUTDLG_H_
 

@@ -1,9 +1,9 @@
-/*
- * IdDlg.cpp
- *
- * Author:  Cody Johnson <codyj@protonmail.com>
-*/
-
+// =============================================================================
+//
+// IdDlg.cpp
+// Author: Cody Johnson <codyj@protonmail.com>
+//
+// =============================================================================
 #include "IdDlg.h"
 
 IdDlg::IdDlg() {

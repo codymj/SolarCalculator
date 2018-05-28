@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'SelectTimeDlg.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.2
+** Created by: Qt User Interface Compiler version 5.11.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,13 +10,10 @@
 #define UI_SELECTTIMEDLG_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
@@ -106,11 +103,11 @@ public:
 
     void retranslateUi(QDialog *SelectTimeDlg)
     {
-        SelectTimeDlg->setWindowTitle(QApplication::translate("SelectTimeDlg", "Enter Time", Q_NULLPTR));
-        label->setText(QApplication::translate("SelectTimeDlg", "Hours", Q_NULLPTR));
-        label_2->setText(QApplication::translate("SelectTimeDlg", "Minutes", Q_NULLPTR));
-        cancelButton->setText(QApplication::translate("SelectTimeDlg", "&Cancel", Q_NULLPTR));
-        okButton->setText(QApplication::translate("SelectTimeDlg", "&Ok", Q_NULLPTR));
+        SelectTimeDlg->setWindowTitle(QApplication::translate("SelectTimeDlg", "Enter Time", nullptr));
+        label->setText(QApplication::translate("SelectTimeDlg", "Hours", nullptr));
+        label_2->setText(QApplication::translate("SelectTimeDlg", "Minutes", nullptr));
+        cancelButton->setText(QApplication::translate("SelectTimeDlg", "&Cancel", nullptr));
+        okButton->setText(QApplication::translate("SelectTimeDlg", "&Ok", nullptr));
     } // retranslateUi
 
 };
