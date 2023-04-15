@@ -18,12 +18,12 @@ MainWindow::MainWindow() {
     this->timeEdit->setTime(QTime::currentTime());
     
     // Create lat and lon regex & validators
-    QRegExp latRegExp(
+    QRegularExpression latRegExp(
         "(\\+)?(?:90(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\\.[0-9]{1,6})?))");
-    QRegExp lonRegExp(
+    QRegularExpression lonRegExp(
         "(\\+)?(?:180(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\\.[0-9]{1,6})?))");
-    QValidator *latValidator = new QRegExpValidator(latRegExp, this);
-    QValidator *lonValidator = new QRegExpValidator(lonRegExp, this);
+    QValidator *latValidator = new QRegularExpressionValidator(latRegExp, this);
+    QValidator *lonValidator = new QRegularExpressionValidator(lonRegExp, this);
     this->latInput->setValidator(latValidator);
     this->lonInput->setValidator(lonValidator);
     

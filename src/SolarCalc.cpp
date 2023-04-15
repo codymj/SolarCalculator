@@ -32,10 +32,10 @@ bool SolarCalc::isNumber(const double &num) {
     
     for (int i=0; i<numStr.length(); i++) {
         ch = numStr.at(i);
-        if (i == 0 && (ch == "-" || ch == "+")) {
+        if (i == 0 && (ch == QChar('-') || ch == QChar('+'))) {
             continue;
         }
-        if (ch == "." && !decimal) {
+        if (ch == QChar('.') && !decimal) {
             decimal = true;
             continue;
         }

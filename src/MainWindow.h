@@ -11,8 +11,8 @@
 #include <QDebug>
 #include <QFile>
 #include <QTextStream>
-#include <QRegExp>
-#include <QRegExpValidator>
+#include <QRegularExpression>
+#include <QRegularExpressionValidator>
 #include <QString>
 #include <QTime>
 #include "ui_MainWindow.h"
